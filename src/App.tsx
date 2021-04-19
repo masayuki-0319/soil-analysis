@@ -30,7 +30,7 @@ const App = (): JSX.Element => {
   return (
     <MainContent>
       <Grid container>
-        <Grid mb={8} xs={12}>
+        <Grid item mb={8} xs={12}>
           <Typography variant="h4" style={{ fontWeight: "bold" }} gutterBottom>
             ほ場データ入力
           </Typography>
@@ -38,7 +38,7 @@ const App = (): JSX.Element => {
             ほ場の種類と、土壌種類を入力する。
           </Typography>
         </Grid>
-        <Grid mb={4}>
+        <Grid item mb={4} xs={12}>
           <Typography variant="h5" color="secondary" gutterBottom>
             ほ場の種類
           </Typography>
