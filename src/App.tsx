@@ -1,8 +1,17 @@
 import React from "react";
-import "./App.css";
+import { Button } from "@material-ui/core";
 
-function App() {
-  return <div></div>;
-}
+const App = (): JSX.Element => {
+  const onClick = () => {
+    console.log("Click!");
+    alert("アラート！");
+  };
+
+  return (
+    <Button color="primary" variant="outlined" onClick={() => onClick()}>
+      Hello World
+    </Button>
+  );
+};
 
 export default App;
