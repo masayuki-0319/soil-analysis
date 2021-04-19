@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
+import MainContent from "./components/templates/MainContent";
 
 const App = (): JSX.Element => {
   const onClick = () => {
@@ -8,9 +9,11 @@ const App = (): JSX.Element => {
   };
 
   return (
-    <Button color="primary" variant="outlined" onClick={() => onClick()}>
-      Hello World
-    </Button>
+    <MainContent>
+      <Button color="primary" variant="outlined" onClick={() => onClick()}>
+        Hello World
+      </Button>
+    </MainContent>
   );
 };
 
