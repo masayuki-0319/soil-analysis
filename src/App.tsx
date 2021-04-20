@@ -31,21 +31,14 @@ const App = (): JSX.Element => {
     <MainContent>
       <Grid container>
         <Grid item mb={8} xs={12}>
-          <Typography variant="h4" style={{ fontWeight: "bold" }} gutterBottom>
-            ほ場データ入力
-          </Typography>
-          <Typography variant="body1" gutterBottom>
+          <Typography variant="h2">ほ場データ入力</Typography>
+          <Typography variant="body1">
             ほ場の種類と、土壌種類を入力する。
           </Typography>
         </Grid>
         <Grid item mb={4} xs={12}>
-          <Typography variant="h5" color="secondary" gutterBottom>
-            ほ場の種類
-          </Typography>
-          <FormControl
-            variant="outlined"
-            style={{ width: "50%", marginBottom: "20px", minWidth: 120 }}
-          >
+          <Typography variant="h3">ほ場の種類</Typography>
+          <FormControl variant="outlined">
             <Select
               value={farmField}
               onChange={handleChange}
