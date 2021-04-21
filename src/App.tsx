@@ -1,35 +1,29 @@
 import React, { useState } from "react";
-import {
-  FormControl,
-  Grid,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  Typography,
-} from "@material-ui/core";
+import { FormControl, Grid, Typography } from "@material-ui/core";
 import MainContent from "./components/templates/MainContent";
+import SelectBox from "./components/atoms/selectbox/Selectbox";
 
 type FarmField = {
-  id: string;
+  value: string;
   name: string;
 };
 
 type SoilType = {
-  id: string;
+  value: string;
   name: string;
 };
 
 const App = (): JSX.Element => {
   // TODO: FieldType に変更
   const sampleFarmFields: FarmField[] = [
-    { id: "1", name: "水田" },
-    { id: "2", name: "畑作" },
-    { id: "3", name: "牧草地" },
+    { value: "1", name: "水田" },
+    { value: "2", name: "畑作" },
+    { value: "3", name: "牧草地" },
   ];
   const sampleSoilTypes: SoilType[] = [
-    { id: "1", name: "露地畑" },
-    { id: "2", name: "施設畑" },
-    { id: "3", name: "果樹園" },
+    { value: "1", name: "露地畑" },
+    { value: "2", name: "施設畑" },
+    { value: "3", name: "果樹園" },
   ];
 
   const [farmField, setFarmField] = useState("");
@@ -52,33 +46,25 @@ const App = (): JSX.Element => {
           </Typography>
         </Grid>
         <Grid item mb={4} xs={12}>
-          <Typography variant="h3">ほ場の種類</Typography>
           <FormControl variant="outlined">
-            <Select
+            <Typography variant="h3">ほ場の種類</Typography>
+            <SelectBox
+              name="farmField"
               value={farmField}
               onChange={handleChangeFarmField}
-              input={<OutlinedInput name="farmField" />}
-            >
-              {sampleFarmFields.map((farmField, index) => (
-                <MenuItem key={index} value={farmField.id}>
-                  {farmField.name}
-                </MenuItem>
-              ))}
-            </Select>
+              options={sampleFarmFields}
+            />
           </FormControl>
-          <Typography variant="h3">土壌の種類</Typography>
+        </Grid>
+        <Grid item mb={4} xs={12}>
           <FormControl variant="outlined">
-            <Select
+            <Typography variant="h3">土壌の種類</Typography>
+            <SelectBox
+              name="soilType"
               value={soilType}
               onChange={handleChangeSoilType}
-              input={<OutlinedInput name="soilType" />}
-            >
-              {sampleSoilTypes.map((soilType, index) => (
-                <MenuItem key={index} value={soilType.id}>
-                  {soilType.name}
-                </MenuItem>
-              ))}
-            </Select>
+              options={sampleSoilTypes}
+            />
           </FormControl>
         </Grid>
       </Grid>
