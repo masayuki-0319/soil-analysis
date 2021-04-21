@@ -1,10 +1,10 @@
 import MainContent from "./components/templates/MainContent";
-import SoilAnalysis from "./components/pages/CheckData";
+import { CheckData } from "./components/pages/CheckData";
 
 const App = () => {
   return (
     <MainContent>
-      <SoilAnalysis />
+      <CheckData />
     </MainContent>
   );
 };

@@ -12,8 +12,7 @@ type SoilType = {
   name: string;
 };
 
-const CheckData = memo(() => {
-  // TODO: FieldType に変更
+export const CheckData = memo(() => {
   const sampleFieldTypes: FieldType[] = [
     { value: "1", name: "水田" },
     { value: "2", name: "畑作" },
@@ -68,5 +67,3 @@ const CheckData = memo(() => {
     </Grid>
   );
 });
-
-export default CheckData;
