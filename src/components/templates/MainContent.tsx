@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
+import { VFC, ReactNode } from "react";
 import { Container } from "@material-ui/core";
 
 type Props = {
   children: ReactNode;
 };
 
-const MainContent: React.FC<Props> = (props) => {
+export const MainContent: VFC<Props> = (props) => {
   const { children } = props;
 
   return (
@@ -18,5 +18,3 @@ const MainContent: React.FC<Props> = (props) => {
     </Container>
   );
 };
-
-export default MainContent;

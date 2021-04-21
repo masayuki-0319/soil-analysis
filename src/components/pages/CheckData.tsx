@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import { useState, memo, VFC } from "react";
 import { FormControl, Grid, Typography } from "@material-ui/core";
 import SelectBox from "../atoms/selectbox/Selectbox";
 
@@ -12,7 +12,9 @@ type SoilType = {
   name: string;
 };
 
-export const CheckData = memo(() => {
+interface Props {}
+
+export const CheckData: VFC<Props> = memo(() => {
   const sampleFieldTypes: FieldType[] = [
     { value: "1", name: "水田" },
     { value: "2", name: "畑作" },

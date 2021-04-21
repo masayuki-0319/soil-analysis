@@ -1,7 +1,10 @@
-import MainContent from "./components/templates/MainContent";
+import { VFC } from "react";
+import { MainContent } from "./components/templates/MainContent";
 import { CheckData } from "./components/pages/CheckData";
 
-const App = () => {
+interface Props {}
+
+const App: VFC<Props> = () => {
   return (
     <MainContent>
       <CheckData />
