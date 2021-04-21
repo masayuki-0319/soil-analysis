@@ -1,4 +1,4 @@
-import { VFC } from "react";
+import { memo, VFC } from "react";
 import { MenuItem, OutlinedInput, Select } from "@material-ui/core";
 
 interface Props {
@@ -13,7 +13,7 @@ type OptionType = {
   name: string;
 };
 
-const Selectbox: VFC<Props> = (props) => {
+const Selectbox: VFC<Props> = memo((props) => {
   const { name, value, onChange, options } = props;
 
   return (
@@ -29,6 +29,6 @@ const Selectbox: VFC<Props> = (props) => {
       ))}
     </Select>
   );
-};
+});
 
 export default Selectbox;
