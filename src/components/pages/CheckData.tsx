@@ -2,7 +2,7 @@ import React, { useState, memo } from "react";
 import { FormControl, Grid, Typography } from "@material-ui/core";
 import SelectBox from "../atoms/selectbox/Selectbox";
 
-type FarmField = {
+type FieldType = {
   value: string;
   name: string;
 };
@@ -14,7 +14,7 @@ type SoilType = {
 
 const CheckData = memo(() => {
   // TODO: FieldType に変更
-  const sampleFarmFields: FarmField[] = [
+  const sampleFieldTypes: FieldType[] = [
     { value: "1", name: "水田" },
     { value: "2", name: "畑作" },
     { value: "3", name: "牧草地" },
@@ -25,11 +25,11 @@ const CheckData = memo(() => {
     { value: "3", name: "果樹園" },
   ];
 
-  const [farmField, setFarmField] = useState("");
+  const [fieldType, setFieldType] = useState("");
   const [soilType, setSoilType] = useState("");
 
-  const handleChangeFarmField = (e: React.ChangeEvent<{ value: string }>) => {
-    setFarmField(e.target.value);
+  const handleChangeFieldType = (e: React.ChangeEvent<{ value: string }>) => {
+    setFieldType(e.target.value);
   };
   const handleChangeSoilType = (e: React.ChangeEvent<{ value: string }>) => {
     setSoilType(e.target.value);
@@ -47,10 +47,10 @@ const CheckData = memo(() => {
         <FormControl variant="outlined">
           <Typography variant="h3">ほ場の種類</Typography>
           <SelectBox
-            name="farmField"
-            value={farmField}
-            onChange={handleChangeFarmField}
-            options={sampleFarmFields}
+            name="fieldType"
+            value={fieldType}
+            onChange={handleChangeFieldType}
+            options={sampleFieldTypes}
           />
         </FormControl>
       </Grid>
