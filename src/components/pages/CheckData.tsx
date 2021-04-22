@@ -1,4 +1,4 @@
-import { useState, memo, VFC } from "react";
+import React, { useState, memo, VFC } from "react";
 import { FormControl, Grid, Typography } from "@material-ui/core";
 import SelectBox from "../atoms/selectbox/Selectbox";
 
@@ -45,9 +45,10 @@ export const CheckData: VFC<Props> = memo(() => {
         </Typography>
       </Grid>
       <Grid item mb={4} xs={12}>
+        <Typography variant="h3">ほ場の種類</Typography>
         <FormControl variant="outlined">
-          <Typography variant="h3">ほ場の種類</Typography>
           <SelectBox
+            labelName="ほ場の種類"
             name="fieldType"
             value={fieldType}
             onChange={handleChangeFieldType}
@@ -56,9 +57,10 @@ export const CheckData: VFC<Props> = memo(() => {
         </FormControl>
       </Grid>
       <Grid item mb={4} xs={12}>
+        <Typography variant="h3">土壌の種類</Typography>
         <FormControl variant="outlined">
-          <Typography variant="h3">土壌の種類</Typography>
           <SelectBox
+            labelName="土壌の種類"
             name="soilType"
             value={soilType}
             onChange={handleChangeSoilType}

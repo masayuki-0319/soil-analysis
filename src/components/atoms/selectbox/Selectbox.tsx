@@ -1,7 +1,8 @@
 import { memo, VFC } from "react";
-import { MenuItem, OutlinedInput, Select } from "@material-ui/core";
+import { MenuItem, OutlinedInput, Select, InputLabel } from "@material-ui/core";
 
 interface Props {
+  labelName: string;
   name: string;
   value: unknown;
   onChange: (props?: any) => void;
@@ -14,20 +15,24 @@ type OptionType = {
 };
 
 const Selectbox: VFC<Props> = memo((props) => {
-  const { name, value, onChange, options } = props;
+  const { labelName, name, value, onChange, options } = props;
 
   return (
-    <Select
-      input={<OutlinedInput name={name} />}
-      value={value}
-      onChange={onChange}
-    >
-      {options.map((option, index) => (
-        <MenuItem key={index} value={option.value}>
-          {option.name}
-        </MenuItem>
-      ))}
-    </Select>
+    <>
+      <InputLabel id="label-id">{labelName}</InputLabel>
+      <Select
+        labelId="label-id"
+        input={<OutlinedInput name={name} />}
+        value={value}
+        onChange={onChange}
+      >
+        {options.map((option, index) => (
+          <MenuItem key={index} value={option.value}>
+            {option.name}
+          </MenuItem>
+        ))}
+      </Select>
+    </>
   );
 });
 
