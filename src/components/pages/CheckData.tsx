@@ -1,31 +1,11 @@
 import React, { useState, memo, VFC } from "react";
 import { FormControl, Grid, Typography } from "@material-ui/core";
-import SelectBox from "../atoms/selectbox/Selectbox";
-
-type FieldType = {
-  value: string;
-  name: string;
-};
-
-type SoilType = {
-  value: string;
-  name: string;
-};
+import SelectSoilType from "../organisms/CheckData/SelectSoilType";
+import SelectFieldType from "../organisms/CheckData/SelectFieldType";
 
 interface Props {}
 
 export const CheckData: VFC<Props> = memo(() => {
-  const sampleFieldTypes: FieldType[] = [
-    { value: "1", name: "水田" },
-    { value: "2", name: "畑作" },
-    { value: "3", name: "牧草地" },
-  ];
-  const sampleSoilTypes: SoilType[] = [
-    { value: "1", name: "露地畑" },
-    { value: "2", name: "施設畑" },
-    { value: "3", name: "果樹園" },
-  ];
-
   const [fieldType, setFieldType] = useState("");
   const [soilType, setSoilType] = useState("");
 
@@ -47,24 +27,18 @@ export const CheckData: VFC<Props> = memo(() => {
       <Grid item mb={4} xs={12}>
         <Typography variant="h3">ほ場の種類</Typography>
         <FormControl variant="outlined">
-          <SelectBox
-            labelName="ほ場の種類"
-            name="fieldType"
-            value={fieldType}
+          <SelectFieldType
+            defaultValue={fieldType}
             onChange={handleChangeFieldType}
-            options={sampleFieldTypes}
           />
         </FormControl>
       </Grid>
       <Grid item mb={4} xs={12}>
         <Typography variant="h3">土壌の種類</Typography>
         <FormControl variant="outlined">
-          <SelectBox
-            labelName="土壌の種類"
-            name="soilType"
-            value={soilType}
+          <SelectSoilType
+            defaultValue={soilType}
             onChange={handleChangeSoilType}
-            options={sampleSoilTypes}
           />
         </FormControl>
       </Grid>
