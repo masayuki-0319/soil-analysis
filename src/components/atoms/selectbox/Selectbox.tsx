@@ -1,5 +1,5 @@
-import { memo, VFC } from "react";
-import { OutlinedInput, Select, InputLabel } from "@material-ui/core";
+import { memo, VFC } from 'react';
+import { OutlinedInput, Select, InputLabel } from '@material-ui/core';
 
 interface Props {
   labelName: string;
@@ -15,12 +15,7 @@ const Selectbox: VFC<Props> = memo((props) => {
   return (
     <>
       <InputLabel id="label-id">{labelName}</InputLabel>
-      <Select
-        labelId="label-id"
-        input={<OutlinedInput name={name} />}
-        value={value}
-        onChange={onChange}
-      >
+      <Select labelId="label-id" input={<OutlinedInput name={name} />} value={value} onChange={onChange}>
         {children}
       </Select>
     </>
