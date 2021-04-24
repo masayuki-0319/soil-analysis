@@ -5,6 +5,12 @@ const initialState: AnalysisResult = {
   fieldTypeId: '',
   soilTypeId: '',
   ph: '',
+  ec: '',
+  cao: '',
+  mgo: '',
+  k2o: '',
+  p2o5: '',
+  no3n: '',
 };
 
 export const analysisResultState = atom({
