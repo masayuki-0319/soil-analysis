@@ -1,14 +1,17 @@
-import { VFC } from "react";
-import { MainContent } from "./components/templates/MainContent";
-import { CheckData } from "./components/pages/CheckData";
+import { VFC } from 'react';
+import { MainContent } from './components/templates/MainContent';
+import { CheckData } from './components/pages/CheckData';
+import { RecoilRoot } from 'recoil';
 
 interface Props {}
 
 const App: VFC<Props> = () => {
   return (
-    <MainContent>
-      <CheckData />
-    </MainContent>
+    <RecoilRoot>
+      <MainContent>
+        <CheckData />
+      </MainContent>
+    </RecoilRoot>
   );
 };
 

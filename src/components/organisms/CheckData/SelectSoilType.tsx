@@ -28,7 +28,7 @@ const SelectSoilType: VFC<Props> = memo((props) => {
   ));
 
   return (
-    <SelectBox labelName="土壌の種類" name="soilType" value={defaultValue} onChange={onChange}>
+    <SelectBox labelName="土壌の種類" name="soilTypeId" value={defaultValue} onChange={onChange}>
       {options}
     </SelectBox>
   );

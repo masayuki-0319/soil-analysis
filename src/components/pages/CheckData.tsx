@@ -1,19 +1,17 @@
-import React, { useState, memo, VFC } from 'react';
+import React, { memo, VFC } from 'react';
 import { FormControl, Grid, Typography } from '@material-ui/core';
 import SelectSoilType from '../organisms/CheckData/SelectSoilType';
 import SelectFieldType from '../organisms/CheckData/SelectFieldType';
+import { useRecoilState } from 'recoil';
+import { analysisResultState } from '../../store/analysisResultState';
 
 interface Props {}
 
 export const CheckData: VFC<Props> = memo(() => {
-  const [fieldType, setFieldType] = useState('');
-  const [soilType, setSoilType] = useState('');
+  const [analysisResult, setAnalysisResultState] = useRecoilState(analysisResultState);
 
-  const handleChangeFieldType = (e: React.ChangeEvent<{ value: string }>) => {
-    setFieldType(e.target.value);
-  };
-  const handleChangeSoilType = (e: React.ChangeEvent<{ value: string }>) => {
-    setSoilType(e.target.value);
+  const handleChange = (e: React.ChangeEvent<{ name: string; value: string }>) => {
+    setAnalysisResultState({ ...analysisResult, [e.target.name]: e.target.value });
   };
 
   return (
@@ -25,13 +23,13 @@ export const CheckData: VFC<Props> = memo(() => {
       <Grid item mb={4} xs={12}>
         <Typography variant="h3">ほ場の種類</Typography>
         <FormControl variant="outlined">
-          <SelectFieldType defaultValue={fieldType} onChange={handleChangeFieldType} />
+          <SelectFieldType defaultValue={analysisResult.fieldTypeId} onChange={handleChange} />
         </FormControl>
       </Grid>
       <Grid item mb={4} xs={12}>
         <Typography variant="h3">土壌の種類</Typography>
         <FormControl variant="outlined">
-          <SelectSoilType defaultValue={soilType} onChange={handleChangeSoilType} />
+          <SelectSoilType defaultValue={analysisResult.soilTypeId} onChange={handleChange} />
         </FormControl>
       </Grid>
     </Grid>
