@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { fieldMasterData } from '../masterDatas/fieldMasterData';
+import { fieldMasterData } from '../masterData/fieldMasterData';
 import { AnalysisResult } from '../types/AnalysisResult';
 import { FieldMasterData } from '../types/FieldMasterData';
 
