@@ -1,27 +1,17 @@
 import { memo, VFC } from 'react';
 import SelectBox from '../../atoms/selectbox/Selectbox';
 import { MenuItem } from '@material-ui/core';
+import { fieldTypeData } from '../../../masterData/fiedlTypeData';
 
 interface Props {
   defaultValue: number;
   onChange: (props?: any) => void;
 }
 
-type FieldType = {
-  id: number;
-  name: string;
-};
-
 const SelectSoilType: VFC<Props> = memo((props) => {
   const { defaultValue, onChange } = props;
 
-  const sampleFieldTypes: FieldType[] = [
-    { id: 1, name: '水田' },
-    { id: 2, name: '畑作' },
-    { id: 3, name: '牧草地' },
-  ];
-
-  const options = sampleFieldTypes.map((option, index) => (
+  const options = fieldTypeData.map((option, index) => (
     <MenuItem key={index} value={option.id}>
       {option.name}
     </MenuItem>

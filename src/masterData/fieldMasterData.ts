@@ -3,7 +3,7 @@ import { FieldMasterData } from '../types/FieldMasterData';
 export const fieldMasterData: FieldMasterData[] = [
   {
     id: 1,
-    fieldType: '露地畑',
+    fieldTypeId: 1,
     pH_MIN: 5.5,
     pH_MAX: 6,
     EC_MIN: 0,
@@ -29,7 +29,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 2,
-    fieldType: '露地畑(ﾎｳﾚﾝｿｳ)',
+    fieldTypeId: 2,
     pH_MIN: 6.4,
     pH_MAX: 6.8,
     EC_MIN: 0,
@@ -55,7 +55,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 3,
-    fieldType: '施設畑',
+    fieldTypeId: 3,
     pH_MIN: 6,
     pH_MAX: 6.5,
     EC_MIN: 0,
@@ -81,7 +81,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 4,
-    fieldType: '果樹園',
+    fieldTypeId: 4,
     pH_MIN: 5.5,
     pH_MAX: 6,
     EC_MIN: 0,
@@ -107,7 +107,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 5,
-    fieldType: '果樹園(ﾌﾞﾄﾞｳ等)',
+    fieldTypeId: 5,
     pH_MIN: 6,
     pH_MAX: 6.5,
     EC_MIN: 0,
@@ -133,7 +133,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 6,
-    fieldType: '果樹園(ﾌﾞﾙ-ﾍﾞﾘ-)',
+    fieldTypeId: 6,
     pH_MIN: 4.5,
     pH_MAX: 5,
     EC_MIN: 0,
@@ -159,7 +159,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 7,
-    fieldType: '常緑果樹',
+    fieldTypeId: 7,
     pH_MIN: 5.5,
     pH_MAX: 6,
     EC_MIN: 0,
@@ -185,7 +185,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 8,
-    fieldType: '水田(クロボク土)',
+    fieldTypeId: 8,
     pH_MIN: 6,
     pH_MAX: 6.5,
     EC_MIN: 0,
@@ -211,7 +211,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 9,
-    fieldType: '水田(その他土壌)',
+    fieldTypeId: 9,
     pH_MIN: 6,
     pH_MAX: 6.5,
     EC_MIN: 0,
@@ -237,7 +237,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 10,
-    fieldType: '茶園',
+    fieldTypeId: 10,
     pH_MIN: 4,
     pH_MAX: 5,
     EC_MIN: 0,
@@ -263,7 +263,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 11,
-    fieldType: '桑園',
+    fieldTypeId: 11,
     pH_MIN: 6,
     pH_MAX: 6.5,
     EC_MIN: 0,
@@ -289,7 +289,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 12,
-    fieldType: '飼料作畑',
+    fieldTypeId: 12,
     pH_MIN: 5.5,
     pH_MAX: 6.5,
     EC_MIN: 0,
@@ -315,7 +315,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 13,
-    fieldType: '花木',
+    fieldTypeId: 13,
     pH_MIN: 5.5,
     pH_MAX: 6,
     EC_MIN: 0,
@@ -341,7 +341,7 @@ export const fieldMasterData: FieldMasterData[] = [
   },
   {
     id: 14,
-    fieldType: '培土',
+    fieldTypeId: 14,
     pH_MIN: 6,
     pH_MAX: 6.5,
     EC_MIN: 0,

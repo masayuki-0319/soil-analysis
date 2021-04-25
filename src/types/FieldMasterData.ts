@@ -1,6 +1,6 @@
 export interface FieldMasterData {
   id: number;
-  fieldType: string;
+  fieldTypeId: number;
   pH_MIN: number;
   pH_MAX: number;
   EC_MIN: number;

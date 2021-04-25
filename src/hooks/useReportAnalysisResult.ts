@@ -74,8 +74,8 @@ function assertIsDefined<T>(val: T): asserts val is NonNullable<T> {
   }
 }
 
-const findMasterData = (currentFieldType: number, masterData: FieldMasterData[]): FieldMasterData => {
-  const resultData = masterData.find((data) => data.id === currentFieldType);
+const findMasterData = (currentFieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
+  const resultData = masterData.find((data) => data.id === currentFieldTypeId);
   assertIsDefined(resultData);
 
   return resultData;
