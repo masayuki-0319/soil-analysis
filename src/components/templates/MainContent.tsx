@@ -9,7 +9,7 @@ export const MainContent: VFC<Props> = (props) => {
   const { children } = props;
 
   return (
-    <Container maxWidth="lg" fixed style={{ backgroundColor: 'aliceblue', height: '100vh' }}>
+    <Container maxWidth="lg" fixed>
       {children}
     </Container>
   );
