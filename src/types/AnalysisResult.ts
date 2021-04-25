@@ -1,14 +1,8 @@
-export type AnalysisResult = {
-  fieldTypeId: string;
-  soilTypeId: string;
-  ph: string;
-  ec: string;
-  cao: string;
-  mgo: string;
-  k2o: string;
-  p2o5: string;
-  no3n: string;
-};
+import { ReportAnalysisResult } from './ReportAnalysisResult';
+
+// MEMO: 分析機器による解析結果
+// TODO: fieldType と soilType は、Report に属すべきかも
+export type AnalysisResult = ReportAnalysisResult;
 
 type analysisItem = {
   keyName: keyof AnalysisResult;

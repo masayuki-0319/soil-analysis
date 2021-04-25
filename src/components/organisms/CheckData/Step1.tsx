@@ -12,7 +12,7 @@ export const Step1: VFC<Props> = memo(() => {
   const [analysisResult, setAnalysisResultState] = useRecoilState(analysisResultState);
 
   const handleChange = (e: React.ChangeEvent<{ name: string; value: string }>) => {
-    setAnalysisResultState({ ...analysisResult, [e.target.name]: e.target.value });
+    setAnalysisResultState({ ...analysisResult, [e.target.name]: Number(e.target.value) });
   };
 
   return (
