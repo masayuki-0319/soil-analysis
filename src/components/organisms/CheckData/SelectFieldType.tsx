@@ -2,6 +2,7 @@ import { memo, VFC } from 'react';
 import SelectBox from '../../atoms/selectbox/Selectbox';
 import { MenuItem } from '@material-ui/core';
 import { fieldTypeData } from '../../../masterData/fiedlTypeData';
+import SelectFormControl from '../../atoms/FormControl';
 
 interface Props {
   defaultValue: number;
@@ -18,9 +19,11 @@ const SelectSoilType: VFC<Props> = memo((props) => {
   ));
 
   return (
-    <SelectBox labelName="ほ場の種類" name="fieldTypeId" value={defaultValue} onChange={onChange}>
-      {options}
-    </SelectBox>
+    <SelectFormControl>
+      <SelectBox labelName="ほ場の種類" name="fieldTypeId" value={defaultValue} onChange={onChange}>
+        {options}
+      </SelectBox>
+    </SelectFormControl>
   );
 });
 

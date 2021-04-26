@@ -1,5 +1,5 @@
 import React, { memo, VFC } from 'react';
-import { FormControl, Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { useRecoilState } from 'recoil';
 
 import SelectSoilType from './SelectSoilType';
@@ -23,15 +23,11 @@ export const Step1: VFC<Props> = memo(() => {
       </Grid>
       <Grid item mb={4} xs={12}>
         <Typography variant="h3">ほ場の種類</Typography>
-        <FormControl variant="outlined">
-          <SelectFieldType defaultValue={analysisResult.fieldTypeId} onChange={handleChange} />
-        </FormControl>
+        <SelectFieldType defaultValue={analysisResult.fieldTypeId} onChange={handleChange} />
       </Grid>
       <Grid item mb={4} xs={12}>
         <Typography variant="h3">土壌の種類</Typography>
-        <FormControl variant="outlined">
-          <SelectSoilType defaultValue={analysisResult.soilTypeId} onChange={handleChange} />
-        </FormControl>
+        <SelectSoilType defaultValue={analysisResult.soilTypeId} onChange={handleChange} />
       </Grid>
     </Grid>
   );
