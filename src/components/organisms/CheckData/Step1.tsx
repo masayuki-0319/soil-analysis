@@ -17,16 +17,14 @@ export const Step1: VFC<Props> = memo(() => {
 
   return (
     <Grid container>
-      <Grid item mb={8} xs={12}>
+      <Grid item mb={12} xs={12}>
         <Typography variant="h2">ほ場データ入力</Typography>
         <Typography variant="body1">ほ場の種類と、土壌種類を入力する。</Typography>
       </Grid>
-      <Grid item mb={4} xs={12}>
-        <Typography variant="h3">ほ場の種類</Typography>
+      <Grid item mb={6} xs={6}>
         <SelectFieldType defaultValue={analysisResult.fieldTypeId} onChange={handleChange} />
       </Grid>
-      <Grid item mb={4} xs={12}>
-        <Typography variant="h3">土壌の種類</Typography>
+      <Grid item mb={6} xs={6}>
         <SelectSoilType defaultValue={analysisResult.soilTypeId} onChange={handleChange} />
       </Grid>
     </Grid>
