@@ -2,7 +2,7 @@ import { memo, VFC } from 'react';
 import SelectBox from '../../atoms/selectbox/Selectbox';
 import { MenuItem } from '@material-ui/core';
 import { fieldTypeData } from '../../../masterData/fiedlTypeData';
-import SelectFormControl from '../../atoms/FormControl';
+import SelectFormControl from '../../atoms/SelectFormControl';
 
 interface Props {
   defaultValue: number;

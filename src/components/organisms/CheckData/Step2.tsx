@@ -1,8 +1,9 @@
 import React, { memo, VFC } from 'react';
-import { FormControl, Grid, TextField, Typography } from '@material-ui/core';
+import { Grid, TextField, Typography } from '@material-ui/core';
 import { useRecoilState } from 'recoil';
 import { analysisResultState } from '../../../store/analysisResultState';
 import { analysisItems } from '../../../types/AnalysisResult';
+import SelectFormControl from '../../atoms/SelectFormControl';
 
 interface Props {}
 
@@ -16,7 +17,7 @@ export const Step2: VFC<Props> = memo(() => {
   const fields = analysisItems.map((item, index) => {
     return (
       <Grid item mb={6} xs={6} key={index}>
-        <FormControl variant="outlined">
+        <SelectFormControl>
           <TextField
             variant="outlined"
             type="number"
@@ -25,7 +26,7 @@ export const Step2: VFC<Props> = memo(() => {
             value={analysisResult[item.keyName]}
             label={item.labelName}
           />
-        </FormControl>
+        </SelectFormControl>
       </Grid>
     );
   });
