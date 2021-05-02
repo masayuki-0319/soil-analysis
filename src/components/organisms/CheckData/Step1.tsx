@@ -1,5 +1,5 @@
 import React, { memo, VFC } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Paper, Typography } from '@material-ui/core';
 import { useRecoilState } from 'recoil';
 
 import SelectSoilType from './SelectSoilType';
@@ -16,17 +16,31 @@ export const Step1: VFC<Props> = memo(() => {
   };
 
   return (
-    <Grid container>
-      <Grid item mb={12} xs={12}>
-        <Typography variant="h2">ほ場データ入力</Typography>
-        <Typography variant="body1">ほ場の種類と、土壌種類を入力する。</Typography>
+    <Paper elevation={8} style={{ padding: 20, marginBottom: 21 }}>
+      <Grid container>
+        <Grid
+          item
+          container
+          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 21 }}
+        >
+          <Grid>
+            <Typography variant="subtitle1" style={{ fontWeight: 'bold' }} gutterBottom>
+              ほ場データ入力
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              ※ ほ場の基本データを入力してください。
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid item container>
+          <Grid item md={6} xs={12} style={{ marginBottom: 12 }}>
+            <SelectFieldType defaultValue={analysisResult.fieldTypeId} onChange={handleChange} />
+          </Grid>
+          <Grid item md={6} xs={12} style={{ marginBottom: 12 }}>
+            <SelectSoilType defaultValue={analysisResult.soilTypeId} onChange={handleChange} />
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid item mb={6} xs={6}>
-        <SelectFieldType defaultValue={analysisResult.fieldTypeId} onChange={handleChange} />
-      </Grid>
-      <Grid item mb={6} xs={6}>
-        <SelectSoilType defaultValue={analysisResult.soilTypeId} onChange={handleChange} />
-      </Grid>
-    </Grid>
+    </Paper>
   );
 });
