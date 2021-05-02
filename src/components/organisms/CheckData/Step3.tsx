@@ -33,10 +33,10 @@ export const Step3: VFC<Props> = memo(() => {
             <Table aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <TableCell>Elements</TableCell>
-                  <TableCell align="right">Current</TableCell>
-                  <TableCell align="right">Target ( Min )</TableCell>
-                  <TableCell align="right">Target ( Max )</TableCell>
+                  <TableCell>分析項目</TableCell>
+                  <TableCell align="right">測定値</TableCell>
+                  <TableCell align="right">目標値 ( Min )</TableCell>
+                  <TableCell align="right">目標値 ( Max )</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>{tableDataSet}</TableBody>
