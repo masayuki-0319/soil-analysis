@@ -1,8 +1,9 @@
 import { memo, useEffect, VFC } from 'react';
-import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
+import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { useRecoilValue } from 'recoil';
 import { analysisResultState } from '../../../store/analysisResultState';
 import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult';
+import { FormTopInfo } from '../../molecules/FormTopInfo';
 
 interface Props {}
 
@@ -24,26 +25,25 @@ export const Step3: VFC<Props> = memo(() => {
   ));
 
   return (
-    <Grid container>
-      <Grid item mb={8} xs={12}>
-        <Typography variant="h2">土壌分析結果入力</Typography>
-        <Typography variant="body1">※ 前ページの入力結果を出力する。</Typography>
+    <Paper elevation={8} style={{ padding: 20, marginBottom: 21 }}>
+      <Grid container>
+        <FormTopInfo title="土壌分析結果入力" description="※ 前ページの入力結果を出力する。" />
+        <Grid item mb={12} xs={12}>
+          <TableContainer>
+            <Table aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Elements</TableCell>
+                  <TableCell align="right">Current</TableCell>
+                  <TableCell align="right">Target ( Min )</TableCell>
+                  <TableCell align="right">Target ( Max )</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>{tableDataSet}</TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
       </Grid>
-      <Grid item mb={12} xs={12}>
-        <TableContainer>
-          <Table aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Elements</TableCell>
-                <TableCell align="right">Current</TableCell>
-                <TableCell align="right">Target ( Min )</TableCell>
-                <TableCell align="right">Target ( Max )</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>{tableDataSet}</TableBody>
-          </Table>
-        </TableContainer>
-      </Grid>
-    </Grid>
+    </Paper>
   );
 });
