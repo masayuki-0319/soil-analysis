@@ -2,7 +2,7 @@ import { memo, useEffect, VFC } from 'react';
 import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { useRecoilValue } from 'recoil';
 import { analysisResultState } from '../../../store/analysisResultState';
-import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult';
+import { useReportAnalysisResult, DisplayDataType } from '../../../hooks/useReportAnalysisResult';
 import { FormTopInfo } from '../../molecules/FormTopInfo';
 
 interface Props {}
@@ -13,8 +13,19 @@ export const Step3: VFC<Props> = memo(() => {
 
   useEffect(() => getReportAnalysisResult(analysisResult), [analysisResult]);
 
+  const checkDataColor = (displayData: DisplayDataType): string => {
+    const { current, min, max } = displayData;
+    if (current > min && current < max) {
+      return 'white';
+    } else if (current > max) {
+      return '#FFD5EC';
+    } else {
+      return '#F3FFD8';
+    }
+  };
+
   const tableDataSet = rowReportAnalysisResult.map((row, index) => (
-    <TableRow key={index}>
+    <TableRow key={index} style={{ backgroundColor: checkDataColor(row) }}>
       <TableCell component="th" scope="row">
         {row.name}
       </TableCell>
