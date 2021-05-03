@@ -1,5 +1,5 @@
 import React, { memo, VFC } from 'react';
-import { Grid, Paper, TextField } from '@material-ui/core';
+import { Grid, InputAdornment, Paper, TextField } from '@material-ui/core';
 import { useRecoilState } from 'recoil';
 import { analysisResultState } from '../../../store/analysisResultState';
 import { analysisItems } from '../../../types/AnalysisResult';
@@ -26,6 +26,9 @@ export const Step2: VFC<Props> = memo(() => {
             name={item.keyName}
             value={analysisResult[item.keyName]}
             label={item.labelName}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">{item.unitName}</InputAdornment>,
+            }}
           />
         </SelectFormControl>
       </Grid>
