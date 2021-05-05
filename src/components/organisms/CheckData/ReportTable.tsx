@@ -11,7 +11,7 @@ export const ReportTable: VFC<Props> = memo(() => {
   const checkDataStyle = (displayData: DisplayDataType): React.CSSProperties => {
     const { current, min, max } = displayData;
 
-    if (current > min && current < max) {
+    if (current >= min && current <= max) {
       return { backgroundColor: 'white' };
     } else if (current > max) {
       return { backgroundColor: '#FF9999', fontWeight: 'bold' };
