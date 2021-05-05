@@ -18,9 +18,9 @@ export const Step3: VFC<Props> = memo(() => {
     if (current > min && current < max) {
       return 'white';
     } else if (current > max) {
-      return '#FFD5EC';
+      return '#FF9999';
     } else {
-      return '#F3FFD8';
+      return '#FFFF99';
     }
   };
 

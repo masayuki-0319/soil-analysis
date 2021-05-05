@@ -39,11 +39,11 @@ const ReportChart: VFC<Props> = () => {
                 <YAxis dataKey="name" type="category" yAxisId={1} hide />
                 <YAxis dataKey="name" type="category" yAxisId={2} hide />
                 <YAxis dataKey="name" type="category" yAxisId={3} hide />
-                <Tooltip />
-                <Bar dataKey="chartData['max']" barSize={40} yAxisId={2} fill="red" />
-                <Bar dataKey="max" barSize={40} yAxisId={1} fill="green" />
+
+                <Bar dataKey="chartData['max']" barSize={40} yAxisId={2} fill="red" opacity={0.7} />
+                <Bar dataKey="max" barSize={40} yAxisId={1} fill="lightgreen" />
                 <Bar dataKey="min" barSize={40} yAxisId={0} fill="yellow" />
-                <Bar dataKey="current" barSize={20} yAxisId={3} fill="black" />
+                <Bar dataKey="current" barSize={15} yAxisId={3} fill="black" />
               </BarChart>
             );
           })}

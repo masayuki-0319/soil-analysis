@@ -39,29 +39,29 @@ const displayData = (current: AnalysisResult): DisplayDataType[] => {
       currentData.cao,
       calcCaO(standardData.CaO_saturation_MIN),
       calcCaO(standardData.CaO_saturation_MAX),
-      { min: 0, max: calcCaO(standardData.CaO_saturation_MAX) * 1.5 }
+      { min: 0, max: calcCaO(standardData.CaO_saturation_MAX) * 1.25 }
     ),
     createData(
       'MgO (交換性苦土)',
       currentData.mgo,
       calcMgO(standardData.MgO_saturation_MIN),
       calcMgO(standardData.MgO_saturation_MAX),
-      { min: 0, max: calcCaO(standardData.MgO_saturation_MAX) * 1.5 }
+      { min: 0, max: calcMgO(standardData.MgO_saturation_MAX) * 1.25 }
     ),
     createData(
       'K2O (交換性加里)',
       currentData.k2o,
       calcK2O(standardData.K2O_saturation_MIN),
       calcK2O(standardData.K2O_saturation_MAX),
-      { min: 0, max: calcK2O(standardData.K2O_saturation_MAX) * 1.5 }
+      { min: 0, max: calcK2O(standardData.K2O_saturation_MAX) * 1.25 }
     ),
     createData('P2O5(有効態リン酸)', currentData.p2o5, standardData.P2O5_MIN, standardData.P2O5_MAX, {
       min: 0,
-      max: calcCaO(standardData.P2O5_MAX) * 1.5,
+      max: standardData.P2O5_MAX * 1.25,
     }),
     createData('NO3-N (硝酸態窒素)', currentData.no3n, standardData.NO3_N_MIN, standardData.NO3_N_MAX, {
       min: 0,
-      max: calcCaO(standardData.NO3_N_MAX) * 1.5,
+      max: standardData.NO3_N_MAX * 1.25,
     }),
   ];
 };
