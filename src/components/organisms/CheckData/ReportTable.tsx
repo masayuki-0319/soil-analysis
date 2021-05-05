@@ -1,8 +1,7 @@
 import { memo, useEffect, VFC } from 'react';
-import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 import { useReportAnalysisResult, DisplayDataType } from '../../../hooks/useReportAnalysisResult';
-import { FormTopInfo } from '../../molecules/FormTopInfo';
 
 interface Props {}
 
@@ -35,25 +34,20 @@ export const ReportTable: VFC<Props> = memo(() => {
   ));
 
   return (
-    <Paper elevation={8} style={{ padding: 20, marginBottom: 21 }}>
-      <Grid container>
-        <FormTopInfo title="土壌分析結果 ( テーブル )" description="※ 前ページの入力結果を出力する。" />
-        <Grid item mb={12} xs={12}>
-          <TableContainer>
-            <Table aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>分析項目</TableCell>
-                  <TableCell align="right">測定値</TableCell>
-                  <TableCell align="right">目標値 ( Min )</TableCell>
-                  <TableCell align="right">目標値 ( Max )</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>{tableDataSet}</TableBody>
-            </Table>
-          </TableContainer>
-        </Grid>
-      </Grid>
-    </Paper>
+    <Grid container>
+      <TableContainer>
+        <Table aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <TableCell>分析項目</TableCell>
+              <TableCell align="right">測定値</TableCell>
+              <TableCell align="right">目標値 ( Min )</TableCell>
+              <TableCell align="right">目標値 ( Max )</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>{tableDataSet}</TableBody>
+        </Table>
+      </TableContainer>
+    </Grid>
   );
 });
