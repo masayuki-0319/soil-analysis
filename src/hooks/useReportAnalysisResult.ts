@@ -8,7 +8,13 @@ export interface DisplayDataType {
   current: number;
   min: number;
   max: number;
+  chartData: ChartDataType;
 }
+
+type ChartDataType = {
+  min: number;
+  max: number;
+};
 
 export const useReportAnalysisResult = () => {
   const [rowReportAnalysisResult, setReportAnalysisResult] = useState<DisplayDataType[]>([]);
@@ -26,46 +32,61 @@ const displayData = (current: AnalysisResult): DisplayDataType[] => {
   const standardData = findMasterData(currentData.fieldTypeId, fieldMasterData);
 
   return [
-    createData('pH (H2O)', currentData.ph, standardData.pH_MIN, standardData.pH_MAX),
-    createData('EC', currentData.ec, 0, 0.35),
+    createData('pH (H2O)', currentData.ph, standardData.pH_MIN, standardData.pH_MAX, { min: 0.0, max: 14.0 }),
+    createData('EC', currentData.ec, 0, 0.35, { min: 0.0, max: 4.0 }),
     createData(
       'CaO (交換性石灰)',
       currentData.cao,
       calcCaO(standardData.CaO_saturation_MIN),
-      calcCaO(standardData.CaO_saturation_MAX)
+      calcCaO(standardData.CaO_saturation_MAX),
+      { min: 0, max: calcCaO(standardData.CaO_saturation_MAX) * 1.5 }
     ),
     createData(
       'MgO (交換性苦土)',
       currentData.mgo,
       calcMgO(standardData.MgO_saturation_MIN),
-      calcMgO(standardData.MgO_saturation_MAX)
+      calcMgO(standardData.MgO_saturation_MAX),
+      { min: 0, max: calcCaO(standardData.MgO_saturation_MAX) * 1.5 }
     ),
     createData(
       'K2O (交換性加里)',
       currentData.k2o,
       calcK2O(standardData.K2O_saturation_MIN),
-      calcK2O(standardData.K2O_saturation_MAX)
+      calcK2O(standardData.K2O_saturation_MAX),
+      { min: 0, max: calcK2O(standardData.K2O_saturation_MAX) * 1.5 }
     ),
-    createData('P2O5(有効態リン酸)', currentData.p2o5, standardData.P2O5_MIN, standardData.P2O5_MAX),
-    createData('NO3-N (硝酸態窒素)', currentData.no3n, standardData.NO3_N_MIN, standardData.NO3_N_MAX),
+    createData('P2O5(有効態リン酸)', currentData.p2o5, standardData.P2O5_MIN, standardData.P2O5_MAX, {
+      min: 0,
+      max: calcCaO(standardData.P2O5_MAX) * 1.5,
+    }),
+    createData('NO3-N (硝酸態窒素)', currentData.no3n, standardData.NO3_N_MIN, standardData.NO3_N_MAX, {
+      min: 0,
+      max: calcCaO(standardData.NO3_N_MAX) * 1.5,
+    }),
   ];
 };
 
-const createData = (name: string, current: number, min: number, max: number): DisplayDataType => {
-  return { name, current, min, max };
+const createData = (
+  name: string,
+  current: number,
+  min: number,
+  max: number,
+  chartData: ChartDataType
+): DisplayDataType => {
+  return { name, current, min, max, chartData };
 };
 
 const calcCaO = (data: number): number => {
   const cec = 20;
-  return (data * 28.04 * cec) / 100;
+  return Math.ceil((data * 28.04 * cec) / 100);
 };
 const calcMgO = (data: number): number => {
   const cec = 20;
-  return (data * 20.15 * cec) / 100;
+  return Math.ceil((data * 20.15 * cec) / 100);
 };
 const calcK2O = (data: number): number => {
   const cec = 20;
-  return (data * 47.1 * cec) / 100;
+  return Math.ceil((data * 47.1 * cec) / 100);
 };
 
 function assertIsDefined<T>(val: T): asserts val is NonNullable<T> {

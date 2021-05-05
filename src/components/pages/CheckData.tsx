@@ -3,6 +3,7 @@ import { Box } from '@material-ui/core';
 import { Step1 } from '../organisms/CheckData/Step1';
 import { Step2 } from '../organisms/CheckData/Step2';
 import { Step3 } from '../organisms/CheckData/Step3';
+import ReportChart from '../organisms/CheckData/ReportChart';
 
 interface Props {}
 
@@ -12,6 +13,7 @@ export const CheckData: VFC<Props> = memo(() => {
       <Step1 />
       <Step2 />
       <Step3 />
+      <ReportChart />
     </Box>
   );
 });

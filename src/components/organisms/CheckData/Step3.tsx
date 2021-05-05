@@ -38,7 +38,7 @@ export const Step3: VFC<Props> = memo(() => {
   return (
     <Paper elevation={8} style={{ padding: 20, marginBottom: 21 }}>
       <Grid container>
-        <FormTopInfo title="土壌分析結果入力" description="※ 前ページの入力結果を出力する。" />
+        <FormTopInfo title="土壌分析結果 ( テーブル )" description="※ 前ページの入力結果を出力する。" />
         <Grid item mb={12} xs={12}>
           <TableContainer>
             <Table aria-label="customized table">
