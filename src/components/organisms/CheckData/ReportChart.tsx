@@ -29,7 +29,7 @@ const ReportChart: VFC<Props> = () => {
                 layout="vertical"
                 barGap={0}
                 width={800}
-                height={100}
+                height={80}
                 data={[data]}
                 margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
                 key={index}
