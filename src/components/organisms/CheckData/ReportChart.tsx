@@ -1,7 +1,7 @@
 import { useEffect, VFC } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Paper, Grid } from '@material-ui/core';
-import { BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis } from 'recharts';
 
 import { FormTopInfo } from '../../molecules/FormTopInfo';
 import { analysisResultState } from '../../../store/analysisResultState';
@@ -31,7 +31,7 @@ const ReportChart: VFC<Props> = () => {
                 width={800}
                 height={100}
                 data={[data]}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
                 key={index}
               >
                 <XAxis type="number" domain={[min, max]} allowDataOverflow={true} />
@@ -40,10 +40,10 @@ const ReportChart: VFC<Props> = () => {
                 <YAxis dataKey="name" type="category" yAxisId={2} hide />
                 <YAxis dataKey="name" type="category" yAxisId={3} hide />
 
-                <Bar dataKey="chartData['max']" barSize={40} yAxisId={2} fill="red" opacity={0.7} />
+                <Bar dataKey="chartData['max']" barSize={40} yAxisId={0} fill="red" opacity={0.7} />
                 <Bar dataKey="max" barSize={40} yAxisId={1} fill="lightgreen" />
-                <Bar dataKey="min" barSize={40} yAxisId={0} fill="yellow" />
-                <Bar dataKey="current" barSize={15} yAxisId={3} fill="black" />
+                <Bar dataKey="min" barSize={40} yAxisId={2} fill="yellow" />
+                <Bar dataKey="current" barSize={10} yAxisId={3} fill="black" />
               </BarChart>
             );
           })}

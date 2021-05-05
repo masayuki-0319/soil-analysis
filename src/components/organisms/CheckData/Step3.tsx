@@ -13,19 +13,20 @@ export const Step3: VFC<Props> = memo(() => {
 
   useEffect(() => getReportAnalysisResult(analysisResult), [analysisResult]);
 
-  const checkDataColor = (displayData: DisplayDataType): string => {
+  const checkDataStyle = (displayData: DisplayDataType): React.CSSProperties => {
     const { current, min, max } = displayData;
+
     if (current > min && current < max) {
-      return 'white';
+      return { backgroundColor: 'white' };
     } else if (current > max) {
-      return '#FF9999';
+      return { backgroundColor: '#FF9999', fontWeight: 'bold' };
     } else {
-      return '#FFFF99';
+      return { backgroundColor: '#FFFF99', fontWeight: 'bold' };
     }
   };
 
   const tableDataSet = rowReportAnalysisResult.map((row, index) => (
-    <TableRow key={index} style={{ backgroundColor: checkDataColor(row) }}>
+    <TableRow key={index} style={checkDataStyle(row)}>
       <TableCell component="th" scope="row">
         {row.name}
       </TableCell>
