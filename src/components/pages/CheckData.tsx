@@ -2,7 +2,7 @@ import React, { memo, useState, VFC } from 'react';
 import { Box, Tab, Tabs } from '@material-ui/core';
 import { Step1 } from '../organisms/CheckData/Step1';
 import { Step2 } from '../organisms/CheckData/Step2';
-import { Step3 } from '../organisms/CheckData/Step3';
+import { ReportTable } from '../organisms/CheckData/ReportTable';
 import ReportChart from '../organisms/CheckData/ReportChart';
 
 interface Props {}
@@ -26,7 +26,7 @@ export const CheckData: VFC<Props> = memo(() => {
       </Box>
       <Box>
         <Box hidden={value !== 0}>
-          <Step3 />
+          <ReportTable />
         </Box>
         <Box hidden={value !== 1}>
           <ReportChart />

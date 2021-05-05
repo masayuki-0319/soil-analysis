@@ -7,7 +7,7 @@ import { FormTopInfo } from '../../molecules/FormTopInfo';
 
 interface Props {}
 
-export const Step3: VFC<Props> = memo(() => {
+export const ReportTable: VFC<Props> = memo(() => {
   const analysisResult = useRecoilValue(analysisResultState);
   const { getReportAnalysisResult, rowReportAnalysisResult } = useReportAnalysisResult();
 
