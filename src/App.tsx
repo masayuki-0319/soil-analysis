@@ -1,11 +1,10 @@
 import { VFC } from 'react';
-import { MainContent } from './components/templates/MainContent';
-import { CheckData } from './components/pages/CheckData';
 import { RecoilRoot } from 'recoil';
 
-interface Props {}
+import { MainContent } from './components/templates/MainContent';
+import { CheckData } from './components/pages/CheckData';
 
-const App: VFC<Props> = () => {
+const App: VFC = () => {
   return (
     <RecoilRoot>
       <MainContent>
