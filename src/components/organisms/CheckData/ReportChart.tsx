@@ -2,18 +2,16 @@ import { VFC } from 'react';
 import { Grid } from '@material-ui/core';
 import { BarChart, Bar, XAxis, YAxis } from 'recharts';
 
-import { useReportAnalysisResult, DisplayDataType } from '../../../hooks/useReportAnalysisResult';
+import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult';
 
 interface Props {}
 
 const ReportChart: VFC<Props> = () => {
   const { rowReportAnalysisResult } = useReportAnalysisResult();
 
-  const rawData = rowReportAnalysisResult;
-
   return (
     <Grid container>
-      {rawData.map((data: DisplayDataType, index: number) => {
+      {rowReportAnalysisResult.map((data, index) => {
         const { min, max } = data.chartData;
         return (
           <BarChart
