@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { fieldMasterData } from '../masterData/fieldMasterData';
 import { useAnalysisResult } from '../store/analysisResultState';
 import { AnalysisResult } from '../types/AnalysisResult';
@@ -21,13 +21,13 @@ export const useReportAnalysisResult = () => {
   const { analysisResult } = useAnalysisResult();
   const [rowReportAnalysisResult, setReportAnalysisResult] = useState<DisplayDataType[]>([]);
 
-  const getReportAnalysisResult = () => {
+  useEffect(() => {
     const data = displayData(analysisResult);
 
     setReportAnalysisResult(data);
-  };
+  }, [analysisResult]);
 
-  return { rowReportAnalysisResult, getReportAnalysisResult };
+  return { rowReportAnalysisResult };
 };
 
 const displayData = (current: AnalysisResult): DisplayDataType[] => {

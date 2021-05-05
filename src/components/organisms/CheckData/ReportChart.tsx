@@ -1,17 +1,13 @@
-import { useEffect, VFC } from 'react';
+import { VFC } from 'react';
 import { Grid } from '@material-ui/core';
 import { BarChart, Bar, XAxis, YAxis } from 'recharts';
 
 import { useReportAnalysisResult, DisplayDataType } from '../../../hooks/useReportAnalysisResult';
-import { useAnalysisResult } from '../../../store/analysisResultState';
 
 interface Props {}
 
 const ReportChart: VFC<Props> = () => {
-  const { analysisResult } = useAnalysisResult();
-  const { getReportAnalysisResult, rowReportAnalysisResult } = useReportAnalysisResult();
-
-  useEffect(() => getReportAnalysisResult(), [analysisResult]);
+  const { rowReportAnalysisResult } = useReportAnalysisResult();
 
   const rawData = rowReportAnalysisResult;
 
