@@ -1,19 +1,16 @@
 import { useEffect, VFC } from 'react';
-import { useRecoilValue } from 'recoil';
 import { Paper, Grid } from '@material-ui/core';
 import { BarChart, Bar, XAxis, YAxis } from 'recharts';
 
 import { FormTopInfo } from '../../molecules/FormTopInfo';
-import { analysisResultState } from '../../../store/analysisResultState';
 import { useReportAnalysisResult, DisplayDataType } from '../../../hooks/useReportAnalysisResult';
 
 interface Props {}
 
 const ReportChart: VFC<Props> = () => {
-  const analysisResult = useRecoilValue(analysisResultState);
   const { getReportAnalysisResult, rowReportAnalysisResult } = useReportAnalysisResult();
 
-  useEffect(() => getReportAnalysisResult(analysisResult), [analysisResult]);
+  useEffect(() => getReportAnalysisResult(), []);
 
   const rawData = rowReportAnalysisResult;
 

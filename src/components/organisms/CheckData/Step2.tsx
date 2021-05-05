@@ -1,7 +1,7 @@
 import React, { memo, VFC } from 'react';
 import { Grid, InputAdornment, Paper, TextField } from '@material-ui/core';
-import { useRecoilState } from 'recoil';
-import { analysisResultState } from '../../../store/analysisResultState';
+
+import { useAnalysisResult } from '../../../store/analysisResultState';
 import { analysisItems } from '../../../types/AnalysisResult';
 import SelectFormControl from '../../atoms/SelectFormControl';
 import { FormTopInfo } from '../../molecules/FormTopInfo';
@@ -9,10 +9,10 @@ import { FormTopInfo } from '../../molecules/FormTopInfo';
 interface Props {}
 
 export const Step2: VFC<Props> = memo(() => {
-  const [analysisResult, setAnalysisResultState] = useRecoilState(analysisResultState);
+  const { analysisResult, setAnalysisResult } = useAnalysisResult();
 
   const handleChange = (e: React.ChangeEvent<{ name: string; value: string }>) => {
-    setAnalysisResultState({ ...analysisResult, [e.target.name]: Number(e.target.value) });
+    setAnalysisResult({ ...analysisResult, [e.target.name]: Number(e.target.value) });
   };
 
   const fields = analysisItems.map((item, index) => {

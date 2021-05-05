@@ -1,19 +1,18 @@
 import React, { memo, VFC } from 'react';
 import { Grid, Paper } from '@material-ui/core';
-import { useRecoilState } from 'recoil';
 
 import SelectSoilType from './SelectSoilType';
 import SelectFieldType from './SelectFieldType';
-import { analysisResultState } from '../../../store/analysisResultState';
+import { useAnalysisResult } from '../../../store/analysisResultState';
 import { FormTopInfo } from '../../molecules/FormTopInfo';
 
 interface Props {}
 
 export const Step1: VFC<Props> = memo(() => {
-  const [analysisResult, setAnalysisResultState] = useRecoilState(analysisResultState);
+  const { analysisResult, setAnalysisResult } = useAnalysisResult();
 
   const handleChange = (e: React.ChangeEvent<{ name: string; value: string }>) => {
-    setAnalysisResultState({ ...analysisResult, [e.target.name]: Number(e.target.value) });
+    setAnalysisResult({ ...analysisResult, [e.target.name]: Number(e.target.value) });
   };
 
   return (

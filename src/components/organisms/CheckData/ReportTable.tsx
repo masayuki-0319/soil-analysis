@@ -1,17 +1,15 @@
 import { memo, useEffect, VFC } from 'react';
 import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
-import { useRecoilValue } from 'recoil';
-import { analysisResultState } from '../../../store/analysisResultState';
+
 import { useReportAnalysisResult, DisplayDataType } from '../../../hooks/useReportAnalysisResult';
 import { FormTopInfo } from '../../molecules/FormTopInfo';
 
 interface Props {}
 
 export const ReportTable: VFC<Props> = memo(() => {
-  const analysisResult = useRecoilValue(analysisResultState);
   const { getReportAnalysisResult, rowReportAnalysisResult } = useReportAnalysisResult();
 
-  useEffect(() => getReportAnalysisResult(analysisResult), [analysisResult]);
+  useEffect(() => getReportAnalysisResult(), []);
 
   const checkDataStyle = (displayData: DisplayDataType): React.CSSProperties => {
     const { current, min, max } = displayData;

@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom, useRecoilState } from 'recoil';
 import { AnalysisResult } from '../types/AnalysisResult';
 
 const initialState: AnalysisResult = {
@@ -13,7 +13,16 @@ const initialState: AnalysisResult = {
   no3n: 1.0,
 };
 
-export const analysisResultState = atom({
+const analysisResultState = atom<AnalysisResult>({
   key: 'analysisResultStete',
   default: initialState,
 });
+
+export const useAnalysisResult = () => {
+  const [analysisResult, setAnalysisResult] = useRecoilState(analysisResultState);
+
+  return {
+    analysisResult: analysisResult,
+    setAnalysisResult: setAnalysisResult,
+  };
+};

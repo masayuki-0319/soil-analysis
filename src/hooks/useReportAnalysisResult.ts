@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { fieldMasterData } from '../masterData/fieldMasterData';
+import { useAnalysisResult } from '../store/analysisResultState';
 import { AnalysisResult } from '../types/AnalysisResult';
 import { FieldMasterData } from '../types/FieldMasterData';
 
@@ -17,10 +18,12 @@ type ChartDataType = {
 };
 
 export const useReportAnalysisResult = () => {
+  const { analysisResult } = useAnalysisResult();
   const [rowReportAnalysisResult, setReportAnalysisResult] = useState<DisplayDataType[]>([]);
 
-  const getReportAnalysisResult = (analysisResult: AnalysisResult) => {
+  const getReportAnalysisResult = () => {
     const data = displayData(analysisResult);
+
     setReportAnalysisResult(data);
   };
 
