@@ -1,6 +1,6 @@
 import { VFC, ReactNode } from 'react';
 import { Container } from '@material-ui/core';
-import { ButtonAppBar } from '../organisms/Header';
+import { ButtonAppBar } from '../organisms/ButtonAppBar';
 
 type Props = {
   children: ReactNode;
