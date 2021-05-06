@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const SelectFormControl: VFC<Props> = (props) => {
+export const SelectFormControl: VFC<Props> = (props) => {
   const { children } = props;
   const classes = useStyles();
 
@@ -22,5 +22,3 @@ const SelectFormControl: VFC<Props> = (props) => {
     </FormControl>
   );
 };
-
-export default SelectFormControl;

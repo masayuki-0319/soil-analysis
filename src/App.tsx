@@ -4,7 +4,7 @@ import { RecoilRoot } from 'recoil';
 import { MainContent } from './components/templates/MainContent';
 import { CheckData } from './components/pages/CheckData';
 
-const App: VFC = () => {
+export const App: VFC = () => {
   return (
     <RecoilRoot>
       <MainContent>
@@ -13,5 +13,3 @@ const App: VFC = () => {
     </RecoilRoot>
   );
 };
-
-export default App;

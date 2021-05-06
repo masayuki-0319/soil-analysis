@@ -1,8 +1,8 @@
 import React, { memo, VFC } from 'react';
 import { Grid, Paper } from '@material-ui/core';
 
-import SelectSoilType from './SelectSoilType';
-import SelectFieldType from './SelectFieldType';
+import { SelectSoilType } from './SelectSoilType';
+import { SelectFieldType } from './SelectFieldType';
 import { useAnalysisResult } from '../../../store/analysisResultState';
 import { FormTopInfo } from '../../molecules/FormTopInfo';
 

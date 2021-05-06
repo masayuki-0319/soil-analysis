@@ -9,7 +9,7 @@ interface Props {
   children: JSX.Element[];
 }
 
-const Selectbox: VFC<Props> = memo((props) => {
+export const Selectbox: VFC<Props> = memo((props) => {
   const { labelName, name, value, onChange, children } = props;
 
   return (
@@ -21,5 +21,3 @@ const Selectbox: VFC<Props> = memo((props) => {
     </>
   );
 });
-
-export default Selectbox;

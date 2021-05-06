@@ -1,15 +1,15 @@
 import { memo, VFC } from 'react';
-import SelectBox from '../../atoms/selectbox/Selectbox';
+import { Selectbox } from '../../atoms/selectbox/Selectbox';
 import { MenuItem } from '@material-ui/core';
 import { soilTypeData } from '../../../masterData/soilTypeData';
-import SelectFormControl from '../../atoms/SelectFormControl';
+import { SelectFormControl } from '../../atoms/SelectFormControl';
 
 interface Props {
   defaultValue: number;
   onChange: (props?: any) => void;
 }
 
-const SelectSoilType: VFC<Props> = memo((props) => {
+export const SelectSoilType: VFC<Props> = memo((props) => {
   const { defaultValue, onChange } = props;
 
   const options = soilTypeData.map((option, index) => (
@@ -20,11 +20,9 @@ const SelectSoilType: VFC<Props> = memo((props) => {
 
   return (
     <SelectFormControl>
-      <SelectBox labelName="土壌の種類" name="soilTypeId" value={defaultValue} onChange={onChange}>
+      <Selectbox labelName="土壌の種類" name="soilTypeId" value={defaultValue} onChange={onChange}>
         {options}
-      </SelectBox>
+      </Selectbox>
     </SelectFormControl>
   );
 });
-
-export default SelectSoilType;

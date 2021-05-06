@@ -1,7 +1,7 @@
 import { memo, useState, VFC } from 'react';
 import { Box, Tab, Tabs, Paper } from '@material-ui/core';
 import { ReportTable } from './/ReportTable';
-import ReportChart from './ReportChart';
+import { ReportChart } from './ReportChart';
 import { FormTopInfo } from '../../molecules/FormTopInfo';
 
 interface Props {}

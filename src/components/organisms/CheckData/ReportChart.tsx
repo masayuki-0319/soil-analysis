@@ -6,7 +6,7 @@ import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult'
 
 interface Props {}
 
-const ReportChart: VFC<Props> = () => {
+export const ReportChart: VFC<Props> = () => {
   const { rowReportAnalysisResult } = useReportAnalysisResult();
 
   return (
@@ -39,5 +39,3 @@ const ReportChart: VFC<Props> = () => {
     </Grid>
   );
 };
-
-export default ReportChart;
