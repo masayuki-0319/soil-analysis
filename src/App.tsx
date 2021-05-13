@@ -1,15 +1,17 @@
 import { VFC } from 'react';
 import { RecoilRoot } from 'recoil';
+import { Container } from '@material-ui/core';
 
-import { MainContent } from './components/templates/MainContent';
 import { CheckData } from './components/pages/CheckData';
+import { ButtonAppBar } from './components/templates/ButtonAppBar';
 
 export const App: VFC = () => {
   return (
     <RecoilRoot>
-      <MainContent>
+      <Container maxWidth="lg" fixed>
+        <ButtonAppBar />
         <CheckData />
-      </MainContent>
+      </Container>
     </RecoilRoot>
   );
 };
