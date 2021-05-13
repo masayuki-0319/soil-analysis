@@ -1,10 +1,11 @@
 import React, { memo, VFC } from 'react';
 import { Grid, Paper } from '@material-ui/core';
 
-import { SelectSoilType } from './SelectSoilType';
-import { SelectFieldType } from './SelectFieldType';
-import { useAnalysisResult } from '../../../store/analysisResultState';
 import { FormTopInfo } from '../../molecules/FormTopInfo';
+import { SelectBox } from '../../molecules/SelectBox';
+import { useAnalysisResult } from '../../../store/analysisResultState';
+import { fieldTypeData } from '../../../masterData/fiedlTypeData';
+import { soilTypeData } from '../../../masterData/soilTypeData';
 
 interface Props {}
 
@@ -21,10 +22,22 @@ export const Step1: VFC<Props> = memo(() => {
         <FormTopInfo title="ほ場データ入力" description="※ ほ場の基本データを入力してください。" />
         <Grid item container>
           <Grid item md={6} xs={12} style={{ marginBottom: 12 }}>
-            <SelectFieldType defaultValue={analysisResult.fieldTypeId} onChange={handleChange} />
+            <SelectBox
+              selectOptions={fieldTypeData}
+              labelName="ほ場の種類"
+              keyName="fieldTypeId"
+              defaultValue={analysisResult.fieldTypeId}
+              onChange={handleChange}
+            />
           </Grid>
           <Grid item md={6} xs={12} style={{ marginBottom: 12 }}>
-            <SelectSoilType defaultValue={analysisResult.soilTypeId} onChange={handleChange} />
+            <SelectBox
+              selectOptions={soilTypeData}
+              labelName="土壌の種類"
+              keyName="soilTypeId"
+              defaultValue={analysisResult.soilTypeId}
+              onChange={handleChange}
+            />
           </Grid>
         </Grid>
       </Grid>
