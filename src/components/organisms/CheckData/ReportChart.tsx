@@ -12,7 +12,7 @@ export const ReportChart: VFC<Props> = () => {
   return (
     <Grid container>
       {rowReportAnalysisResult.map((data, index) => {
-        const { min, max } = data.chartData;
+        const { chartMin, chartMax } = data;
         return (
           <BarChart
             layout="vertical"
@@ -23,13 +23,13 @@ export const ReportChart: VFC<Props> = () => {
             margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
             key={index}
           >
-            <XAxis type="number" domain={[min, max]} allowDataOverflow={true} />
+            <XAxis type="number" domain={[chartMin, chartMax]} allowDataOverflow={true} />
             <YAxis dataKey="name" type="category" yAxisId={0} width={150} />
             <YAxis dataKey="name" type="category" yAxisId={1} hide />
             <YAxis dataKey="name" type="category" yAxisId={2} hide />
             <YAxis dataKey="name" type="category" yAxisId={3} hide />
 
-            <Bar dataKey="chartData['max']" barSize={40} yAxisId={0} fill="red" opacity={0.7} />
+            <Bar dataKey="chartMax" barSize={40} yAxisId={0} fill="red" opacity={0.7} />
             <Bar dataKey="max" barSize={40} yAxisId={1} fill="lightgreen" />
             <Bar dataKey="min" barSize={40} yAxisId={2} fill="yellow" />
             <Bar dataKey="current" barSize={10} yAxisId={3} fill="black" />

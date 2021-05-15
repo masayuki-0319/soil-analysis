@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react';
 import { fieldMasterData } from '../masterData/fieldMasterData';
 import { useAnalysisResult } from '../store/analysisResultState';
 import { AnalysisResult } from '../types/AnalysisResult';
-import { DisplayDataType, ChartDataType } from '../types/DisplayDataType';
+import { ChartDataSet } from '../types/ChartDataSet';
 import { FieldMasterData } from '../types/FieldMasterData';
 
 export const useReportAnalysisResult = () => {
   const { analysisResult } = useAnalysisResult();
-  const [rowReportAnalysisResult, setReportAnalysisResult] = useState<DisplayDataType[]>([]);
+  const [rowReportAnalysisResult, setReportAnalysisResult] = useState<ChartDataSet[]>([]);
 
   useEffect(() => {
     const data = displayData(analysisResult);
@@ -19,42 +19,53 @@ export const useReportAnalysisResult = () => {
   return { rowReportAnalysisResult };
 };
 
-const displayData = (current: AnalysisResult): DisplayDataType[] => {
+const displayData = (current: AnalysisResult): ChartDataSet[] => {
   const currentData = current;
   const standardData = findMasterData(currentData.fieldTypeId, fieldMasterData);
 
   return [
-    createData('pH (H2O)', currentData.ph, standardData.pH_MIN, standardData.pH_MAX, { min: 0.0, max: 14.0 }),
-    createData('EC', currentData.ec, 0, 0.35, { min: 0.0, max: 4.0 }),
+    createData('pH (H2O)', currentData.ph, standardData.pH_MIN, standardData.pH_MAX, 0.0, 14.0),
+    createData('EC', currentData.ec, 0, 0.35, 0.0, 4.0),
     createData(
       'CaO (交換性石灰)',
       currentData.cao,
       calcCaO(standardData.CaO_saturation_MIN),
       calcCaO(standardData.CaO_saturation_MAX),
-      { min: 0, max: calcCaO(standardData.CaO_saturation_MAX) * 1.25 }
+      0,
+      calcCaO(standardData.CaO_saturation_MAX) * 1.25
     ),
     createData(
       'MgO (交換性苦土)',
       currentData.mgo,
       calcMgO(standardData.MgO_saturation_MIN),
       calcMgO(standardData.MgO_saturation_MAX),
-      { min: 0, max: calcMgO(standardData.MgO_saturation_MAX) * 1.25 }
+      0,
+      calcMgO(standardData.MgO_saturation_MAX) * 1.25
     ),
     createData(
       'K2O (交換性加里)',
       currentData.k2o,
       calcK2O(standardData.K2O_saturation_MIN),
       calcK2O(standardData.K2O_saturation_MAX),
-      { min: 0, max: calcK2O(standardData.K2O_saturation_MAX) * 1.25 }
+      0,
+      calcK2O(standardData.K2O_saturation_MAX) * 1.25
     ),
-    createData('P2O5(有効態リン酸)', currentData.p2o5, standardData.P2O5_MIN, standardData.P2O5_MAX, {
-      min: 0,
-      max: standardData.P2O5_MAX * 1.25,
-    }),
-    createData('NO3-N (硝酸態窒素)', currentData.no3n, standardData.NO3_N_MIN, standardData.NO3_N_MAX, {
-      min: 0,
-      max: standardData.NO3_N_MAX * 1.25,
-    }),
+    createData(
+      'P2O5(有効態リン酸)',
+      currentData.p2o5,
+      standardData.P2O5_MIN,
+      standardData.P2O5_MAX,
+      0,
+      standardData.P2O5_MAX * 1.25
+    ),
+    createData(
+      'NO3-N (硝酸態窒素)',
+      currentData.no3n,
+      standardData.NO3_N_MIN,
+      standardData.NO3_N_MAX,
+      0,
+      standardData.NO3_N_MAX * 1.25
+    ),
   ];
 };
 
@@ -63,9 +74,10 @@ const createData = (
   current: number,
   min: number,
   max: number,
-  chartData: ChartDataType
-): DisplayDataType => {
-  return { name, current, min, max, chartData };
+  chartMin: number,
+  chartMax: number
+): ChartDataSet => {
+  return { name, current, min, max, chartMin, chartMax };
 };
 
 const calcCaO = (data: number): number => {

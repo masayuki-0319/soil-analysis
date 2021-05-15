@@ -1,14 +1,15 @@
 import { memo, VFC } from 'react';
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
-import { useReportAnalysisResult, DisplayDataType } from '../../../hooks/useReportAnalysisResult';
+import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult';
+import { ChartDataSet } from '../../../types/ChartDataSet';
 
 interface Props {}
 
 export const ReportTable: VFC<Props> = memo(() => {
   const { rowReportAnalysisResult } = useReportAnalysisResult();
 
-  const checkDataStyle = (displayData: DisplayDataType): React.CSSProperties => {
+  const checkDataStyle = (displayData: ChartDataSet): React.CSSProperties => {
     const { current, min, max } = displayData;
 
     if (current >= min && current <= max) {
