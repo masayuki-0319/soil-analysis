@@ -3,7 +3,7 @@ import { AnalysisResult } from '../types/AnalysisResult';
 import { ChartDataSet } from '../types/ChartDataSet';
 import { FieldMasterData } from '../types/FieldMasterData';
 
-// TODO: 暫定対応として、ビジネスロジックを切り出し
+// MEMO: 暫定対応として、ビジネスロジックを切り出し
 export const post = (props: AnalysisResult) => {
   return displayData(props);
 };
