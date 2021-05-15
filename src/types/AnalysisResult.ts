@@ -1,12 +1,7 @@
+import { ReportAnalysisResult } from './ReportAnalysisResult';
+
 // MEMO: 分析機器による解析結果
-export interface AnalysisResult {
-  fieldTypeId: number;
-  soilTypeId: number;
-  ph: number;
-  ec: number;
-  cao: number;
-  mgo: number;
-  k2o: number;
-  p2o5: number;
-  no3n: number;
-}
+export type AnalysisResult = Pick<
+  ReportAnalysisResult,
+  'fieldTypeId' | 'soilTypeId' | 'ph' | 'ec' | 'cao' | 'mgo' | 'k2o' | 'p2o5' | 'no3n'
+>;
