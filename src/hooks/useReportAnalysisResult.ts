@@ -1,21 +1,10 @@
 import { useState, useEffect } from 'react';
+
 import { fieldMasterData } from '../masterData/fieldMasterData';
 import { useAnalysisResult } from '../store/analysisResultState';
 import { AnalysisResult } from '../types/AnalysisResult';
+import { DisplayDataType, ChartDataType } from '../types/DisplayDataType';
 import { FieldMasterData } from '../types/FieldMasterData';
-
-export interface DisplayDataType {
-  name: string;
-  current: number;
-  min: number;
-  max: number;
-  chartData: ChartDataType;
-}
-
-type ChartDataType = {
-  min: number;
-  max: number;
-};
 
 export const useReportAnalysisResult = () => {
   const { analysisResult } = useAnalysisResult();

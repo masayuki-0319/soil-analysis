@@ -1,5 +1,12 @@
-import { ReportAnalysisResult } from './ReportAnalysisResult';
-
 // MEMO: 分析機器による解析結果
-// TODO: fieldType と soilType は、Report に属すべきかも
-export type AnalysisResult = ReportAnalysisResult;
+export interface AnalysisResult {
+  fieldTypeId: number;
+  soilTypeId: number;
+  ph: number;
+  ec: number;
+  cao: number;
+  mgo: number;
+  k2o: number;
+  p2o5: number;
+  no3n: number;
+}
