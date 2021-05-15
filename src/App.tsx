@@ -8,8 +8,8 @@ import { Header } from './components/templates/Header';
 export const App: VFC = () => {
   return (
     <RecoilRoot>
+      <Header />
       <Container maxWidth="lg" fixed>
-        <Header />
         <CheckData />
       </Container>
     </RecoilRoot>
