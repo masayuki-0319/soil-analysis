@@ -3,13 +3,13 @@ import { RecoilRoot } from 'recoil';
 import { Container } from '@material-ui/core';
 
 import { CheckData } from './components/pages/CheckData';
-import { ButtonAppBar } from './components/templates/ButtonAppBar';
+import { Header } from './components/templates/Header';
 
 export const App: VFC = () => {
   return (
     <RecoilRoot>
       <Container maxWidth="lg" fixed>
-        <ButtonAppBar />
+        <Header />
         <CheckData />
       </Container>
     </RecoilRoot>

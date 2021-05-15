@@ -4,7 +4,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 interface Props {}
 
-export const ButtonAppBar: VFC<Props> = () => {
+export const Header: VFC<Props> = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
