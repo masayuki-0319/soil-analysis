@@ -1,7 +1,7 @@
 import { memo, VFC } from 'react';
-import { Step1 } from '../organisms/CheckData/Step1';
-import { Step2 } from '../organisms/CheckData/Step2';
-import { Step3 } from '../organisms/CheckData/Step3';
+import { Step1 } from '../organisms/AnalysisResult/Step1';
+import { Step2 } from '../organisms/AnalysisResult/Step2';
+import { Step3 } from '../organisms/AnalysisResult/Step3';
 
 interface Props {}
 
