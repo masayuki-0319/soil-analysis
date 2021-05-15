@@ -4,7 +4,7 @@ import { Grid, InputAdornment, Paper, TextField } from '@material-ui/core';
 import { useAnalysisResult } from '../../../store/analysisResultState';
 import { analysisItems } from '../../../masterData/analysisItems';
 import { SelectFormControl } from '../../atoms/SelectFormControl';
-import { FormTopInfo } from '../../molecules/FormTopInfo';
+import { PaperInformation } from '../../molecules/PaperInformation';
 
 interface Props {}
 
@@ -38,7 +38,7 @@ export const Step2: VFC<Props> = memo(() => {
   return (
     <Paper elevation={8} style={{ padding: 20, marginBottom: 21 }}>
       <Grid container>
-        <FormTopInfo title="分析結果の入力" description="※ 分析機器による土壌サンプルの分析結果を入力する。" />
+        <PaperInformation title="分析結果の入力" description="※ 分析機器による土壌サンプルの分析結果を入力する。" />
         {fields}
       </Grid>
     </Paper>

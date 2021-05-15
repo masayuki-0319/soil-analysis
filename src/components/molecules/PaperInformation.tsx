@@ -6,7 +6,7 @@ type Props = {
   description: string;
 };
 
-export const FormTopInfo: VFC<Props> = (props) => {
+export const PaperInformation: VFC<Props> = (props) => {
   const { title, description } = props;
 
   return (
@@ -16,7 +16,7 @@ export const FormTopInfo: VFC<Props> = (props) => {
       style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 21 }}
     >
       <Grid>
-        <Typography variant="subtitle1" style={{ fontWeight: 'bold' }} gutterBottom>
+        <Typography variant="h5" style={{ fontWeight: 'bold' }} gutterBottom>
           {title}
         </Typography>
         <Typography variant="body1" gutterBottom>
