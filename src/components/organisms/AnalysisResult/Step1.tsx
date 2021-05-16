@@ -24,7 +24,7 @@ export const Step1: VFC<Props> = memo(() => {
           <Grid item md={6} xs={12} style={{ marginBottom: 12 }}>
             <SelectBox
               selectOptions={fieldTypeData}
-              labelName="ほ場の種類"
+              displayName="ほ場の種類"
               keyName="fieldTypeId"
               defaultValue={analysisResult.fieldTypeId}
               onChange={handleChange}
@@ -33,7 +33,7 @@ export const Step1: VFC<Props> = memo(() => {
           <Grid item md={6} xs={12} style={{ marginBottom: 12 }}>
             <SelectBox
               selectOptions={soilTypeData}
-              labelName="土壌の種類"
+              displayName="土壌の種類"
               keyName="soilTypeId"
               defaultValue={analysisResult.soilTypeId}
               onChange={handleChange}

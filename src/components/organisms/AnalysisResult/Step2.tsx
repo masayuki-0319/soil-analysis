@@ -25,7 +25,7 @@ export const Step2: VFC<Props> = memo(() => {
             onChange={handleChange}
             name={item.keyName}
             value={analysisResult[item.keyName]}
-            label={item.labelName}
+            label={item.displayName}
             InputProps={{
               endAdornment: <InputAdornment position="end">{item.unitName}</InputAdornment>,
             }}

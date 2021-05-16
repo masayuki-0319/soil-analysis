@@ -2,6 +2,6 @@ import { ReportAnalysisResult } from './ReportAnalysisResult';
 
 export type AnalysisItem = {
   keyName: keyof ReportAnalysisResult;
-  labelName: string;
+  displayName: string;
   unitName: string | null;
 };

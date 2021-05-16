@@ -6,7 +6,7 @@ import { SelectFormControl } from '../atoms/SelectFormControl';
 
 interface Props {
   selectOptions: SelectOptions[];
-  labelName: string;
+  displayName: string;
   keyName: string;
   defaultValue?: number;
   onChange: (props?: any) => void;
@@ -18,7 +18,7 @@ type SelectOptions = {
 };
 
 export const SelectBox: VFC<Props> = memo((props) => {
-  const { selectOptions, labelName, keyName, defaultValue, onChange } = props;
+  const { selectOptions, displayName, keyName, defaultValue, onChange } = props;
 
   const options = selectOptions.map((option, index) => (
     <MenuItem key={index} value={option.id}>
@@ -28,7 +28,7 @@ export const SelectBox: VFC<Props> = memo((props) => {
 
   return (
     <SelectFormControl>
-      <Selectbox labelName={labelName} name={keyName} value={defaultValue} onChange={onChange}>
+      <Selectbox displayName={displayName} name={keyName} value={defaultValue} onChange={onChange}>
         {options}
       </Selectbox>
     </SelectFormControl>
