@@ -10,58 +10,51 @@ export const post = (props: AnalysisResult) => {
 };
 
 const displayData = (current: AnalysisResult): ChartDataSet[] => {
-  const {fieldTypeId, soilTypeId,  ...currentData} = current;
+  const { fieldTypeId, soilTypeId, ...currentData } = current;
   const standardData = findMasterData(fieldTypeId, fieldMasterData);
 
   return [
-    createData(
-      'pH ( 水素イオン指数 )',
-      currentData.ph,
-      standardData.pH_MIN,
-      standardData.pH_MAX,
-      0.0,
-      14.0
-    ),
+    createData('pH ( 水素イオン指数 )', currentData.ph, standardData.ph_min, standardData.ph_max, 0.0, 14.0),
     createData('EC ( 電気伝導度 )', currentData.ec, 0, 0.35, 0.0, 4.0),
     createData(
       'CaO ( 交換性カルシウム )',
       currentData.cao,
-      calcCaO(standardData.CaO_saturation_MIN),
-      calcCaO(standardData.CaO_saturation_MAX),
+      calcCaO(standardData.cao_saturation_min),
+      calcCaO(standardData.cao_saturation_max),
       0,
-      calcCaO(standardData.CaO_saturation_MAX) * 1.25
+      calcCaO(standardData.cao_saturation_max) * 1.25
     ),
     createData(
       'MgO ( 交換性マグネシウム )',
       currentData.mgo,
-      calcMgO(standardData.MgO_saturation_MIN),
-      calcMgO(standardData.MgO_saturation_MAX),
+      calcMgO(standardData.mgo_saturation_min),
+      calcMgO(standardData.mgo_saturation_max),
       0,
-      calcMgO(standardData.MgO_saturation_MAX) * 1.25
+      calcMgO(standardData.mgo_saturation_max) * 1.25
     ),
     createData(
       'K2O ( 交換性カリウム )',
       currentData.k2o,
-      calcK2O(standardData.K2O_saturation_MIN),
-      calcK2O(standardData.K2O_saturation_MAX),
+      calcK2O(standardData.k2o_saturation_min),
+      calcK2O(standardData.k2o_saturation_max),
       0,
-      calcK2O(standardData.K2O_saturation_MAX) * 1.25
+      calcK2O(standardData.k2o_saturation_max) * 1.25
     ),
     createData(
       'P2O5 ( 有効態リン酸 )',
       currentData.p2o5,
-      standardData.P2O5_MIN,
-      standardData.P2O5_MAX,
+      standardData.p2o5_min,
+      standardData.p2o5_max,
       0,
-      standardData.P2O5_MAX * 1.25
+      standardData.p2o5_max * 1.25
     ),
     createData(
       'NO3-N ( 硝酸態窒素 )',
       currentData.nitro_nn,
-      standardData.NO3_N_MIN,
-      standardData.NO3_N_MAX,
+      standardData.nitro_nn_min,
+      standardData.nitro_nn_max,
       0,
-      standardData.NO3_N_MAX * 1.25
+      standardData.nitro_nn_max * 1.25
     ),
   ];
 };
@@ -96,10 +89,7 @@ function assertIsDefined<T>(val: T): asserts val is NonNullable<T> {
   }
 }
 
-const findMasterData = (
-  currentFieldTypeId: number,
-  masterData: FieldMasterData[]
-): FieldMasterData => {
+const findMasterData = (currentFieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
   const resultData = masterData.find((data) => data.id === currentFieldTypeId);
   assertIsDefined(resultData);
 
