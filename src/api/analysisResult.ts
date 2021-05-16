@@ -1,5 +1,6 @@
 import { fieldMasterData } from '../masterData/fieldMasterData';
 import { AnalysisResult } from '../types/AnalysisResult';
+import { AnalysisDisplayName } from '../types/AnalysisSchema';
 import { ChartDataSet } from '../types/ChartDataSet';
 import { FieldMasterData } from '../types/FieldMasterData';
 
@@ -9,21 +10,21 @@ export const post = (props: AnalysisResult) => {
 };
 
 const displayData = (current: AnalysisResult): ChartDataSet[] => {
-  const currentData = current;
-  const standardData = findMasterData(currentData.fieldTypeId, fieldMasterData);
+  const {fieldTypeId, soilTypeId,  ...currentData} = current;
+  const standardData = findMasterData(fieldTypeId, fieldMasterData);
 
   return [
     createData(
-      'pH (H2O)',
+      'pH ( 水素イオン指数 )',
       currentData.ph,
       standardData.pH_MIN,
       standardData.pH_MAX,
       0.0,
       14.0
     ),
-    createData('EC', currentData.ec, 0, 0.35, 0.0, 4.0),
+    createData('EC ( 電気伝導度 )', currentData.ec, 0, 0.35, 0.0, 4.0),
     createData(
-      'CaO (交換性石灰)',
+      'CaO ( 交換性カルシウム )',
       currentData.cao,
       calcCaO(standardData.CaO_saturation_MIN),
       calcCaO(standardData.CaO_saturation_MAX),
@@ -31,7 +32,7 @@ const displayData = (current: AnalysisResult): ChartDataSet[] => {
       calcCaO(standardData.CaO_saturation_MAX) * 1.25
     ),
     createData(
-      'MgO (交換性苦土)',
+      'MgO ( 交換性マグネシウム )',
       currentData.mgo,
       calcMgO(standardData.MgO_saturation_MIN),
       calcMgO(standardData.MgO_saturation_MAX),
@@ -39,7 +40,7 @@ const displayData = (current: AnalysisResult): ChartDataSet[] => {
       calcMgO(standardData.MgO_saturation_MAX) * 1.25
     ),
     createData(
-      'K2O (交換性加里)',
+      'K2O ( 交換性カリウム )',
       currentData.k2o,
       calcK2O(standardData.K2O_saturation_MIN),
       calcK2O(standardData.K2O_saturation_MAX),
@@ -47,7 +48,7 @@ const displayData = (current: AnalysisResult): ChartDataSet[] => {
       calcK2O(standardData.K2O_saturation_MAX) * 1.25
     ),
     createData(
-      'P2O5(有効態リン酸)',
+      'P2O5 ( 有効態リン酸 )',
       currentData.p2o5,
       standardData.P2O5_MIN,
       standardData.P2O5_MAX,
@@ -55,7 +56,7 @@ const displayData = (current: AnalysisResult): ChartDataSet[] => {
       standardData.P2O5_MAX * 1.25
     ),
     createData(
-      'NO3-N (硝酸態窒素)',
+      'NO3-N ( 硝酸態窒素 )',
       currentData.nitro_nn,
       standardData.NO3_N_MIN,
       standardData.NO3_N_MAX,
@@ -66,14 +67,14 @@ const displayData = (current: AnalysisResult): ChartDataSet[] => {
 };
 
 const createData = (
-  name: string,
+  displayName: AnalysisDisplayName,
   current: number,
   min: number,
   max: number,
   chartMin: number,
   chartMax: number
 ): ChartDataSet => {
-  return { name, current, min, max, chartMin, chartMax };
+  return { displayName, current, min, max, chartMin, chartMax };
 };
 
 const calcCaO = (data: number): number => {

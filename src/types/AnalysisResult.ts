@@ -1,15 +1,8 @@
 import { ReportAnalysisResult } from './ReportAnalysisResult';
+import { AnalysisKeyName } from './AnalysisSchema';
 
 // MEMO: 分析機器による解析結果
 export type AnalysisResult = Pick<
   ReportAnalysisResult,
-  | 'fieldTypeId'
-  | 'soilTypeId'
-  | 'ph'
-  | 'ec'
-  | 'cao'
-  | 'mgo'
-  | 'k2o'
-  | 'p2o5'
-  | 'nitro_nn'
+  'fieldTypeId' | 'soilTypeId' | AnalysisKeyName
 >;

@@ -1,7 +1,7 @@
-import { ReportAnalysisResult } from './ReportAnalysisResult';
+import { AnalysisDisplayName, AnalysisKeyName } from './AnalysisSchema';
 
 export type AnalysisItem = {
-  keyName: keyof ReportAnalysisResult;
-  displayName: string;
+  keyName: AnalysisKeyName;
+  displayName: AnalysisDisplayName;
   unitName: string | null;
 };

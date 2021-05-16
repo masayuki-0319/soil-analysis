@@ -1,5 +1,7 @@
+import { AnalysisDisplayName } from './AnalysisSchema';
+
 export interface ChartDataSet {
-  name: string;
+  displayName: AnalysisDisplayName;
   current: number;
   min: number;
   max: number;
