@@ -8,5 +8,5 @@ export type ReportAnalysisResult = {
   mgo: number;
   k2o: number;
   p2o5: number;
-  no3n: number;
+  nitro_nn: number;
 };

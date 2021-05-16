@@ -13,7 +13,14 @@ const displayData = (current: AnalysisResult): ChartDataSet[] => {
   const standardData = findMasterData(currentData.fieldTypeId, fieldMasterData);
 
   return [
-    createData('pH (H2O)', currentData.ph, standardData.pH_MIN, standardData.pH_MAX, 0.0, 14.0),
+    createData(
+      'pH (H2O)',
+      currentData.ph,
+      standardData.pH_MIN,
+      standardData.pH_MAX,
+      0.0,
+      14.0
+    ),
     createData('EC', currentData.ec, 0, 0.35, 0.0, 4.0),
     createData(
       'CaO (交換性石灰)',
@@ -49,7 +56,7 @@ const displayData = (current: AnalysisResult): ChartDataSet[] => {
     ),
     createData(
       'NO3-N (硝酸態窒素)',
-      currentData.no3n,
+      currentData.nitro_nn,
       standardData.NO3_N_MIN,
       standardData.NO3_N_MAX,
       0,
@@ -88,7 +95,10 @@ function assertIsDefined<T>(val: T): asserts val is NonNullable<T> {
   }
 }
 
-const findMasterData = (currentFieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
+const findMasterData = (
+  currentFieldTypeId: number,
+  masterData: FieldMasterData[]
+): FieldMasterData => {
   const resultData = masterData.find((data) => data.id === currentFieldTypeId);
   assertIsDefined(resultData);
 

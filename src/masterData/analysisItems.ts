@@ -3,12 +3,12 @@ import { AnalysisItem } from '../types/AnalysisItem';
 export const analysisItems: AnalysisItem[] = [
   {
     keyName: 'ph',
-    displayName: 'pH ( H2O )',
+    displayName: 'pH ( 水素イオン指数 )',
     unitName: null,
   },
   {
     keyName: 'ec',
-    displayName: 'EC',
+    displayName: 'EC ( 電気伝導度 )',
     unitName: 'mS / cm',
   },
   {
@@ -32,8 +32,11 @@ export const analysisItems: AnalysisItem[] = [
     unitName: 'mg / 100g',
   },
   {
-    keyName: 'no3n',
+    keyName: 'nitro_nn',
     displayName: 'NO3-N ( 硝酸態窒素 )',
     unitName: 'mg / 100g',
   },
 ];
+
+// ref: http://www.hiryou.hokuren.or.jp/analyze/index05.html
+// ref: https://www.researchgate.net/figure/Multiple-regression-analysis-for-soil-nitrate-NN-ammonium-AN-and-total-nitrogen-TN_tbl2_332069893

@@ -10,7 +10,7 @@ const initialState: AnalysisResult = {
   mgo: 13,
   k2o: 98,
   p2o5: 59,
-  no3n: 1.0,
+  nitro_nn: 1.0,
 };
 
 const analysisResultState = atom<AnalysisResult>({
@@ -19,7 +19,8 @@ const analysisResultState = atom<AnalysisResult>({
 });
 
 export const useAnalysisResult = () => {
-  const [analysisResult, setAnalysisResult] = useRecoilState(analysisResultState);
+  const [analysisResult, setAnalysisResult] =
+    useRecoilState(analysisResultState);
 
   return {
     analysisResult: analysisResult,
