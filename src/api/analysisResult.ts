@@ -5,11 +5,11 @@ import { BulletChartDataSet } from '../types/BulletChartDataSet';
 import { FieldMasterData } from '../types/FieldMasterData';
 
 // MEMO: 暫定対応として、ビジネスロジックを切り出し
-export const post = (props: AnalysisResult) => {
-  return displayData(props);
+export const post = (analysisResult: AnalysisResult) => {
+  return getBulletChartData(analysisResult);
 };
 
-const displayData = (current: AnalysisResult): BulletChartDataSet[] => {
+const getBulletChartData = (current: AnalysisResult): BulletChartDataSet[] => {
   const { fieldTypeId, soilTypeId, ...currentData } = current;
   const standardData = findMasterData(fieldTypeId, fieldMasterData);
 

@@ -2,7 +2,7 @@ import { memo, VFC } from 'react';
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult';
-import { BulletChartDataSet } from '../../../types/BulletBulletChartDataSet';
+import { BulletChartDataSet } from '../../../types/BulletChartDataSet';
 
 interface Props {}
 
