@@ -19,26 +19,26 @@ const getBulletChartData = (current: AnalysisResult): BulletChartDataSet[] => {
     createData(
       'CaO ( 交換性カルシウム )',
       currentData.cao,
-      calcCaO(standardData.cao_saturation_min),
-      calcCaO(standardData.cao_saturation_max),
+      calcData(standardData.cao_saturation_min, 'cao'),
+      calcData(standardData.cao_saturation_max, 'cao'),
       0,
-      calcCaO(standardData.cao_saturation_max) * 1.25
+      calcData(standardData.cao_saturation_max, 'cao') * 1.25
     ),
     createData(
       'MgO ( 交換性マグネシウム )',
       currentData.mgo,
-      calcMgO(standardData.mgo_saturation_min),
-      calcMgO(standardData.mgo_saturation_max),
+      calcData(standardData.mgo_saturation_min, 'mgo'),
+      calcData(standardData.mgo_saturation_max, 'mgo'),
       0,
-      calcMgO(standardData.mgo_saturation_max) * 1.25
+      calcData(standardData.mgo_saturation_max, 'mgo') * 1.25
     ),
     createData(
       'K2O ( 交換性カリウム )',
       currentData.k2o,
-      calcK2O(standardData.k2o_saturation_min),
-      calcK2O(standardData.k2o_saturation_max),
+      calcData(standardData.k2o_saturation_min, 'k2o'),
+      calcData(standardData.k2o_saturation_max, 'k2o'),
       0,
-      calcK2O(standardData.k2o_saturation_max) * 1.25
+      calcData(standardData.k2o_saturation_max, 'k2o') * 1.25
     ),
     createData(
       'P2O5 ( 有効態リン酸 )',
@@ -70,17 +70,16 @@ const createData = (
   return { displayName, current, min, max, chartMin, chartMax };
 };
 
-const calcCaO = (data: number): number => {
+const calcData = (data: number, el: 'cao' | 'mgo' | 'k2o') => {
   const cec = 20;
-  return Math.ceil((data * 28.04 * cec) / 100);
-};
-const calcMgO = (data: number): number => {
-  const cec = 20;
-  return Math.ceil((data * 20.15 * cec) / 100);
-};
-const calcK2O = (data: number): number => {
-  const cec = 20;
-  return Math.ceil((data * 47.1 * cec) / 100);
+
+  if (el === 'cao') {
+    return Math.ceil((data * 28.04 * cec) / 100);
+  } else if (el === 'mgo') {
+    return Math.ceil((data * 20.15 * cec) / 100);
+  } else {
+    return Math.ceil((data * 47.1 * cec) / 100);
+  }
 };
 
 const findMasterData = (fieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
