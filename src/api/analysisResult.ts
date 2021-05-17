@@ -83,15 +83,11 @@ const calcK2O = (data: number): number => {
   return Math.ceil((data * 47.1 * cec) / 100);
 };
 
-function assertIsDefined<T>(val: T): asserts val is NonNullable<T> {
-  if (val === undefined || val === null) {
-    throw new Error(`Expected 'val' to be defined, but received ${val}`);
+const findMasterData = (fieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
+  const resultData = masterData.find((data) => data.id === fieldTypeId);
+  if (resultData === undefined) {
+    throw new Error('Not found fieldTypeId');
   }
-}
-
-const findMasterData = (currentFieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
-  const resultData = masterData.find((data) => data.id === currentFieldTypeId);
-  assertIsDefined(resultData);
 
   return resultData;
 };
