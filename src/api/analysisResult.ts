@@ -1,7 +1,7 @@
 import { fieldMasterData } from '../masterData/fieldMasterData';
 import { AnalysisResult } from '../types/AnalysisResult';
 import { AnalysisDisplayName } from '../types/AnalysisSchema';
-import { ChartDataSet } from '../types/ChartDataSet';
+import { BulletChartDataSet } from '../types/BulletChartDataSet';
 import { FieldMasterData } from '../types/FieldMasterData';
 
 // MEMO: 暫定対応として、ビジネスロジックを切り出し
@@ -9,7 +9,7 @@ export const post = (props: AnalysisResult) => {
   return displayData(props);
 };
 
-const displayData = (current: AnalysisResult): ChartDataSet[] => {
+const displayData = (current: AnalysisResult): BulletChartDataSet[] => {
   const { fieldTypeId, soilTypeId, ...currentData } = current;
   const standardData = findMasterData(fieldTypeId, fieldMasterData);
 
@@ -66,7 +66,7 @@ const createData = (
   max: number,
   chartMin: number,
   chartMax: number
-): ChartDataSet => {
+): BulletChartDataSet => {
   return { displayName, current, min, max, chartMin, chartMax };
 };
 

@@ -1,6 +1,6 @@
 import { AnalysisDisplayName } from './AnalysisSchema';
 
-export interface ChartDataSet {
+export interface BulletChartDataSet {
   displayName: AnalysisDisplayName;
   current: number;
   min: number;
