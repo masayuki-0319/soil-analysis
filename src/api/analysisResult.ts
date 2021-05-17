@@ -62,14 +62,14 @@ const calc = (
 
 const SaturationType = ['cao', 'mgo', 'k2o'] as const;
 type SaturationItem = typeof SaturationType[number];
-const Coefficient: { [key in SaturationItem]: number } = {
+const SaturationCoefficient: { [key in SaturationItem]: number } = {
   cao: 28.04,
   mgo: 20.15,
   k2o: 47.1,
 };
 const calcSaturation = (data: number, el: SaturationItem) => {
   const cec = 20;
-  return Math.ceil((data * Coefficient[el] * cec) / 100);
+  return Math.ceil((data * SaturationCoefficient[el] * cec) / 100);
 };
 
 const findMasterData = (fieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
