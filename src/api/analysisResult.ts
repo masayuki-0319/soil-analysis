@@ -28,8 +28,8 @@ const calc = (
   if (keyName === 'cao' || keyName === 'mgo' || keyName === 'k2o') {
     const minLiteral = `${keyName}_saturation_min` as const;
     const maxLiteral = `${keyName}_saturation_max` as const;
-    min = calcData(masterData[minLiteral], keyName);
-    max = calcData(masterData[maxLiteral], keyName);
+    min = calcSaturation(masterData[minLiteral], keyName);
+    max = calcSaturation(masterData[maxLiteral], keyName);
   } else if (keyName === 'ph') {
     const minLiteral = `${keyName}_min` as const;
     const maxLiteral = `${keyName}_max` as const;
@@ -60,18 +60,16 @@ const calc = (
   };
 };
 
-const tmpTypes = ['cao', 'mgo', 'k2o'] as const;
-type SaturationItem = typeof tmpTypes[number];
-const calcData = (data: number, el: SaturationItem) => {
+const SaturationType = ['cao', 'mgo', 'k2o'] as const;
+type SaturationItem = typeof SaturationType[number];
+const Coefficient: { [key in SaturationItem]: number } = {
+  cao: 28.04,
+  mgo: 20.15,
+  k2o: 47.1,
+};
+const calcSaturation = (data: number, el: SaturationItem) => {
   const cec = 20;
-
-  if (el === 'cao') {
-    return Math.ceil((data * 28.04 * cec) / 100);
-  } else if (el === 'mgo') {
-    return Math.ceil((data * 20.15 * cec) / 100);
-  } else {
-    return Math.ceil((data * 47.1 * cec) / 100);
-  }
+  return Math.ceil((data * Coefficient[el] * cec) / 100);
 };
 
 const findMasterData = (fieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
