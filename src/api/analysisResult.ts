@@ -15,7 +15,7 @@ const getBulletChartData = (current: AnalysisResult): BulletChartDataSet[] => {
 
   return [
     createData('pH ( 水素イオン指数 )', currentData.ph, standardData.ph_min, standardData.ph_max, 0.0, 14.0),
-    createData('EC ( 電気伝導度 )', currentData.ec, 0, 0.35, 0.0, 4.0),
+    createData('EC ( 電気伝導度 )', currentData.ec, standardData.ec_min, standardData.ec_max, 0.0, 4.0),
     createData(
       'CaO ( 交換性カルシウム )',
       currentData.cao,

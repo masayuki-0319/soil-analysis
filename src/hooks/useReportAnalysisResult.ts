@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { post } from '../api/analysisResult';
 import { useAnalysisResult } from '../store/analysisResultState';
-import { BulletChartDataSet } from '../types/BulletBulletChartDataSet';
+import { BulletChartDataSet } from '../types/BulletChartDataSet';
 
 export const useReportAnalysisResult = () => {
   const { analysisResult } = useAnalysisResult();
