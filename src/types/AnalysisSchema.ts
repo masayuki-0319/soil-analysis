@@ -1,7 +1,8 @@
 export type AnalysisKeyName = keyof typeof AnalysisItems;
 export type AnalysisDisplayName = typeof AnalysisItems[AnalysisKeyName]['displayName'];
+export const analysisKeyNames = ['ph', 'ec', 'cao', 'mgo', 'k2o', 'p2o5', 'nitro_nn'] as const;
 
-const AnalysisItems = {
+export const AnalysisItems = {
   ph: {
     keyName: 'ph',
     displayName: 'pH ( 水素イオン指数 )',

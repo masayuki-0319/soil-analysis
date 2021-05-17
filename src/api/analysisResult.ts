@@ -1,6 +1,6 @@
 import { fieldMasterData } from '../masterData/fieldMasterData';
 import { AnalysisResult } from '../types/AnalysisResult';
-import { AnalysisDisplayName } from '../types/AnalysisSchema';
+import { AnalysisItems, AnalysisKeyName, analysisKeyNames } from '../types/AnalysisSchema';
 import { BulletChartDataSet } from '../types/BulletChartDataSet';
 import { FieldMasterData } from '../types/FieldMasterData';
 
@@ -13,64 +13,56 @@ const getBulletChartData = (current: AnalysisResult): BulletChartDataSet[] => {
   const { fieldTypeId, soilTypeId, ...currentData } = current;
   const standardData = findMasterData(fieldTypeId, fieldMasterData);
 
-  return [
-    createData('pH ( 水素イオン指数 )', currentData.ph, standardData.ph_min, standardData.ph_max, 0.0, 14.0),
-    createData('EC ( 電気伝導度 )', currentData.ec, standardData.ec_min, standardData.ec_max, 0.0, 4.0),
-    createData(
-      'CaO ( 交換性カルシウム )',
-      currentData.cao,
-      calcData(standardData.cao_saturation_min, 'cao'),
-      calcData(standardData.cao_saturation_max, 'cao'),
-      0,
-      calcData(standardData.cao_saturation_max, 'cao') * 1.25
-    ),
-    createData(
-      'MgO ( 交換性マグネシウム )',
-      currentData.mgo,
-      calcData(standardData.mgo_saturation_min, 'mgo'),
-      calcData(standardData.mgo_saturation_max, 'mgo'),
-      0,
-      calcData(standardData.mgo_saturation_max, 'mgo') * 1.25
-    ),
-    createData(
-      'K2O ( 交換性カリウム )',
-      currentData.k2o,
-      calcData(standardData.k2o_saturation_min, 'k2o'),
-      calcData(standardData.k2o_saturation_max, 'k2o'),
-      0,
-      calcData(standardData.k2o_saturation_max, 'k2o') * 1.25
-    ),
-    createData(
-      'P2O5 ( 有効態リン酸 )',
-      currentData.p2o5,
-      standardData.p2o5_min,
-      standardData.p2o5_max,
-      0,
-      standardData.p2o5_max * 1.25
-    ),
-    createData(
-      'NO3-N ( 硝酸態窒素 )',
-      currentData.nitro_nn,
-      standardData.nitro_nn_min,
-      standardData.nitro_nn_max,
-      0,
-      standardData.nitro_nn_max * 1.25
-    ),
-  ];
+  const data = analysisKeyNames.map((keyName) => {
+    return calc(keyName, currentData, standardData);
+  });
+  return data;
 };
 
-const createData = (
-  displayName: AnalysisDisplayName,
-  current: number,
-  min: number,
-  max: number,
-  chartMin: number,
-  chartMax: number
+const calc = (
+  keyName: AnalysisKeyName,
+  currentData: Pick<AnalysisResult, AnalysisKeyName>,
+  masterData: FieldMasterData
 ): BulletChartDataSet => {
-  return { displayName, current, min, max, chartMin, chartMax };
+  var min, max, chartMin, chartMax: number;
+  if (keyName === 'cao' || keyName === 'mgo' || keyName === 'k2o') {
+    const minLiteral = `${keyName}_saturation_min` as const;
+    const maxLiteral = `${keyName}_saturation_max` as const;
+    min = calcData(masterData[minLiteral], keyName);
+    max = calcData(masterData[maxLiteral], keyName);
+  } else if (keyName === 'ph') {
+    const minLiteral = `${keyName}_min` as const;
+    const maxLiteral = `${keyName}_max` as const;
+    min = masterData[minLiteral];
+    max = masterData[maxLiteral];
+  } else {
+    const minLiteral = `${keyName}_min` as const;
+    const maxLiteral = `${keyName}_max` as const;
+    min = masterData[minLiteral];
+    max = masterData[maxLiteral];
+  }
+
+  if (keyName === 'ph') {
+    chartMin = 0;
+    chartMax = 14;
+  } else {
+    chartMin = 0;
+    chartMax = max * 1.25;
+  }
+
+  return {
+    displayName: AnalysisItems[keyName].displayName,
+    current: currentData[keyName],
+    min: min,
+    max: max,
+    chartMin: chartMin,
+    chartMax: chartMax,
+  };
 };
 
-const calcData = (data: number, el: 'cao' | 'mgo' | 'k2o') => {
+const tmpTypes = ['cao', 'mgo', 'k2o'] as const;
+type SaturationItem = typeof tmpTypes[number];
+const calcData = (data: number, el: SaturationItem) => {
   const cec = 20;
 
   if (el === 'cao') {
