@@ -1,6 +1,19 @@
 export type AnalysisKeyName = keyof typeof AnalysisItems;
 export type AnalysisDisplayName = typeof AnalysisItems[AnalysisKeyName]['displayName'];
+export const AllKeyNames = [
+  'ph',
+  'ec',
+  'cao',
+  'mgo',
+  'k2o',
+  'p2o5',
+  'nitro_nn',
+  'cao_saturation',
+  'mgo_saturation',
+  'k2o_saturation',
+] as const;
 export const analysisKeyNames = ['ph', 'ec', 'cao', 'mgo', 'k2o', 'p2o5', 'nitro_nn'] as const;
+export const saturationKeyNames = ['cao_saturation', 'mgo_saturation', 'k2o_saturation'] as const;
 
 export const AnalysisItems = {
   ph: {
@@ -38,4 +51,19 @@ export const AnalysisItems = {
     displayName: 'NO3-N ( 硝酸態窒素 )',
     unitName: 'mg / 100g',
   },
-} as const
+  cao_saturation: {
+    keyName: 'cao_saturation',
+    displayName: 'CaO Saturation ( 石灰飽和度 )',
+    unitName: '%',
+  },
+  mgo_saturation: {
+    keyName: 'mgo_saturation',
+    displayName: 'MgO Saturation ( 苦土飽和度 )',
+    unitName: '%',
+  },
+  k2o_saturation: {
+    keyName: 'k2o_saturation',
+    displayName: 'K2O Saturation ( 加里飽和度 )',
+    unitName: '%',
+  },
+} as const;

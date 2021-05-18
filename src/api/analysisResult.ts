@@ -1,45 +1,69 @@
 import { fieldMasterData } from '../masterData/fieldMasterData';
 import { AnalysisResult } from '../types/AnalysisResult';
-import { AnalysisItems, AnalysisKeyName, analysisKeyNames } from '../types/AnalysisSchema';
+import { AnalysisItems, AnalysisKeyName, AllKeyNames } from '../types/AnalysisSchema';
 import { BulletChartDataSet } from '../types/BulletChartDataSet';
 import { FieldMasterData } from '../types/FieldMasterData';
+import { ReportAnalysisResult } from '../types/ReportAnalysisResult';
 
 // MEMO: 暫定対応として、ビジネスロジックを切り出し
 export const post = (analysisResult: AnalysisResult) => {
   return getBulletChartData(analysisResult);
 };
 
-const getBulletChartData = (current: AnalysisResult): BulletChartDataSet[] => {
+const SaturationType = ['cao', 'mgo', 'k2o'] as const;
+type SaturationItem = typeof SaturationType[number];
+type TmpAnalysisResult = Exclude<AnalysisResult, 'fieldTypeId' | 'soilTypeId'>;
+
+const getBulletChartData = (current: AnalysisResult) => {
   const { fieldTypeId, soilTypeId, ...currentData } = current;
   const standardData = findMasterData(fieldTypeId, fieldMasterData);
 
-  const data = analysisKeyNames.map((keyName) => {
-    return calc(keyName, currentData, standardData);
+  const result: ReportAnalysisResult = { cao_saturation: 0, mgo_saturation: 0, k2o_saturation: 0, ...current };
+
+  const data = AllKeyNames.map((keyName) => {
+    return calc(keyName, currentData as TmpAnalysisResult, standardData);
   });
-  return data;
+  return { result, data };
 };
 
 const calc = (
   keyName: AnalysisKeyName,
-  currentData: Pick<AnalysisResult, AnalysisKeyName>,
+  currentData: TmpAnalysisResult,
   masterData: FieldMasterData
 ): BulletChartDataSet => {
-  var min, max, chartMin, chartMax: number;
+  let min: number, max: number, current: number, chartMin: number, chartMax: number;
   if (keyName === 'cao' || keyName === 'mgo' || keyName === 'k2o') {
     const minLiteral = `${keyName}_saturation_min` as const;
     const maxLiteral = `${keyName}_saturation_max` as const;
-    min = calcSaturation(masterData[minLiteral], keyName);
-    max = calcSaturation(masterData[maxLiteral], keyName);
+    min = calcAbstSaturation(masterData[minLiteral], keyName);
+    max = calcAbstSaturation(masterData[maxLiteral], keyName);
+    current = currentData[keyName]
+  } else if (keyName === 'cao_saturation' || keyName === 'mgo_saturation' || keyName === 'k2o_saturation') {
+    const minLiteral = `${keyName}_min` as const;
+    const maxLiteral = `${keyName}_max` as const;
+    let tmpKey: SaturationItem;
+    if (keyName === 'cao_saturation') {
+      tmpKey = 'cao'
+    } else if (keyName === 'mgo_saturation') {
+      tmpKey = 'mgo'
+    } else {
+      tmpKey = 'k2o'
+    }
+    min = masterData[minLiteral];
+    max = masterData[maxLiteral];
+    current = calcRateSaturation(currentData[tmpKey], tmpKey)
   } else if (keyName === 'ph') {
     const minLiteral = `${keyName}_min` as const;
     const maxLiteral = `${keyName}_max` as const;
     min = masterData[minLiteral];
     max = masterData[maxLiteral];
+    current = currentData[keyName]
   } else {
     const minLiteral = `${keyName}_min` as const;
     const maxLiteral = `${keyName}_max` as const;
     min = masterData[minLiteral];
     max = masterData[maxLiteral];
+    current = currentData[keyName]
   }
 
   if (keyName === 'ph') {
@@ -52,7 +76,7 @@ const calc = (
 
   return {
     displayName: AnalysisItems[keyName].displayName,
-    current: currentData[keyName],
+    current: current,
     min: min,
     max: max,
     chartMin: chartMin,
@@ -60,16 +84,18 @@ const calc = (
   };
 };
 
-const SaturationType = ['cao', 'mgo', 'k2o'] as const;
-type SaturationItem = typeof SaturationType[number];
 const SaturationCoefficient: { [key in SaturationItem]: number } = {
   cao: 28.04,
   mgo: 20.15,
   k2o: 47.1,
 };
-const calcSaturation = (data: number, el: SaturationItem) => {
+const calcAbstSaturation = (practicalData: number, el: SaturationItem) => {
   const cec = 20;
-  return Math.ceil((data * SaturationCoefficient[el] * cec) / 100);
+  return Math.ceil((practicalData * SaturationCoefficient[el]) / 100 * cec);
+};
+const calcRateSaturation = (practicalData: number, el: SaturationItem) => {
+  const cec = 20;
+  return Math.ceil((practicalData / SaturationCoefficient[el]) * 100 / cec);
 };
 
 const findMasterData = (fieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
