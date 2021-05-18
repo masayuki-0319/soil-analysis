@@ -7,15 +7,15 @@ import { ReportAnalysisResult } from '../types/ReportAnalysisResult';
 
 export const useReportAnalysisResult = () => {
   const { analysisResult } = useAnalysisResult();
-  const [rowReportAnalysisResult, setReportAnalysisResult] = useState<BulletChartDataSet[]>([]);
   const [result, setResult] = useState<ReportAnalysisResult>();
+  const [bulletChartData, setBulletChartData] = useState<BulletChartDataSet[]>([]);
 
   useEffect(() => {
-    const { result, data } = post(analysisResult);
+    const { result, bulletChartData } = post(analysisResult);
 
     setResult(result);
-    setReportAnalysisResult(data);
+    setBulletChartData(bulletChartData);
   }, [analysisResult]);
 
-  return { result, rowReportAnalysisResult };
+  return { result, bulletChartData };
 };

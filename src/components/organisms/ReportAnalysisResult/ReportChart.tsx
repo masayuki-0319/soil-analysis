@@ -7,11 +7,11 @@ import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult'
 interface Props {}
 
 export const ReportChart: VFC<Props> = () => {
-  const { rowReportAnalysisResult } = useReportAnalysisResult();
+  const { bulletChartData } = useReportAnalysisResult();
 
   return (
     <Grid container>
-      {rowReportAnalysisResult.map((data, index) => {
+      {bulletChartData.map((data, index) => {
         const { chartMin, chartMax } = data;
         return (
           <BarChart

@@ -7,7 +7,7 @@ import { BulletChartDataSet } from '../../../types/BulletChartDataSet';
 interface Props {}
 
 export const ReportTable: VFC<Props> = memo(() => {
-  const { rowReportAnalysisResult } = useReportAnalysisResult();
+  const { bulletChartData } = useReportAnalysisResult();
 
   const checkDataStyle = (displayData: BulletChartDataSet): React.CSSProperties => {
     const { current, min, max } = displayData;
@@ -21,7 +21,7 @@ export const ReportTable: VFC<Props> = memo(() => {
     }
   };
 
-  const tableDataSet = rowReportAnalysisResult.map((row, index) => (
+  const tableDataSet = bulletChartData.map((row, index) => (
     <TableRow key={index} style={checkDataStyle(row)}>
       <TableCell component="th" scope="row">
         {row.displayName}

@@ -20,10 +20,10 @@ const getBulletChartData = (current: AnalysisResult) => {
 
   const result: ReportAnalysisResult = { cao_saturation: 0, mgo_saturation: 0, k2o_saturation: 0, ...current };
 
-  const data = AllKeyNames.map((keyName) => {
+  const bulletChartData = AllKeyNames.map((keyName) => {
     return calc(keyName, currentData as TmpAnalysisResult, standardData);
   });
-  return { result, data };
+  return { result, bulletChartData };
 };
 
 const calc = (
