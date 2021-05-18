@@ -18,12 +18,12 @@ const getBulletChartData = (current: AnalysisResult) => {
   const { fieldTypeId, soilTypeId, ...currentData } = current;
   const standardData = findMasterData(fieldTypeId, fieldMasterData);
 
-  const result: ReportAnalysisResult = { cao_saturation: 0, mgo_saturation: 0, k2o_saturation: 0, ...current };
+  const reportAnalysisResult: ReportAnalysisResult = { cao_saturation: 0, mgo_saturation: 0, k2o_saturation: 0, ...current };
 
   const bulletChartData = AllKeyNames.map((keyName) => {
     return calc(keyName, currentData as TmpAnalysisResult, standardData);
   });
-  return { result, bulletChartData };
+  return { reportAnalysisResult, bulletChartData };
 };
 
 const calc = (
