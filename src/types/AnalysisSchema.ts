@@ -12,8 +12,8 @@ export const AllKeyNames = [
   'mgo_saturation',
   'k2o_saturation',
 ] as const;
-export const analysisKeyNames = ['ph', 'ec', 'cao', 'mgo', 'k2o', 'p2o5', 'nitro_nn'] as const;
-export const saturationKeyNames = ['cao_saturation', 'mgo_saturation', 'k2o_saturation'] as const;
+export const AnalysisKeyNames = ['ph', 'ec', 'cao', 'mgo', 'k2o', 'p2o5', 'nitro_nn'] as const;
+export const SaturationKeyNames = ['cao_saturation', 'mgo_saturation', 'k2o_saturation'] as const;
 
 export const AnalysisItems = {
   ph: {
