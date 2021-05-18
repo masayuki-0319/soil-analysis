@@ -11,7 +11,7 @@ export const useReportAnalysisResult = () => {
   const [result, setResult] = useState<ReportAnalysisResult>();
 
   useEffect(() => {
-    const { result, data} = post(analysisResult);
+    const { result, data } = post(analysisResult);
 
     setResult(result);
     setReportAnalysisResult(data);
