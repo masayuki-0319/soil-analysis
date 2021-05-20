@@ -70,6 +70,7 @@ const calc = (
   }
 
   return {
+    keyName: keyName,
     displayName: AnalysisItems[keyName].displayName,
     current: current,
     min: min,
