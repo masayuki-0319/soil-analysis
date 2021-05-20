@@ -13,7 +13,7 @@ const getBulletChartData = (current: AnalysisResult) => {
   const reportAnalysisResult: ReportAnalysisResult = getReportAnalysisResult(current);
 
   const tableData = getTableDataSet(reportAnalysisResult);
-  const chartData = getChartDataSet(reportAnalysisResult);
+  const chartData = getChartDataSet(tableData);
 
   return { reportAnalysisResult, tableData, chartData };
 };
