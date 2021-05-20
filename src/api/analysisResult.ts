@@ -11,6 +11,7 @@ export const post = (analysisResult: AnalysisResult) => {
 
 const getBulletChartData = (current: AnalysisResult) => {
   const reportAnalysisResult: ReportAnalysisResult = getReportAnalysisResult(current);
+
   const tableData = getTableDataSet(reportAnalysisResult);
   const chartData = getChartDataSet(reportAnalysisResult);
 

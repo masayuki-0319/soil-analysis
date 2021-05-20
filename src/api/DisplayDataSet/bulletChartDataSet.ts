@@ -3,6 +3,7 @@ import { AnalysisItems, AnalysisKeyName, AllKeyNames } from '../../types/Analysi
 import { BulletChartDataSet } from '../../types/BulletChartDataSet';
 import { FieldMasterData } from '../../types/FieldMasterData';
 import { ReportAnalysisResult } from '../../types/ReportAnalysisResult';
+import { calcAbstSaturation, calcRateSaturation, findMasterData } from './utilDataCalculator'
 
 export const getChartDataSet = (reportAnalysisResult: ReportAnalysisResult): BulletChartDataSet[] => {
   const bulletChartDataSet = displayData(reportAnalysisResult);
@@ -87,27 +88,4 @@ const calc = (
     chartMin: chartMin,
     chartMax: chartMax,
   };
-};
-
-const SaturationCoefficient: { [key in SaturationItem]: number } = {
-  cao: 28.04,
-  mgo: 20.15,
-  k2o: 47.1,
-};
-const calcAbstSaturation = (practicalData: number, el: SaturationItem) => {
-  const cec = 20;
-  return Math.ceil(((practicalData * SaturationCoefficient[el]) / 100) * cec);
-};
-const calcRateSaturation = (practicalData: number, el: SaturationItem) => {
-  const cec = 20;
-  return Math.ceil(((practicalData / SaturationCoefficient[el]) * 100) / cec);
-};
-
-const findMasterData = (fieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
-  const resultData = masterData.find((data) => data.id === fieldTypeId);
-  if (resultData === undefined) {
-    throw new Error('Not found fieldTypeId');
-  }
-
-  return resultData;
 };
