@@ -1,8 +1,7 @@
 import { memo, VFC } from 'react';
-import { MenuItem } from '@material-ui/core';
+import { MenuItem, InputLabel, Select, OutlinedInput } from '@material-ui/core';
 
-import { Selectbox } from '../atoms/Selectbox';
-import { SelectFormControl } from '../atoms/SelectFormControl';
+import { SelectFormControl } from './SelectFormControl';
 
 interface Props {
   selectOptions: SelectOptions[];
@@ -28,9 +27,10 @@ export const SelectBox: VFC<Props> = memo((props) => {
 
   return (
     <SelectFormControl>
-      <Selectbox displayName={displayName} name={keyName} value={defaultValue} onChange={onChange}>
+      <InputLabel id="label-id">{displayName}</InputLabel>
+      <Select labelId="label-id" input={<OutlinedInput name={keyName} />} value={defaultValue} onChange={onChange}>
         {options}
-      </Selectbox>
+      </Select>
     </SelectFormControl>
   );
 });

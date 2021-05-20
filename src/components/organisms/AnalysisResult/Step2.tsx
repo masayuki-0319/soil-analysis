@@ -3,7 +3,7 @@ import { Grid, InputAdornment, Paper, TextField } from '@material-ui/core';
 
 import { useAnalysisResult } from '../../../store/analysisResultState';
 import { analysisItems } from '../../../masterData/analysisItems';
-import { SelectFormControl } from '../../atoms/SelectFormControl';
+import { SelectFormControl } from '../../molecules/SelectFormControl';
 import { PaperInformation } from '../../molecules/PaperInformation';
 
 interface Props {}
