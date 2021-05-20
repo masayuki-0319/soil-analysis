@@ -1,9 +1,9 @@
 import { fieldMasterData } from '../../masterData/fieldMasterData';
 import { AnalysisItems, AnalysisKeyName, AllKeyNames } from '../../types/AnalysisSchema';
-import { BulletChartDataSet } from '../../types/BulletChartDataSet';
 import { FieldMasterData } from '../../types/FieldMasterData';
 import { ReportAnalysisResult } from '../../types/ReportAnalysisResult';
 import { calcAbstSaturation, calcRateSaturation, findMasterData } from './utilDataCalculator'
+import { BulletChartDataSet } from '../../types/BulletChartDataSet';
 
 export const getChartDataSet = (reportAnalysisResult: ReportAnalysisResult): BulletChartDataSet[] => {
   const bulletChartDataSet = displayData(reportAnalysisResult);

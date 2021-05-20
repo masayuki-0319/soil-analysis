@@ -2,8 +2,8 @@ import { fieldMasterData } from '../../masterData/fieldMasterData';
 import { AnalysisItems, AnalysisKeyName, AllKeyNames } from '../../types/AnalysisSchema';
 import { FieldMasterData } from '../../types/FieldMasterData';
 import { ReportAnalysisResult } from '../../types/ReportAnalysisResult';
-import { TableDataSet } from '../../types/TableDataSet';
 import { calcAbstSaturation, calcRateSaturation, findMasterData } from './utilDataCalculator';
+import { TableDataSet } from '../../types/TableDataSet';
 
 export const getTableDataSet = (reportAnalysisResult: ReportAnalysisResult): TableDataSet[] => {
   const tableDataSet = displayData(reportAnalysisResult);
