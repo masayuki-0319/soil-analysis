@@ -1,8 +1,8 @@
 import { AnalysisResult } from '../types/AnalysisResult';
 import { ReportAnalysisResult } from '../types/ReportAnalysisResult';
 import { getReportAnalysisResult } from './reportAnalysisResult/reportAnalysisResult';
-import { getTableDataSet } from './DisplayDataSet/tableDataSet';
-import { getChartDataSet } from './DisplayDataSet/bulletChartDataSet';
+import { getTableDataSet } from './displayDataSet/tableDataSet';
+import { getChartDataSet } from './displayDataSet/bulletChartDataSet';
 
 // MEMO: 暫定対応として、ビジネスロジックを切り出し
 export const post = (analysisResult: AnalysisResult) => {
