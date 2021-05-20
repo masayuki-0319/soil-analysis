@@ -4,21 +4,20 @@ import { AnalysisItems, AnalysisKeyName, AllKeyNames } from '../types/AnalysisSc
 import { BulletChartDataSet } from '../types/BulletChartDataSet';
 import { FieldMasterData } from '../types/FieldMasterData';
 import { ReportAnalysisResult } from '../types/ReportAnalysisResult';
+import { getReportAnalysisResult } from './reportAnalysisResult/reportAnalysisResult';
 
 // MEMO: 暫定対応として、ビジネスロジックを切り出し
 export const post = (analysisResult: AnalysisResult) => {
   return getBulletChartData(analysisResult);
 };
 
-const SaturationType = ['cao', 'mgo', 'k2o'] as const;
-type SaturationItem = typeof SaturationType[number];
 type TmpAnalysisResult = Exclude<AnalysisResult, 'fieldTypeId' | 'soilTypeId'>;
 
 const getBulletChartData = (current: AnalysisResult) => {
   const { fieldTypeId, soilTypeId, ...currentData } = current;
   const standardData = findMasterData(fieldTypeId, fieldMasterData);
 
-  const reportAnalysisResult: ReportAnalysisResult = { cao_saturation: 0, mgo_saturation: 0, k2o_saturation: 0, ...current };
+  const reportAnalysisResult: ReportAnalysisResult = getReportAnalysisResult(current);
 
   const bulletChartData = AllKeyNames.map((keyName) => {
     return calc(keyName, currentData as TmpAnalysisResult, standardData);
@@ -26,13 +25,20 @@ const getBulletChartData = (current: AnalysisResult) => {
   return { reportAnalysisResult, bulletChartData };
 };
 
+const SaturationType = ['cao', 'mgo', 'k2o'] as const;
+type SaturationItem = typeof SaturationType[number];
+
+function isSaturation(arg: any): arg is SaturationItem {
+  return arg.foo !== undefined;
+}
+
 const calc = (
   keyName: AnalysisKeyName,
   currentData: TmpAnalysisResult,
   masterData: FieldMasterData
 ): BulletChartDataSet => {
   let min: number, max: number, current: number, chartMin: number, chartMax: number;
-  if (keyName === 'cao' || keyName === 'mgo' || keyName === 'k2o') {
+  if (isSaturation(keyName)) {
     const minLiteral = `${keyName}_saturation_min` as const;
     const maxLiteral = `${keyName}_saturation_max` as const;
     min = calcAbstSaturation(masterData[minLiteral], keyName);
