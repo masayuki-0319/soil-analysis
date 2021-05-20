@@ -24,7 +24,7 @@ export const ReportChart: VFC<Props> = () => {
             key={index}
           >
             <XAxis type="number" domain={[chartMin, chartMax]} allowDataOverflow={true} />
-            <YAxis dataKey="name" type="category" yAxisId={0} width={150} />
+            <YAxis dataKey="displayName" type="category" yAxisId={0} width={150} />
             <YAxis dataKey="name" type="category" yAxisId={1} hide />
             <YAxis dataKey="name" type="category" yAxisId={2} hide />
             <YAxis dataKey="name" type="category" yAxisId={3} hide />

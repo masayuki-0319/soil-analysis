@@ -2,14 +2,14 @@ import { memo, VFC } from 'react';
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult';
-import { BulletChartDataSet } from '../../../types/BulletChartDataSet';
+import { TableDataSet } from '../../../types/TableDataSet';
 
 interface Props {}
 
 export const ReportTable: VFC<Props> = memo(() => {
-  const { bulletChartData } = useReportAnalysisResult();
+  const { tableDataSet } = useReportAnalysisResult();
 
-  const checkDataStyle = (displayData: BulletChartDataSet): React.CSSProperties => {
+  const checkDataStyle = (displayData: TableDataSet): React.CSSProperties => {
     const { current, min, max } = displayData;
 
     if (current >= min && current <= max) {
@@ -21,7 +21,7 @@ export const ReportTable: VFC<Props> = memo(() => {
     }
   };
 
-  const tableDataSet = bulletChartData.map((row, index) => (
+  const tableRows = tableDataSet.map((row, index) => (
     <TableRow key={index} style={checkDataStyle(row)}>
       <TableCell component="th" scope="row">
         {row.displayName}
@@ -44,7 +44,7 @@ export const ReportTable: VFC<Props> = memo(() => {
               <TableCell align="right">目標値 ( Max )</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>{tableDataSet}</TableBody>
+          <TableBody>{tableRows}</TableBody>
         </Table>
       </TableContainer>
     </Grid>

@@ -5,6 +5,7 @@ import { BulletChartDataSet } from '../types/BulletChartDataSet';
 import { FieldMasterData } from '../types/FieldMasterData';
 import { ReportAnalysisResult } from '../types/ReportAnalysisResult';
 import { getReportAnalysisResult } from './reportAnalysisResult/reportAnalysisResult';
+import { getTableDataSet } from './DisplayDataSet/tableDataSet';
 
 // MEMO: 暫定対応として、ビジネスロジックを切り出し
 export const post = (analysisResult: AnalysisResult) => {
@@ -18,19 +19,16 @@ const getBulletChartData = (current: AnalysisResult) => {
   const standardData = findMasterData(fieldTypeId, fieldMasterData);
 
   const reportAnalysisResult: ReportAnalysisResult = getReportAnalysisResult(current);
+  const tableData = getTableDataSet(reportAnalysisResult);
 
   const bulletChartData = AllKeyNames.map((keyName) => {
     return calc(keyName, currentData as TmpAnalysisResult, standardData);
   });
-  return { reportAnalysisResult, bulletChartData };
+  return { reportAnalysisResult, tableData, bulletChartData };
 };
 
 const SaturationType = ['cao', 'mgo', 'k2o'] as const;
 type SaturationItem = typeof SaturationType[number];
-
-function isSaturation(arg: any): arg is SaturationItem {
-  return arg.foo !== undefined;
-}
 
 const calc = (
   keyName: AnalysisKeyName,
@@ -38,38 +36,38 @@ const calc = (
   masterData: FieldMasterData
 ): BulletChartDataSet => {
   let min: number, max: number, current: number, chartMin: number, chartMax: number;
-  if (isSaturation(keyName)) {
+  if (keyName === 'cao' || keyName === 'mgo' || keyName === 'k2o') {
     const minLiteral = `${keyName}_saturation_min` as const;
     const maxLiteral = `${keyName}_saturation_max` as const;
     min = calcAbstSaturation(masterData[minLiteral], keyName);
     max = calcAbstSaturation(masterData[maxLiteral], keyName);
-    current = currentData[keyName]
+    current = currentData[keyName];
   } else if (keyName === 'cao_saturation' || keyName === 'mgo_saturation' || keyName === 'k2o_saturation') {
     const minLiteral = `${keyName}_min` as const;
     const maxLiteral = `${keyName}_max` as const;
     let tmpKey: SaturationItem;
     if (keyName === 'cao_saturation') {
-      tmpKey = 'cao'
+      tmpKey = 'cao';
     } else if (keyName === 'mgo_saturation') {
-      tmpKey = 'mgo'
+      tmpKey = 'mgo';
     } else {
-      tmpKey = 'k2o'
+      tmpKey = 'k2o';
     }
     min = masterData[minLiteral];
     max = masterData[maxLiteral];
-    current = calcRateSaturation(currentData[tmpKey], tmpKey)
+    current = calcRateSaturation(currentData[tmpKey], tmpKey);
   } else if (keyName === 'ph') {
     const minLiteral = `${keyName}_min` as const;
     const maxLiteral = `${keyName}_max` as const;
     min = masterData[minLiteral];
     max = masterData[maxLiteral];
-    current = currentData[keyName]
+    current = currentData[keyName];
   } else {
     const minLiteral = `${keyName}_min` as const;
     const maxLiteral = `${keyName}_max` as const;
     min = masterData[minLiteral];
     max = masterData[maxLiteral];
-    current = currentData[keyName]
+    current = currentData[keyName];
   }
 
   if (keyName === 'ph') {
@@ -97,11 +95,11 @@ const SaturationCoefficient: { [key in SaturationItem]: number } = {
 };
 const calcAbstSaturation = (practicalData: number, el: SaturationItem) => {
   const cec = 20;
-  return Math.ceil((practicalData * SaturationCoefficient[el]) / 100 * cec);
+  return Math.ceil(((practicalData * SaturationCoefficient[el]) / 100) * cec);
 };
 const calcRateSaturation = (practicalData: number, el: SaturationItem) => {
   const cec = 20;
-  return Math.ceil((practicalData / SaturationCoefficient[el]) * 100 / cec);
+  return Math.ceil(((practicalData / SaturationCoefficient[el]) * 100) / cec);
 };
 
 const findMasterData = (fieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {
