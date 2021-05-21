@@ -4,8 +4,9 @@ import { Grid, Paper } from '@material-ui/core';
 import { PaperInformation } from '../../molecules/PaperInformation';
 import { SelectBox } from '../../molecules/SelectBox';
 import { useAnalysisResult } from '../../../store/analysisResultState';
-import { fieldTypeData } from '../../../masterData/fiedlTypeData';
-import { soilTypeData } from '../../../masterData/soilTypeData';
+import { fieldTypeData } from '../../../api/masterData/fiedlTypeData';
+import { soilTypeData } from '../../../api/masterData/soilTypeData';
+import { SelectOptions } from '../../molecules/SelectOptions';
 
 interface Props {}
 
@@ -23,21 +24,23 @@ export const Step1: VFC<Props> = memo(() => {
         <Grid item container>
           <Grid item md={6} xs={12} style={{ marginBottom: 12 }}>
             <SelectBox
-              selectOptions={fieldTypeData}
               displayName="ほ場の種類"
               keyName="fieldTypeId"
               defaultValue={analysisResult.fieldTypeId}
               onChange={handleChange}
-            />
+            >
+              {SelectOptions({ options: fieldTypeData, nameKey: 'name', valueKey: 'id' })}
+            </SelectBox>
           </Grid>
           <Grid item md={6} xs={12} style={{ marginBottom: 12 }}>
             <SelectBox
-              selectOptions={soilTypeData}
               displayName="土壌の種類"
               keyName="soilTypeId"
               defaultValue={analysisResult.soilTypeId}
               onChange={handleChange}
-            />
+            >
+              {SelectOptions({ options: soilTypeData, nameKey: 'name', valueKey: 'id' })}
+            </SelectBox>
           </Grid>
         </Grid>
       </Grid>

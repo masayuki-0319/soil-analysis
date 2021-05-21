@@ -2,7 +2,7 @@ import React, { memo, VFC } from 'react';
 import { Grid, InputAdornment, Paper, TextField } from '@material-ui/core';
 
 import { useAnalysisResult } from '../../../store/analysisResultState';
-import { analysisItems } from '../../../masterData/analysisItems';
+import { analysisItems } from '../../../api/masterData/analysisItems';
 import { SelectFormControl } from '../../molecules/SelectFormControl';
 import { PaperInformation } from '../../molecules/PaperInformation';
 
