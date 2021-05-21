@@ -1,4 +1,4 @@
-import { SoilType } from "../types/SoilType";
+import { SoilType } from "../../types/SoilType";
 
 export const soilTypeData: SoilType[] = [
   {

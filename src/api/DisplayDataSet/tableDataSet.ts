@@ -1,4 +1,4 @@
-import { fieldMasterData } from '../../masterData/fieldMasterData';
+import { fieldMasterData } from '../masterData/fieldMasterData';
 import { AnalysisItems, AnalysisKeyName, AllKeyNames } from '../../types/AnalysisSchema';
 import { FieldMasterData } from '../../types/FieldMasterData';
 import { ReportAnalysisResult } from '../../types/ReportAnalysisResult';

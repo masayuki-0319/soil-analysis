@@ -1,4 +1,4 @@
-import { FieldMasterData } from '../types/FieldMasterData';
+import { FieldMasterData } from '../../types/FieldMasterData';
 
 export const fieldMasterData: FieldMasterData[] = [
   {

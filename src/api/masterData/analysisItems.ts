@@ -1,4 +1,4 @@
-import { AnalysisItem } from '../types/AnalysisItem';
+import { AnalysisItem } from '../../types/AnalysisItem';
 
 export const analysisItems: AnalysisItem[] = [
   {

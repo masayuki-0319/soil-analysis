@@ -1,4 +1,4 @@
-import { FieldType } from '../types/FieldType';
+import { FieldType } from '../../types/FieldType';
 
 export const fieldTypeData: FieldType[] = [
   {
