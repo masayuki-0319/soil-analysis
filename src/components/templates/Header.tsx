@@ -9,12 +9,12 @@ export const Header: VFC<Props> = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ marginBottom: 10 }}>
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+            Soil Analysis System
+          </Typography>
+          <IconButton edge="end" color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-            土壌診断システム
-          </Typography>
         </Toolbar>
       </AppBar>
     </Box>
