@@ -14,6 +14,7 @@ export const AllKeyNames = [
   'k2o_saturation',
 ] as const;
 export const AnalysisKeyNames = ['ph', 'ec', 'cao', 'mgo', 'k2o', 'p2o5', 'nitro_nn'] as const;
+export const OnlyCaluclate = ['cec'] as const;
 export const SaturationKeyNames = ['cao_saturation', 'mgo_saturation', 'k2o_saturation'] as const;
 
 export const AnalysisItems = {
@@ -65,6 +66,13 @@ export const AnalysisItems = {
     displayName_i18n: '硝酸態窒素',
     fieldName: 'NO3-N ( 硝酸態窒素 )',
     unitName: 'mg / 100g',
+  },
+  cec: {
+    keyName: 'cec',
+    displayName: 'CEC',
+    displayName_i18n: '陽イオン交換容量',
+    fieldName: 'CEC ( 陽イオン交換容量 )',
+    unitName: 'meq / 100g',
   },
   cao_saturation: {
     keyName: 'cao_saturation',

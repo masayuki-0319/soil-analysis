@@ -30,7 +30,7 @@ const SaturationType = ['cao', 'mgo', 'k2o'] as const;
 type SaturationItem = typeof SaturationType[number];
 
 const calc = (
-  keyName: AnalysisKeyName,
+  keyName: Exclude<AnalysisKeyName, 'cec'>,
   currentData: ReportAnalysisResult,
   masterData: FieldMasterData
 ): TableDataSet => {
@@ -38,8 +38,8 @@ const calc = (
   if (keyName === 'cao' || keyName === 'mgo' || keyName === 'k2o') {
     const minLiteral = `${keyName}_saturation_min` as const;
     const maxLiteral = `${keyName}_saturation_max` as const;
-    min = calcAbstSaturation(masterData[minLiteral], keyName);
-    max = calcAbstSaturation(masterData[maxLiteral], keyName);
+    min = calcAbstSaturation(currentData.cec, masterData[minLiteral], keyName);
+    max = calcAbstSaturation(currentData.cec, masterData[maxLiteral], keyName);
     current = currentData[keyName];
   } else if (keyName === 'cao_saturation' || keyName === 'mgo_saturation' || keyName === 'k2o_saturation') {
     const minLiteral = `${keyName}_min` as const;
@@ -54,7 +54,7 @@ const calc = (
     }
     min = masterData[minLiteral];
     max = masterData[maxLiteral];
-    current = calcRateSaturation(currentData[tmpKey], tmpKey);
+    current = calcRateSaturation(currentData.cec, currentData[tmpKey], tmpKey);
   } else if (keyName === 'ph') {
     const minLiteral = `${keyName}_min` as const;
     const maxLiteral = `${keyName}_max` as const;

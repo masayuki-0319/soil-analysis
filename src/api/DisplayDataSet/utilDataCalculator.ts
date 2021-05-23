@@ -9,13 +9,11 @@ const SaturationCoefficient: { [key in SaturationItem]: number } = {
   k2o: 47.1,
 };
 
-export const calcAbstSaturation = (practicalData: number, el: SaturationItem) => {
-  const cec = 20;
+export const calcAbstSaturation = (cec: number, practicalData: number, el: SaturationItem) => {
   return Math.ceil(((practicalData * SaturationCoefficient[el]) / 100) * cec);
 };
 
-export const calcRateSaturation = (practicalData: number, el: SaturationItem) => {
-  const cec = 20;
+export const calcRateSaturation = (cec: number, practicalData: number, el: SaturationItem) => {
   return Math.ceil(((practicalData / SaturationCoefficient[el]) * 100) / cec);
 };
 

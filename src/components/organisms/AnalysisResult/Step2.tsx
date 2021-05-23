@@ -29,6 +29,7 @@ export const Step2: VFC<Props> = memo(() => {
             InputProps={{
               endAdornment: <InputAdornment position="end">{item.unitName}</InputAdornment>,
             }}
+            helperText={item.keyName === 'cec' ? '※ 未入力の場合は 20 として計算されます' : ''}
           />
         </SelectFormControl>
       </Grid>

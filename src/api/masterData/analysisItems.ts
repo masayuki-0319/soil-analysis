@@ -36,6 +36,11 @@ export const analysisItems: AnalysisItem[] = [
     displayName: 'NO3-N ( 硝酸態窒素 )',
     unitName: 'mg / 100g',
   },
+  {
+    keyName: 'cec',
+    displayName: 'CEC ( 陽イオン交換容量 )',
+    unitName: 'meq / 100g',
+  },
 ];
 
 // ref: http://www.hiryou.hokuren.or.jp/analyze/index05.html
