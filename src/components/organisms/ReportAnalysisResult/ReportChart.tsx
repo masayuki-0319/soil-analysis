@@ -29,6 +29,8 @@ export const ReportChart: VFC<Props> = () => {
             <XAxis type="number" domain={[chartMin, chartMax]} allowDataOverflow={true} />
             <YAxis
               dataKey={(obj: typeof argChartData[number]) => AnalysisItems[obj.keyName].fieldName}
+              width={200}
+              tick={{ fontWeight: 'bold' }}
               type="category"
               yAxisId={0}
             />
