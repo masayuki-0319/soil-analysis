@@ -25,16 +25,16 @@ export const ReportTable: VFC<Props> = memo(() => {
   const tableRows = tableDataSet.map((row, index) => (
     <TableRow key={index} style={checkDataStyle(row)}>
       <TableCell component="th" scope="row">
-        {AnalysisItems[row.keyName].displayName}
-      </TableCell>
-      <TableCell component="th" scope="row">
         {AnalysisItems[row.keyName].displayName_i18n}
       </TableCell>
-      <TableCell>{AnalysisItems[row.keyName].unitName}</TableCell>
+      <TableCell component="th" scope="row">
+        {AnalysisItems[row.keyName].displayName}
+      </TableCell>
       <TableCell>{row.current}</TableCell>
       <TableCell>
         {row.min} ~ {row.max}
       </TableCell>
+      <TableCell>{AnalysisItems[row.keyName].unitName}</TableCell>
     </TableRow>
   ));
 
@@ -44,11 +44,12 @@ export const ReportTable: VFC<Props> = memo(() => {
         <Table style={{ width: 'auto' }}>
           <TableHead>
             <TableRow>
-              <TableCell align="center">分析項目</TableCell>
-              <TableCell align="center">分析項目</TableCell>
-              <TableCell align="center">単位</TableCell>
+              <TableCell align="center" colSpan={2}>
+                分析項目
+              </TableCell>
               <TableCell align="center">測定結果</TableCell>
-              <TableCell align="center">基準</TableCell>
+              <TableCell align="center">ほ場の適正範囲</TableCell>
+              <TableCell align="center">単位</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>{tableRows}</TableBody>

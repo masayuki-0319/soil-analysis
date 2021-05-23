@@ -12,12 +12,12 @@ export const ReportChart: VFC<Props> = memo(() => {
   const data = useMemo(() => {
     return bulletChartData.map((chartData, index) => {
       return (
-        <Grid item style={{ width: '800px', height: '100px' }} key={index}>
+        <Grid item style={{ width: '800px', height: '80px' }} key={index}>
           <BulletChart chartData={chartData} />
         </Grid>
       );
     });
   }, [bulletChartData]);
 
-  return <Grid container>{data}</Grid>;
+  return <Grid>{data}</Grid>;
 });

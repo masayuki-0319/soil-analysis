@@ -22,7 +22,7 @@ export const Step3: VFC<Props> = memo(() => {
           <Tab label="チャート" />
         </Tabs>
       </Box>
-      <Box>
+      <Box display="flex" justifyContent="center" m={1} p={1}>
         <Box hidden={tabValue !== 0}>
           <ReportTable />
         </Box>
