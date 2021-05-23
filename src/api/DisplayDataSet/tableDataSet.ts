@@ -1,5 +1,5 @@
 import { fieldMasterData } from '../masterData/fieldMasterData';
-import { AnalysisItems, AnalysisKeyName, AllKeyNames } from '../../types/AnalysisSchema';
+import { AnalysisKeyName, AllKeyNames } from '../../types/AnalysisSchema';
 import { FieldMasterData } from '../../types/FieldMasterData';
 import { ReportAnalysisResult } from '../../types/ReportAnalysisResult';
 import { calcAbstSaturation, calcRateSaturation, findMasterData } from './utilDataCalculator';
@@ -71,7 +71,6 @@ const calc = (
 
   return {
     keyName: keyName,
-    displayName: AnalysisItems[keyName].displayName,
     current: current,
     min: min,
     max: max,

@@ -3,6 +3,7 @@ import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow 
 
 import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult';
 import { TableDataSet } from '../../../types/TableDataSet';
+import { AnalysisItems } from '../../../types/AnalysisSchema';
 
 interface Props {}
 
@@ -24,24 +25,30 @@ export const ReportTable: VFC<Props> = memo(() => {
   const tableRows = tableDataSet.map((row, index) => (
     <TableRow key={index} style={checkDataStyle(row)}>
       <TableCell component="th" scope="row">
-        {row.displayName}
+        {AnalysisItems[row.keyName].displayName}
       </TableCell>
-      <TableCell align="right">{row.current}</TableCell>
-      <TableCell align="right">{row.min}</TableCell>
-      <TableCell align="right">{row.max}</TableCell>
+      <TableCell component="th" scope="row">
+        {AnalysisItems[row.keyName].displayName_i18n}
+      </TableCell>
+      <TableCell>{AnalysisItems[row.keyName].unitName}</TableCell>
+      <TableCell>{row.current}</TableCell>
+      <TableCell>
+        {row.min} ~ {row.max}
+      </TableCell>
     </TableRow>
   ));
 
   return (
     <Grid container>
       <TableContainer>
-        <Table aria-label="customized table">
+        <Table style={{ width: 'auto' }}>
           <TableHead>
             <TableRow>
-              <TableCell>分析項目</TableCell>
-              <TableCell align="right">測定値</TableCell>
-              <TableCell align="right">目標値 ( Min )</TableCell>
-              <TableCell align="right">目標値 ( Max )</TableCell>
+              <TableCell align="center">分析項目</TableCell>
+              <TableCell align="center">分析項目</TableCell>
+              <TableCell align="center">単位</TableCell>
+              <TableCell align="center">測定結果</TableCell>
+              <TableCell align="center">基準</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>{tableRows}</TableBody>

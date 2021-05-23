@@ -1,11 +1,6 @@
-import { AnalysisDisplayName, AnalysisKeyName } from './AnalysisSchema';
+import { TableDataSet } from './TableDataSet';
 
-export interface BulletChartDataSet {
-  keyName: AnalysisKeyName;
-  displayName: AnalysisDisplayName;
-  current: number;
-  min: number;
-  max: number;
+export interface BulletChartDataSet extends TableDataSet {
   chartMin: number;
   chartMax: number;
 }
