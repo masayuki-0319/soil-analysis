@@ -9,13 +9,15 @@ export const AllKeyNames = [
   'k2o',
   'p2o5',
   'nitro_nn',
+  'base_saturation',
   'cao_saturation',
   'mgo_saturation',
   'k2o_saturation',
 ] as const;
 export const AnalysisKeyNames = ['ph', 'ec', 'cao', 'mgo', 'k2o', 'p2o5', 'nitro_nn'] as const;
 export const OnlyCaluclate = ['cec'] as const;
-export const SaturationKeyNames = ['cao_saturation', 'mgo_saturation', 'k2o_saturation'] as const;
+export const SaturationKeyNames = ['base_saturation', 'cao_saturation', 'mgo_saturation', 'k2o_saturation'] as const;
+export type SaturationKeyName = typeof SaturationKeyNames[number];
 
 export const AnalysisItems = {
   ph: {
@@ -73,6 +75,13 @@ export const AnalysisItems = {
     displayName_i18n: '陽イオン交換容量',
     fieldName: 'CEC ( 陽イオン交換容量 )',
     unitName: 'meq / 100g',
+  },
+  base_saturation: {
+    keyName: 'base_saturation',
+    displayName: 'Base Saturation',
+    displayName_i18n: '塩基飽和度',
+    fieldName: 'Base Saturation ( 塩基飽和度 )',
+    unitName: '%',
   },
   cao_saturation: {
     keyName: 'cao_saturation',

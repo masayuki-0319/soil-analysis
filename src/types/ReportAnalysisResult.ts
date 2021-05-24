@@ -10,6 +10,7 @@ export type ReportAnalysisResult = {
   p2o5: number;
   nitro_nn: number;
   cec: number;
+  base_saturation: number;
   cao_saturation: number;
   mgo_saturation: number;
   k2o_saturation: number;

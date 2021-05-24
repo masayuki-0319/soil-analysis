@@ -1,24 +1,20 @@
 import { AnalysisResult } from '../../types/AnalysisResult';
 import { ReportAnalysisResult } from '../../types/ReportAnalysisResult';
+import { calcRateSaturation } from '../displayDataSet/utilDataCalculator';
 
 export const getReportAnalysisResult = (analysisResult: AnalysisResult) => {
+  const cao_saturation = calcRateSaturation(analysisResult.cec, analysisResult['cao'], 'cao');
+  const mgo_saturation = calcRateSaturation(analysisResult.cec, analysisResult['mgo'], 'mgo');
+  const k2o_saturation = calcRateSaturation(analysisResult.cec, analysisResult['k2o'], 'k2o');
+  const base_saturation = cao_saturation + mgo_saturation + k2o_saturation;
+
   const reportAnalysisResult: ReportAnalysisResult = {
-    cao_saturation: calcAbstSaturation(analysisResult.cec, analysisResult['cao'], 'cao'),
-    mgo_saturation: calcAbstSaturation(analysisResult.cec, analysisResult['mgo'], 'mgo'),
-    k2o_saturation: calcAbstSaturation(analysisResult.cec, analysisResult['k2o'], 'k2o'),
+    base_saturation: base_saturation,
+    cao_saturation: cao_saturation,
+    mgo_saturation: mgo_saturation,
+    k2o_saturation: k2o_saturation,
     ...analysisResult,
   };
+
   return reportAnalysisResult;
-};
-
-const SaturationItems = ['cao', 'mgo', 'k2o'] as const;
-type SaturationType = typeof SaturationItems[number];
-
-const SaturationCoefficient: { [key in SaturationType]: number } = {
-  cao: 28.04,
-  mgo: 20.15,
-  k2o: 47.1,
-};
-const calcAbstSaturation = (cec: number, practicalData: number, el: SaturationType) => {
-  return Math.ceil(((practicalData * SaturationCoefficient[el]) / 100) * cec);
 };
