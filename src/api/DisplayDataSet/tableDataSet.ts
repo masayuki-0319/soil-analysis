@@ -38,24 +38,6 @@ const calc = (
     min = calcAbstSaturation(currentData.cec, masterData[minLiteral], keyName);
     max = calcAbstSaturation(currentData.cec, masterData[maxLiteral], keyName);
     current = currentData[keyName];
-  } else if (keyName === 'cao_saturation' || keyName === 'mgo_saturation' || keyName === 'k2o_saturation') {
-    const minLiteral = `${keyName}_min` as const;
-    const maxLiteral = `${keyName}_max` as const;
-    min = masterData[minLiteral];
-    max = masterData[maxLiteral];
-    current = currentData[keyName];
-  } else if (keyName === 'base_saturation') {
-    const minLiteral = `${keyName}_min` as const;
-    const maxLiteral = `${keyName}_max` as const;
-    min = masterData[minLiteral];
-    max = masterData[maxLiteral];
-    current = currentData[keyName];
-  } else if (keyName === 'ph') {
-    const minLiteral = `${keyName}_min` as const;
-    const maxLiteral = `${keyName}_max` as const;
-    min = masterData[minLiteral];
-    max = masterData[maxLiteral];
-    current = currentData[keyName];
   } else {
     const minLiteral = `${keyName}_min` as const;
     const maxLiteral = `${keyName}_max` as const;
