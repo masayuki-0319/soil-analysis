@@ -10,11 +10,11 @@ const SaturationCoefficient: { [key in SaturationItem]: number } = {
 };
 
 export const calcAbstSaturation = (cec: number, practicalData: number, el: SaturationItem) => {
-  return Math.ceil(((practicalData * SaturationCoefficient[el]) / 100) * cec);
+  return Math.ceil(((practicalData * SaturationCoefficient[el]) / 100) * cec * 10) / 10;
 };
 
 export const calcRateSaturation = (cec: number, practicalData: number, el: SaturationItem) => {
-  return Math.ceil(((practicalData / SaturationCoefficient[el]) * 100) / cec);
+  return Math.ceil((((practicalData / SaturationCoefficient[el]) * 100) / cec) * 10) / 10;
 };
 
 export const findMasterData = (fieldTypeId: number, masterData: FieldMasterData[]): FieldMasterData => {

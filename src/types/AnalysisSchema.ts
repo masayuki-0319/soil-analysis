@@ -13,11 +13,15 @@ export const AllKeyNames = [
   'cao_saturation',
   'mgo_saturation',
   'k2o_saturation',
+  'ratio_mgo_k2o',
+  'ratio_cao_mgo',
 ] as const;
 export const AnalysisKeyNames = ['ph', 'ec', 'cao', 'mgo', 'k2o', 'p2o5', 'nitro_nn'] as const;
 export const OnlyCaluclate = ['cec'] as const;
 export const SaturationKeyNames = ['base_saturation', 'cao_saturation', 'mgo_saturation', 'k2o_saturation'] as const;
 export type SaturationKeyName = typeof SaturationKeyNames[number];
+export const RateKeyNames = ['ratio_mgo_k2o', 'ratio_cao_mgo'] as const;
+export type RateKeyName = typeof RateKeyNames[number];
 
 export const AnalysisItems = {
   ph: {
@@ -101,7 +105,21 @@ export const AnalysisItems = {
     keyName: 'k2o_saturation',
     displayName: 'K2O Saturation',
     displayName_i18n: '加里飽和度',
-    fieldName: 'pHK2O Saturation ( 加里飽和度 )',
+    fieldName: 'K2O Saturation ( 加里飽和度 )',
+    unitName: '%',
+  },
+  ratio_mgo_k2o: {
+    keyName: 'ratio_mgo_k2o',
+    displayName: 'MgO / K20',
+    displayName_i18n: '苦土加里比',
+    fieldName: 'MgO / K2O ( 苦土加里比 )',
+    unitName: '%',
+  },
+  ratio_cao_mgo: {
+    keyName: 'ratio_cao_mgo',
+    displayName: 'CaO / MgO',
+    displayName_i18n: '石灰苦土比',
+    fieldName: 'CaO / MgO ( 石灰苦土比 )',
     unitName: '%',
   },
 } as const;

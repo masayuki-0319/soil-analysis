@@ -14,4 +14,6 @@ export type ReportAnalysisResult = {
   cao_saturation: number;
   mgo_saturation: number;
   k2o_saturation: number;
+  ratio_mgo_k2o: number;
+  ratio_cao_mgo: number;
 };

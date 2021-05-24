@@ -1,7 +1,7 @@
 import { ReportAnalysisResult } from './ReportAnalysisResult';
-import { AnalysisKeyName, SaturationKeyName } from './AnalysisSchema';
+import { AnalysisKeyName, RateKeyName, SaturationKeyName } from './AnalysisSchema';
 
-type TmpType = Exclude<AnalysisKeyName, SaturationKeyName>;
+type TmpType = Exclude<AnalysisKeyName, SaturationKeyName | RateKeyName>;
 
 // MEMO: 分析機器による解析結果
 export type AnalysisResult = Pick<ReportAnalysisResult, 'fieldTypeId' | 'soilTypeId' | TmpType>;
