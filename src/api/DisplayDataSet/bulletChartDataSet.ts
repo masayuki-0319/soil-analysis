@@ -2,20 +2,17 @@ import { BulletChartDataSet } from '../../types/BulletChartDataSet';
 import { TableDataSet } from '../../types/TableDataSet';
 
 export const getChartDataSet = (tableDataSet: TableDataSet[]): BulletChartDataSet[] => {
-  const bulletChartDataSet = displayData(tableDataSet);
+  const bulletChartDataSet = getChartData(tableDataSet);
 
   return bulletChartDataSet;
 };
 
-const displayData = (tableDataSet: TableDataSet[]): BulletChartDataSet[] => {
-  return getChartData(tableDataSet);
-};
-
-const getChartData = (tableDataSet: TableDataSet[]) => {
-  const BulletChartDataSet = tableDataSet.map((tableData) => {
+const getChartData = (tableDataSet: TableDataSet[]): BulletChartDataSet[] => {
+  const bulletChartDataSet = tableDataSet.map((tableData) => {
     return calc(tableData);
   });
-  return BulletChartDataSet;
+
+  return bulletChartDataSet;
 };
 
 const calc = (tableDataSet: TableDataSet): BulletChartDataSet => {
