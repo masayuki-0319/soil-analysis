@@ -1,6 +1,4 @@
-import { FieldType } from '../../types/FieldType';
-
-export const fieldTypeData: FieldType[] = [
+export const fieldTypeData = [
   {
     id: 1,
     name: '露地畑',
