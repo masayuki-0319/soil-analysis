@@ -1,7 +1,7 @@
 import { atom, useRecoilState } from 'recoil';
-import { AnalysisResult } from '../types/AnalysisResult';
+import { InputAnalysisData } from '../types/InputAnalysisData';
 
-const initialState: AnalysisResult = {
+const initialState: InputAnalysisData = {
   fieldTypeId: 1,
   soilTypeId: 1,
   ph: 5.3,
@@ -14,7 +14,7 @@ const initialState: AnalysisResult = {
   cec: 20,
 };
 
-const analysisResultState = atom<AnalysisResult>({
+const analysisResultState = atom<InputAnalysisData>({
   key: 'analysisResultStete',
   default: initialState,
 });

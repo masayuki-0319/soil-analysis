@@ -1,8 +1,8 @@
-import { AnalysisResult } from '../../types/AnalysisResult';
+import { InputAnalysisData } from '../../types/InputAnalysisData';
 import { ReportAnalysisResult } from '../../types/ReportAnalysisResult';
 import { calcRateSaturation } from '../displayDataSet/utilDataCalculator';
 
-export const getReportAnalysisResult = (analysisResult: AnalysisResult) => {
+export const getReportAnalysisResult = (analysisResult: InputAnalysisData) => {
   const cao_saturation = calcRateSaturation(analysisResult.cec, analysisResult['cao'], 'cao');
   const mgo_saturation = calcRateSaturation(analysisResult.cec, analysisResult['mgo'], 'mgo');
   const k2o_saturation = calcRateSaturation(analysisResult.cec, analysisResult['k2o'], 'k2o');
