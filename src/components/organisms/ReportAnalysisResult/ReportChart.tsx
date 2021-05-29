@@ -4,9 +4,7 @@ import { Grid } from '@material-ui/core';
 import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult';
 import { BulletChart } from '../../molecules/charts/BulletChart';
 
-interface Props {}
-
-export const ReportChart: VFC<Props> = memo(() => {
+export const ReportChart: VFC = memo(() => {
   const { bulletChartData } = useReportAnalysisResult();
 
   const data = useMemo(() => {

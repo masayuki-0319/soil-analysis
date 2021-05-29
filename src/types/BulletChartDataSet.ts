@@ -1,6 +1,6 @@
 import { TableDataSet } from './TableDataSet';
 
-export interface BulletChartDataSet extends TableDataSet {
+export type BulletChartDataSet = TableDataSet & {
   chartMin: number;
   chartMax: number;
-}
+};

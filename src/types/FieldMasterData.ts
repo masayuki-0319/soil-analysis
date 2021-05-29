@@ -1,4 +1,4 @@
-export interface FieldMasterData {
+export type FieldMasterData = {
   id: number;
   fieldTypeId: number;
   ph_min: number;
@@ -24,4 +24,4 @@ export interface FieldMasterData {
   sio2_max?: number;
   ratio_cao_mgo_min: number;
   ratio_cao_mgo_max: number;
-}
+};

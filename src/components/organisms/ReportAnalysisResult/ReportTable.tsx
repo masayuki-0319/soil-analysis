@@ -5,9 +5,7 @@ import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult'
 import { TableDataSet } from '../../../types/TableDataSet';
 import { AnalysisItems } from '../../../types/AnalysisSchema';
 
-interface Props {}
-
-export const ReportTable: VFC<Props> = memo(() => {
+export const ReportTable: VFC = memo(() => {
   const { tableDataSet } = useReportAnalysisResult();
 
   const checkDataStyle = (displayData: TableDataSet): React.CSSProperties => {

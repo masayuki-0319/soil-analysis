@@ -1,9 +1,9 @@
 import { ReactNode, VFC } from 'react';
 import { FormControl, makeStyles } from '@material-ui/core';
 
-interface Props {
+type Props = {
   children: ReactNode;
-}
+};
 
 // TODO: CSS は atoms に設定しない方が良いらしい
 const useStyles = makeStyles(() => ({

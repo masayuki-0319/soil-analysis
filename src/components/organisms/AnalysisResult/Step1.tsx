@@ -7,9 +7,7 @@ import { SelectOptions } from '../../molecules/SelectOptions';
 import { useAnalysisResult } from '../../../store/analysisResultState';
 import { useAnalysisItemSelectOptions } from '../../../hooks/useAnalysisItemSelectOptions';
 
-interface Props {}
-
-export const Step1: VFC<Props> = memo(() => {
+export const Step1: VFC = memo(() => {
   const { analysisResult, setAnalysisResult } = useAnalysisResult();
   const { fieldTypeData, soilTypeData } = useAnalysisItemSelectOptions();
 

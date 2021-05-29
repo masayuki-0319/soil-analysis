@@ -4,9 +4,9 @@ import { BarChart, Bar, XAxis, YAxis } from 'recharts';
 import { BulletChartDataSet } from '../../../types/BulletChartDataSet';
 import { AnalysisItems } from '../../../types/AnalysisSchema';
 
-interface Props {
+type Props = {
   chartData: BulletChartDataSet;
-}
+};
 
 export const BulletChart: VFC<Props> = (props) => {
   const { chartData } = props;

@@ -1,8 +1,8 @@
 import { AnalysisKeyName } from './AnalysisSchema';
 
-export interface TableDataSet {
+export type TableDataSet = {
   keyName: AnalysisKeyName;
   current: number;
   min: number;
   max: number;
-}
+};

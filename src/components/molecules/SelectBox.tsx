@@ -3,7 +3,7 @@ import { InputLabel, Select, OutlinedInput } from '@material-ui/core';
 
 import { SelectFormControl } from './SelectFormControl';
 
-interface Props {
+type Props = {
   children: JSX.Element[];
   displayName: string;
   keyName: string;

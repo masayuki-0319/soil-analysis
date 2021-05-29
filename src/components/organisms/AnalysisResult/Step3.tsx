@@ -4,9 +4,7 @@ import { ReportTable } from '../ReportAnalysisResult/ReportTable';
 import { ReportChart } from '../ReportAnalysisResult/ReportChart';
 import { PaperInformation } from '../../molecules/PaperInformation';
 
-interface Props {}
-
-export const Step3: VFC<Props> = memo(() => {
+export const Step3: VFC = memo(() => {
   const [tabValue, setTabValue] = useState(0);
 
   const handleChange = (_: any, newValue: number) => {

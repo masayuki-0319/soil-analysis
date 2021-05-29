@@ -6,9 +6,7 @@ import { analysisItems } from '../../../api/masterData/analysisItems';
 import { SelectFormControl } from '../../molecules/SelectFormControl';
 import { PaperInformation } from '../../molecules/PaperInformation';
 
-interface Props {}
-
-export const Step2: VFC<Props> = memo(() => {
+export const Step2: VFC = memo(() => {
   const { analysisResult, setAnalysisResult } = useAnalysisResult();
 
   const handleChange = (e: React.ChangeEvent<{ name: string; value: string }>) => {

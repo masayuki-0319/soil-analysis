@@ -2,9 +2,7 @@ import { VFC } from 'react';
 import { AppBar, Box, Toolbar, Typography, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
-interface Props {}
-
-export const Header: VFC<Props> = () => {
+export const Header: VFC = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ marginBottom: 10 }}>

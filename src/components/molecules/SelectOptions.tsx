@@ -1,10 +1,10 @@
 import { MenuItem } from '@material-ui/core';
 
-interface Props {
+type Props = {
   options: Option[];
   nameKey: string;
   valueKey: string;
-}
+};
 
 type Option = {
   [index: string]: string | number;
