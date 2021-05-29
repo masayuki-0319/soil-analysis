@@ -1,4 +1,13 @@
-import { AnalysisItem } from '../../types/AnalysisItem';
+import { AnalysisKeyName, SaturationKeyName, RateKeyName, AnalysisItems } from '../../types/AnalysisSchema';
+
+type KeyName = Exclude<AnalysisKeyName, SaturationKeyName | RateKeyName>;
+type DisplayName = typeof AnalysisItems[KeyName]['fieldName'];
+type UnitName = typeof AnalysisItems[KeyName]['unitName'];
+type AnalysisItem = {
+  keyName: KeyName;
+  displayName: DisplayName;
+  unitName: UnitName;
+};
 
 export const analysisItems: AnalysisItem[] = [
   {
