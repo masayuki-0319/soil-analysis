@@ -1,6 +1,6 @@
 import { InputAnalysisData } from '../types/InputAnalysisData';
 import { ReportAnalysisData } from '../types/ReportAnalysisData';
-import { getReportAnalysisData } from './reportAnalysisResult/reportAnalysisResult';
+import { getReportAnalysisData } from './reportAnalysisData/reportAnalysisData';
 import { getTableDataSet } from './displayDataSet/tableDataSet';
 import { getChartDataSet } from './displayDataSet/bulletChartDataSet';
 
