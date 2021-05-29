@@ -4,15 +4,15 @@ import { Grid, Paper } from '@material-ui/core';
 import { PaperInformation } from '../../molecules/PaperInformation';
 import { SelectBox } from '../../molecules/SelectBox';
 import { SelectOptions } from '../../molecules/SelectOptions';
-import { useAnalysisResult } from '../../../store/analysisResultState';
+import { useInputAnalysisData } from '../../../store/inputAnalysisDataState';
 import { useAnalysisItemSelectOptions } from '../../../hooks/useAnalysisItemSelectOptions';
 
 export const Step1: VFC = memo(() => {
-  const { analysisResult, setAnalysisResult } = useAnalysisResult();
+  const { inputAnalysisData, setInputAnalysisData } = useInputAnalysisData();
   const { fieldTypeData, soilTypeData } = useAnalysisItemSelectOptions();
 
   const handleChange = (e: React.ChangeEvent<{ name: string; value: string }>) => {
-    setAnalysisResult({ ...analysisResult, [e.target.name]: Number(e.target.value) });
+    setInputAnalysisData({ ...inputAnalysisData, [e.target.name]: Number(e.target.value) });
   };
 
   return (
@@ -24,7 +24,7 @@ export const Step1: VFC = memo(() => {
             <SelectBox
               displayName="ほ場の種類"
               keyName="fieldTypeId"
-              defaultValue={analysisResult.fieldTypeId}
+              defaultValue={inputAnalysisData.fieldTypeId}
               onChange={handleChange}
             >
               {SelectOptions({ options: fieldTypeData, nameKey: 'name', valueKey: 'id' })}
@@ -34,7 +34,7 @@ export const Step1: VFC = memo(() => {
             <SelectBox
               displayName="土壌の種類"
               keyName="soilTypeId"
-              defaultValue={analysisResult.soilTypeId}
+              defaultValue={inputAnalysisData.soilTypeId}
               onChange={handleChange}
             >
               {SelectOptions({ options: soilTypeData, nameKey: 'name', valueKey: 'id' })}

@@ -1,16 +1,16 @@
 import React, { memo, VFC } from 'react';
 import { Grid, InputAdornment, Paper, TextField } from '@material-ui/core';
 
-import { useAnalysisResult } from '../../../store/analysisResultState';
+import { useInputAnalysisData } from '../../../store/inputAnalysisDataState';
 import { analysisItems } from '../../../api/masterData/analysisItems';
 import { SelectFormControl } from '../../molecules/SelectFormControl';
 import { PaperInformation } from '../../molecules/PaperInformation';
 
 export const Step2: VFC = memo(() => {
-  const { analysisResult, setAnalysisResult } = useAnalysisResult();
+  const { inputAnalysisData, setInputAnalysisData } = useInputAnalysisData();
 
   const handleChange = (e: React.ChangeEvent<{ name: string; value: string }>) => {
-    setAnalysisResult({ ...analysisResult, [e.target.name]: Number(e.target.value) });
+    setInputAnalysisData({ ...inputAnalysisData, [e.target.name]: Number(e.target.value) });
   };
 
   const fields = analysisItems.map((item, index) => {
@@ -22,7 +22,7 @@ export const Step2: VFC = memo(() => {
             type="number"
             onChange={handleChange}
             name={item.keyName}
-            value={analysisResult[item.keyName]}
+            value={inputAnalysisData[item.keyName]}
             label={item.displayName}
             InputProps={{
               endAdornment: <InputAdornment position="end">{item.unitName}</InputAdornment>,

@@ -14,16 +14,16 @@ const initialState: InputAnalysisData = {
   cec: 20,
 };
 
-const analysisResultState = atom<InputAnalysisData>({
-  key: 'analysisResultStete',
+const inputAnalysisDataState = atom<InputAnalysisData>({
+  key: 'inputAnalysisDataState',
   default: initialState,
 });
 
-export const useAnalysisResult = () => {
-  const [analysisResult, setAnalysisResult] = useRecoilState(analysisResultState);
+export const useInputAnalysisData = () => {
+  const [inputAnalysisData, setInputAnalysisData] = useRecoilState(inputAnalysisDataState);
 
   return {
-    analysisResult: analysisResult,
-    setAnalysisResult: setAnalysisResult,
+    inputAnalysisData: inputAnalysisData,
+    setInputAnalysisData: setInputAnalysisData,
   };
 };
