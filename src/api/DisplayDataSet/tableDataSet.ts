@@ -1,5 +1,5 @@
 import { fieldMasterData } from '../masterData/fieldMasterData';
-import { AnalysisKeyName, AllKeyNames } from '../../types/AnalysisSchema';
+import { DataSetKeyName, DataSetKeyNames } from '../../types/AnalysisSchema';
 import { FieldMasterData } from '../../types/FieldMasterData';
 import { ReportAnalysisData } from '../../types/ReportAnalysisData';
 import { calcAbstSaturation, findMasterData } from './utilDataCalculator';
@@ -17,18 +17,14 @@ const getTableData = (current: ReportAnalysisData) => {
 
   const standardData = findMasterData(fieldTypeId, fieldMasterData);
 
-  const tableDataSet = AllKeyNames.map((keyName) => {
+  const tableDataSet = DataSetKeyNames.map((keyName) => {
     return calc(keyName, current, standardData);
   });
 
   return tableDataSet;
 };
 
-const calc = (
-  keyName: Exclude<AnalysisKeyName, 'cec'>,
-  currentData: ReportAnalysisData,
-  masterData: FieldMasterData
-): TableDataSet => {
+const calc = (keyName: DataSetKeyName, currentData: ReportAnalysisData, masterData: FieldMasterData): TableDataSet => {
   let min: number, max: number, current: number;
 
   if (keyName === 'cao' || keyName === 'mgo' || keyName === 'k2o') {

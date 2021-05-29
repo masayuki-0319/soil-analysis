@@ -1,7 +1,5 @@
 export type AnalysisKeyName = keyof typeof AnalysisItems;
-export type AnalysisDisplayName = typeof AnalysisItems[AnalysisKeyName]['displayName'];
-export type AnalysisFieldName = typeof AnalysisItems[AnalysisKeyName]['fieldName'];
-export const AllKeyNames = [
+export const DataSetKeyNames = [
   'ph',
   'ec',
   'cao',
@@ -16,12 +14,9 @@ export const AllKeyNames = [
   'ratio_mgo_k2o',
   'ratio_cao_mgo',
 ] as const;
-export const AnalysisKeyNames = ['ph', 'ec', 'cao', 'mgo', 'k2o', 'p2o5', 'nitro_nn'] as const;
-export const OnlyCaluclate = ['cec'] as const;
-export const SaturationKeyNames = ['base_saturation', 'cao_saturation', 'mgo_saturation', 'k2o_saturation'] as const;
-export type SaturationKeyName = typeof SaturationKeyNames[number];
-export const RateKeyNames = ['ratio_mgo_k2o', 'ratio_cao_mgo'] as const;
-export type RateKeyName = typeof RateKeyNames[number];
+export type DataSetKeyName = typeof DataSetKeyNames[number];
+export type SaturationKeyName = ['base_saturation', 'cao_saturation', 'mgo_saturation', 'k2o_saturation'][number];
+export type RateKeyName = ['ratio_mgo_k2o', 'ratio_cao_mgo'][number];
 
 export const AnalysisItems = {
   ph: {

@@ -42,6 +42,3 @@ export const analysisItems: AnalysisItem[] = [
     unitName: 'meq / 100g',
   },
 ];
-
-// ref: http://www.hiryou.hokuren.or.jp/analyze/index05.html
-// ref: https://www.researchgate.net/figure/Multiple-regression-analysis-for-soil-nitrate-NN-ammonium-AN-and-total-nitrogen-TN_tbl2_332069893

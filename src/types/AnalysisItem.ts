@@ -1,15 +1,14 @@
-import { AnalysisFieldName, AnalysisKeyName, SaturationKeyName, RateKeyName } from './AnalysisSchema';
+import { AnalysisKeyName, SaturationKeyName, RateKeyName, AnalysisItems } from './AnalysisSchema';
+
+type KeyName = Exclude<AnalysisKeyName, SaturationKeyName | RateKeyName>;
+type DisplayName = typeof AnalysisItems[KeyName]['fieldName'];
+type UnitName = typeof AnalysisItems[KeyName]['unitName'];
 
 export type AnalysisItem = {
-  keyName: Exclude<AnalysisKeyName, SaturationKeyName | RateKeyName>;
-  displayName: Exclude<
-    AnalysisFieldName,
-    | 'Base Saturation ( 塩基飽和度 )'
-    | 'CaO Saturation ( 石灰飽和度 )'
-    | 'MgO Saturation ( 苦土飽和度 )'
-    | 'K2O Saturation ( 加里飽和度 )'
-    | 'MgO / K2O ( 苦土加里比 )'
-    | 'CaO / MgO ( 石灰苦土比 )'
-  >;
-  unitName: string | null;
+  keyName: KeyName;
+  displayName: DisplayName;
+  unitName: UnitName;
 };
+
+// ref: http://www.hiryou.hokuren.or.jp/analyze/index05.html
+// ref: https://www.researchgate.net/figure/Multiple-regression-analysis-for-soil-nitrate-NN-ammonium-AN-and-total-nitrogen-TN_tbl2_332069893
