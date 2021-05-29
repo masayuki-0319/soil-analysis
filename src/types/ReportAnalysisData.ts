@@ -1,5 +1,4 @@
-// MEMO: 分析機器による数値を元に導出した定点データ
-export type ReportAnalysisResult = {
+export type ReportAnalysisData = {
   fieldTypeId: number;
   soilTypeId: number;
   ph: number;

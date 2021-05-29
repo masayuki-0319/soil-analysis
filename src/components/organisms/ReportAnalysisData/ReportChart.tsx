@@ -1,11 +1,11 @@
 import { VFC, memo, useMemo } from 'react';
 import { Grid } from '@material-ui/core';
 
-import { useReportAnalysisResult } from '../../../hooks/useReportAnalysisResult';
+import { useReportAnalysisData } from '../../../hooks/useReportAnalysisData';
 import { BulletChart } from '../../molecules/charts/BulletChart';
 
 export const ReportChart: VFC = memo(() => {
-  const { bulletChartData } = useReportAnalysisResult();
+  const { bulletChartData } = useReportAnalysisData();
 
   const data = useMemo(() => {
     return bulletChartData.map((chartData, index) => {

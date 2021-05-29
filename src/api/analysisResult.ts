@@ -1,6 +1,6 @@
 import { InputAnalysisData } from '../types/InputAnalysisData';
-import { ReportAnalysisResult } from '../types/ReportAnalysisResult';
-import { getReportAnalysisResult } from './reportAnalysisResult/reportAnalysisResult';
+import { ReportAnalysisData } from '../types/ReportAnalysisData';
+import { getReportAnalysisData } from './reportAnalysisResult/reportAnalysisResult';
 import { getTableDataSet } from './displayDataSet/tableDataSet';
 import { getChartDataSet } from './displayDataSet/bulletChartDataSet';
 
@@ -10,7 +10,7 @@ export const post = (analysisResult: InputAnalysisData) => {
 };
 
 const getBulletChartData = (current: InputAnalysisData) => {
-  const reportAnalysisResult: ReportAnalysisResult = getReportAnalysisResult(current);
+  const reportAnalysisResult: ReportAnalysisData = getReportAnalysisData(current);
 
   const tableData = getTableDataSet(reportAnalysisResult);
   const chartData = getChartDataSet(tableData);

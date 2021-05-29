@@ -1,17 +1,17 @@
 import { fieldMasterData } from '../masterData/fieldMasterData';
 import { AnalysisKeyName, AllKeyNames } from '../../types/AnalysisSchema';
 import { FieldMasterData } from '../../types/FieldMasterData';
-import { ReportAnalysisResult } from '../../types/ReportAnalysisResult';
+import { ReportAnalysisData } from '../../types/ReportAnalysisData';
 import { calcAbstSaturation, findMasterData } from './utilDataCalculator';
 import { TableDataSet } from '../../types/TableDataSet';
 
-export const getTableDataSet = (reportAnalysisResult: ReportAnalysisResult): TableDataSet[] => {
+export const getTableDataSet = (reportAnalysisResult: ReportAnalysisData): TableDataSet[] => {
   const tableDataSet = getTableData(reportAnalysisResult);
 
   return tableDataSet;
 };
 
-const getTableData = (current: ReportAnalysisResult) => {
+const getTableData = (current: ReportAnalysisData) => {
   const { fieldTypeId, soilTypeId } = current;
   console.log(soilTypeId);
 
@@ -26,7 +26,7 @@ const getTableData = (current: ReportAnalysisResult) => {
 
 const calc = (
   keyName: Exclude<AnalysisKeyName, 'cec'>,
-  currentData: ReportAnalysisResult,
+  currentData: ReportAnalysisData,
   masterData: FieldMasterData
 ): TableDataSet => {
   let min: number, max: number, current: number;
