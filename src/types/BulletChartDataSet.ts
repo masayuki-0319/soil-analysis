@@ -1,6 +1,6 @@
-import { TableDataSet } from './TableDataSet';
+import { DataSet } from './DataSet';
 
-export type BulletChartDataSet = TableDataSet & {
+export type BulletChartDataSet = DataSet & {
   chartMin: number;
   chartMax: number;
 };
