@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import { BarChart, Bar, XAxis, YAxis } from 'recharts';
 
 import { BulletChartDataSet } from '../../../types/BulletChartDataSet';
-import { AnalysisItems } from '../../../types/AnalysisSchema';
+import { AnalysisItems } from '../../../types/AnalysisDataSchema';
 
 type Props = {
   chartData: BulletChartDataSet;

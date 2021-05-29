@@ -1,4 +1,4 @@
-import { DataSetKeyName } from './AnalysisSchema';
+import { DataSetKeyName } from './AnalysisDataSchema';
 
 export type DataSet = {
   keyName: DataSetKeyName;

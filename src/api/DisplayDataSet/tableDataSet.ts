@@ -1,5 +1,5 @@
 import { fieldMasterData } from '../masterData/fieldMasterData';
-import { DataSetKeyName, DataSetKeyNames } from '../../types/AnalysisSchema';
+import { DataSetKeyName, DataSetKeyNames } from '../../types/AnalysisDataSchema';
 import { FieldMasterData } from '../../types/FieldMasterData';
 import { ReportAnalysisData } from '../../types/ReportAnalysisData';
 import { calcAbstSaturation, findMasterData } from './utilDataCalculator';

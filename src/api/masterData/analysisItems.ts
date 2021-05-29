@@ -1,4 +1,4 @@
-import { AnalysisKeyName, SaturationKeyName, RateKeyName, AnalysisItems } from '../../types/AnalysisSchema';
+import { AnalysisKeyName, SaturationKeyName, RateKeyName, AnalysisItems } from '../../types/AnalysisDataSchema';
 
 type KeyName = Exclude<AnalysisKeyName, SaturationKeyName | RateKeyName>;
 type DisplayName = typeof AnalysisItems[KeyName]['fieldName'];

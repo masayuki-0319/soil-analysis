@@ -3,7 +3,7 @@ import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow 
 
 import { useReportAnalysisData } from '../../../hooks/useReportAnalysisData';
 import { TableDataSet } from '../../../types/TableDataSet';
-import { AnalysisItems } from '../../../types/AnalysisSchema';
+import { AnalysisItems } from '../../../types/AnalysisDataSchema';
 
 export const ReportTable: VFC = memo(() => {
   const { tableDataSet } = useReportAnalysisData();
