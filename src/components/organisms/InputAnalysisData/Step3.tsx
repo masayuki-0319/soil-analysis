@@ -4,7 +4,17 @@ import { ReportChart } from '../ReportAnalysisData/ReportChart';
 import { ReportTable } from '../ReportAnalysisData/ReportTable';
 import { PaperInformation } from '../../molecules/PaperInformation';
 
-export const Step3: VFC = memo(() => {
+import { useDataSet } from '../../../hooks/useDataSet';
+import { ReportAnalysisData } from '../../../types/ReportAnalysisData';
+
+type Props = {
+  reportAnalysisData: ReportAnalysisData;
+};
+
+export const Step3: VFC<Props> = memo((props) => {
+  const { reportAnalysisData } = props;
+  const { tableDataSet, bulletChartData } = useDataSet(reportAnalysisData);
+
   const [tabValue, setTabValue] = useState(0);
 
   const handleChange = (_: any, newValue: number) => {
@@ -22,10 +32,10 @@ export const Step3: VFC = memo(() => {
       </Box>
       <Box display="flex" justifyContent="center" m={1} p={1}>
         <Box hidden={tabValue !== 0}>
-          <ReportTable />
+          <ReportTable tableDataSet={tableDataSet} />
         </Box>
         <Box hidden={tabValue !== 1}>
-          <ReportChart />
+          <ReportChart bulletChartData={bulletChartData} />
         </Box>
       </Box>
     </Paper>

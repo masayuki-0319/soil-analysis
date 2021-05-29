@@ -1,12 +1,15 @@
 import { memo, VFC } from 'react';
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
-import { useReportAnalysisData } from '../../../hooks/useReportAnalysisData';
 import { TableDataSet } from '../../../types/TableDataSet';
 import { AnalysisItems } from '../../../types/AnalysisDataSchema';
 
-export const ReportTable: VFC = memo(() => {
-  const { tableDataSet } = useReportAnalysisData();
+type Props = {
+  tableDataSet: TableDataSet[];
+};
+
+export const ReportTable: VFC<Props> = memo((props) => {
+  const { tableDataSet } = props;
 
   const checkDataStyle = (displayData: TableDataSet): React.CSSProperties => {
     const { current, min, max } = displayData;
