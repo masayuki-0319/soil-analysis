@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import { post } from '../api/analysisResult';
+import { post } from '../api/analysisData';
+import { get } from '../api/dataSet';
+
 import { useInputAnalysisData } from '../store/inputAnalysisDataState';
 import { BulletChartDataSet } from '../types/BulletChartDataSet';
 import { ReportAnalysisData } from '../types/ReportAnalysisData';
@@ -14,7 +16,8 @@ export const useReportAnalysisData = () => {
   const [bulletChartData, setBulletChartData] = useState<BulletChartDataSet[]>([]);
 
   useEffect(() => {
-    const { reportAnalysisData, tableData, chartData } = post(inputAnalysisData);
+    const { reportAnalysisData } = post(inputAnalysisData);
+    const { tableData, chartData } = get(reportAnalysisData);
 
     setReportAnalysisData(reportAnalysisData);
     setBulletChartData(chartData);
