@@ -1,6 +1,6 @@
 import { InputAnalysisData } from '../../types/InputAnalysisData';
 import { ReportAnalysisData } from '../../types/ReportAnalysisData';
-import { calcRateSaturation } from '../displayDataSet/utilDataCalculator';
+import { calcRateSaturation } from '../dataSet/utilDataCalculator';
 
 export const getReportAnalysisData = (analysisResult: InputAnalysisData) => {
   const cao_saturation = calcRateSaturation(analysisResult.cec, analysisResult['cao'], 'cao');
