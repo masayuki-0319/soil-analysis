@@ -1,7 +1,7 @@
 import { memo, useState, VFC } from 'react';
 import { Box, Tab, Tabs, Paper } from '@material-ui/core';
-import { ReportChart } from '../ReportAnalysisData/ReportChart';
-import { ReportTable } from '../ReportAnalysisData/ReportTable';
+import { ReportChart } from '../../organisms/ReportAnalysisData/ReportChart';
+import { ReportTable } from '../../organisms/ReportAnalysisData/ReportTable';
 import { PaperInformation } from '../../molecules/PaperInformation';
 
 import { useDataSet } from '../../../hooks/useDataSet';
