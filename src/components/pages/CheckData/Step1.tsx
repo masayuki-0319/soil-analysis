@@ -2,14 +2,12 @@ import React, { memo, VFC } from 'react';
 import { Grid, Paper } from '@material-ui/core';
 
 import { PaperInformation } from '../../molecules/PaperInformation';
-import { SelectBox } from '../../molecules/SelectBox';
-import { SelectOptions } from '../../molecules/SelectOptions';
 import { useInputAnalysisData } from '../../../store/inputAnalysisDataState';
-import { useAnalysisItemSelectOptions } from '../../../hooks/useAnalysisItemSelectOptions';
+import { SelectFieldTypeId } from '../../organisms/InputAnalysisData/SelectFieldTypeId';
+import { SelectSoilTypeId } from '../../organisms/InputAnalysisData/SelectSoilTypeId';
 
 export const Step1: VFC = memo(() => {
   const { inputAnalysisData, setInputAnalysisData } = useInputAnalysisData();
-  const { fieldTypeData, soilTypeData } = useAnalysisItemSelectOptions();
 
   const handleChange = (e: React.ChangeEvent<{ name: string; value: string }>) => {
     setInputAnalysisData({ ...inputAnalysisData, [e.target.name]: Number(e.target.value) });
@@ -21,24 +19,10 @@ export const Step1: VFC = memo(() => {
         <PaperInformation title="ほ場データ入力" description="※ ほ場の基本データを入力してください。" />
         <Grid item container>
           <Grid item md={6} xs={12} style={{ marginBottom: 12 }}>
-            <SelectBox
-              displayName="ほ場の種類"
-              keyName="fieldTypeId"
-              defaultValue={inputAnalysisData.fieldTypeId}
-              onChange={handleChange}
-            >
-              {SelectOptions({ options: fieldTypeData, nameKey: 'name', valueKey: 'id' })}
-            </SelectBox>
+            <SelectFieldTypeId inputAnalysisData={inputAnalysisData} handleChange={handleChange} />
           </Grid>
           <Grid item md={6} xs={12} style={{ marginBottom: 12 }}>
-            <SelectBox
-              displayName="土壌の種類"
-              keyName="soilTypeId"
-              defaultValue={inputAnalysisData.soilTypeId}
-              onChange={handleChange}
-            >
-              {SelectOptions({ options: soilTypeData, nameKey: 'name', valueKey: 'id' })}
-            </SelectBox>
+            <SelectSoilTypeId  inputAnalysisData={inputAnalysisData} handleChange={handleChange} />
           </Grid>
         </Grid>
       </Grid>
