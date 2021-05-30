@@ -15,7 +15,13 @@ export const DataSetKeyNames = [
   'ratio_cao_mgo',
 ] as const;
 export type DataSetKeyName = typeof DataSetKeyNames[number];
-export type SaturationKeyName = ['base_saturation', 'cao_saturation', 'mgo_saturation', 'k2o_saturation'][number];
+export type SaturationKeyName = ['cao', 'mgo', 'k2o'][number];
+export type RateSaturationKeyName = [
+  'base_saturation',
+  'cao_saturation',
+  'mgo_saturation',
+  'k2o_saturation'
+][number];
 export type RateKeyName = ['ratio_mgo_k2o', 'ratio_cao_mgo'][number];
 
 export const AnalysisItems = {
