@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { post } from '../api/analysisData';
 import { useInputAnalysisData } from '../store/inputAnalysisDataState';
-import { ReportAnalysisData } from '../types/ReportAnalysisData';
+import { useReportAnalysisDataState } from '../store/reportAnalysisDataState';
 
 export const useReportAnalysisData = () => {
   const { inputAnalysisData } = useInputAnalysisData();
 
-  const [reportAnalysisData, setReportAnalysisData] = useState<ReportAnalysisData | null>(null);
+  const { reportAnalysisData, setReportAnalysisData } = useReportAnalysisDataState();
 
   useEffect(() => {
     const { reportAnalysisData } = post(inputAnalysisData);
 
     setReportAnalysisData(reportAnalysisData);
-  }, [inputAnalysisData]);
+  }, [inputAnalysisData, setReportAnalysisData]);
 
   return { reportAnalysisData };
 };

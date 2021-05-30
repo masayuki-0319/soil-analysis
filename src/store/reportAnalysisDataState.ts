@@ -8,7 +8,7 @@ const reportAnalysisDataState = atom<ReportAnalysisData | null>({
   default: initialState,
 });
 
-export const useReportAnalysisData = () => {
+export const useReportAnalysisDataState = () => {
   const [reportAnalysisData, setReportAnalysisData] = useRecoilState(reportAnalysisDataState);
 
   return {
