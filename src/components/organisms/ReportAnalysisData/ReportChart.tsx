@@ -5,21 +5,23 @@ import { BulletChart } from '../../molecules/charts/BulletChart';
 import { BulletChartDataSet } from '../../../types/BulletChartDataSet';
 
 type Props = {
-  bulletChartData: BulletChartDataSet[];
+  bulletChartData: BulletChartDataSet;
 };
 
 export const ReportChart: VFC<Props> = memo((props) => {
   const { bulletChartData } = props;
 
+  const chartDataSets = Object.values(bulletChartData);
+
   const data = useMemo(() => {
-    return bulletChartData.map((chartData, index) => {
+    return chartDataSets.map((chartData, index) => {
       return (
         <Grid item style={{ width: '800px', height: '80px' }} key={index}>
           <BulletChart chartData={chartData} />
         </Grid>
       );
     });
-  }, [bulletChartData]);
+  }, [chartDataSets]);
 
   return <Grid>{data}</Grid>;
 });

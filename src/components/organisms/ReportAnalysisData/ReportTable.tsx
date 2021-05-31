@@ -3,16 +3,17 @@ import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow 
 
 import { TableDataSet } from '../../../types/TableDataSet';
 import { AnalysisItems } from '../../../types/AnalysisDataSchema';
+import { DataSetDetail } from '../../../types/DataSet';
 
 type Props = {
-  tableDataSet: TableDataSet[];
+  tableDataSet: TableDataSet;
 };
 
 export const ReportTable: VFC<Props> = memo((props) => {
   const { tableDataSet } = props;
 
-  const checkDataStyle = (displayData: TableDataSet): React.CSSProperties => {
-    const { current, min, max } = displayData;
+  const checkDataStyle = (dataSetDetail: DataSetDetail): React.CSSProperties => {
+    const { current, min, max } = dataSetDetail;
 
     if (current >= min && current <= max) {
       return { backgroundColor: 'white' };
@@ -22,6 +23,7 @@ export const ReportTable: VFC<Props> = memo((props) => {
       return { backgroundColor: '#FFFF99', fontWeight: 'bold' };
     }
   };
+  const tableDataSets = Object.values(tableDataSet);
 
   return (
     <Grid container>
@@ -38,7 +40,7 @@ export const ReportTable: VFC<Props> = memo((props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {tableDataSet.map((row, index) => (
+            {tableDataSets.map((row, index) => (
               <TableRow key={index} style={checkDataStyle(row)}>
                 <TableCell component="th" scope="row">
                   {AnalysisItems[row.keyName].displayName_i18n}

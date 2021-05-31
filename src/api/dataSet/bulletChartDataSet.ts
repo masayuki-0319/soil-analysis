@@ -1,21 +1,25 @@
-import { BulletChartDataSet } from '../../types/BulletChartDataSet';
+import { DataSetDetail } from './../../types/DataSet';
+import { BulletChartDataSet, BulletChartDataSetDetail } from '../../types/BulletChartDataSet';
 import { TableDataSet } from '../../types/TableDataSet';
+import { DataSetKeyName, DataSetKeyNames } from '../../types/AnalysisDataSchema';
 
-export const getChartDataSet = (tableDataSet: TableDataSet[]): BulletChartDataSet[] => {
+export const getChartDataSet = (tableDataSet: TableDataSet): BulletChartDataSet => {
   const bulletChartDataSet = getChartData(tableDataSet);
 
   return bulletChartDataSet;
 };
 
-const getChartData = (tableDataSet: TableDataSet[]): BulletChartDataSet[] => {
-  const bulletChartDataSet = tableDataSet.map((tableData) => {
-    return calc(tableData);
-  });
+const getChartData = (tableDataSet: TableDataSet): BulletChartDataSet => {
+  const bulletChartDataSet: BulletChartDataSet = DataSetKeyNames.reduce((acc: BulletChartDataSet, keyName: DataSetKeyName) => {
+    acc[keyName] = calc(tableDataSet[keyName]);
+    return acc;
+  }, tableDataSet as BulletChartDataSet);
+
 
   return bulletChartDataSet;
 };
 
-const calc = (tableDataSet: TableDataSet): BulletChartDataSet => {
+const calc = (tableDataSet: DataSetDetail): BulletChartDataSetDetail => {
   let chartMin: number, chartMax: number;
 
   if (tableDataSet.keyName === 'ph') {

@@ -36,10 +36,16 @@ export const Step3: VFC<Props> = memo((props) => {
       </Box>
       <Box display="flex" justifyContent="center" m={1} p={1}>
         <Box hidden={tabValue !== 0}>
-          <ReportTable tableDataSet={tableDataSet} />
+          {tableDataSet !== undefined
+            ? <ReportTable tableDataSet={tableDataSet} />
+            : "Null Data"
+          }
         </Box>
         <Box hidden={tabValue !== 1}>
-          <ReportChart bulletChartData={bulletChartData} />
+        {bulletChartData !== undefined
+            ? <ReportChart bulletChartData={bulletChartData} />
+            : "Null Data"
+          }
         </Box>
       </Box>
     </Paper>

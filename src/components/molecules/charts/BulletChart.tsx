@@ -1,11 +1,11 @@
 import { VFC } from 'react';
 import { BarChart, Bar, XAxis, YAxis } from 'recharts';
 
-import { BulletChartDataSet } from '../../../types/BulletChartDataSet';
+import { BulletChartDataSetDetail } from '../../../types/BulletChartDataSet';
 import { AnalysisItems } from '../../../types/AnalysisDataSchema';
 
 type Props = {
-  chartData: BulletChartDataSet;
+  chartData: BulletChartDataSetDetail;
 };
 
 export const BulletChart: VFC<Props> = (props) => {
