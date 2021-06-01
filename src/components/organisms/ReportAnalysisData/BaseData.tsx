@@ -1,5 +1,9 @@
 import { VFC } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import GradientIcon from '@material-ui/icons/Gradient';
+import ToysIcon from '@material-ui/icons/Toys';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+
 import { ReportAnalysisData } from '../../../types/ReportAnalysisData';
 import { useAnalysisItemSelectOptions } from '../../../hooks/useAnalysisItemSelectOptions';
 import { AnalysisItems } from '../../../types/AnalysisDataSchema';
@@ -18,26 +22,16 @@ export const BaseData: VFC<Props> = (props) => {
   return (
     <Grid container style={{ alignItems: 'center', justifyContent: 'center' }}>
       <Grid item>
-        <TableContainer>
-          <Table style={{ width: 'auto' }}>
-            <TableHead>
-              <TableRow>
-                <TableCell align="center">ほ場種類</TableCell>
-                <TableCell align="center">土壌分類</TableCell>
-                <TableCell align="center">CEC</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell>{fieldName?.name}</TableCell>
-                <TableCell>{soilName?.name}</TableCell>
-                <TableCell>
-                  {reportAnalysisData.cec} ( {AnalysisItems.cec.unitName} )
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <ToysIcon />
+        {fieldName?.name}
+      </Grid>
+      <Grid item>
+        <GradientIcon />
+        {soilName?.name}
+      </Grid>
+      <Grid item>
+        <CheckBoxOutlineBlankIcon />
+        {reportAnalysisData.cec} ( {AnalysisItems.cec.unitName} )
       </Grid>
     </Grid>
   );
