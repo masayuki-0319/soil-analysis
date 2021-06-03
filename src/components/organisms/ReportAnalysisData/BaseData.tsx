@@ -1,8 +1,7 @@
 import { VFC } from 'react';
-import { Grid } from '@material-ui/core';
-import GradientIcon from '@material-ui/icons/Gradient';
-import ToysIcon from '@material-ui/icons/Toys';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import { Grid, Box } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSolarPanel, faTeeth, faRulerVertical } from '@fortawesome/free-solid-svg-icons';
 
 import { ReportAnalysisData } from '../../../types/ReportAnalysisData';
 import { useAnalysisItemSelectOptions } from '../../../hooks/useAnalysisItemSelectOptions';
@@ -21,17 +20,25 @@ export const BaseData: VFC<Props> = (props) => {
 
   return (
     <Grid container style={{ alignItems: 'center', justifyContent: 'center' }}>
-      <Grid item>
-        <ToysIcon />
-        {fieldName?.name}
+      <Grid item m={2} style={{ display: 'flex' }}>
+        <Box>
+          <FontAwesomeIcon icon={faSolarPanel} />
+        </Box>
+        <Box>{fieldName?.name}</Box>
       </Grid>
-      <Grid item>
-        <GradientIcon />
-        {soilName?.name}
+      <Grid item m={2} style={{ display: 'flex' }}>
+        <Box>
+          <FontAwesomeIcon icon={faTeeth} />
+        </Box>
+        <Box> {soilName?.name}</Box>
       </Grid>
-      <Grid item>
-        <CheckBoxOutlineBlankIcon />
-        {reportAnalysisData.cec} ( {AnalysisItems.cec.unitName} )
+      <Grid item m={2} style={{ display: 'flex' }}>
+        <Box>
+          <FontAwesomeIcon icon={faRulerVertical} />
+        </Box>
+        <Box>
+          {reportAnalysisData.cec} ( {AnalysisItems.cec.unitName} )
+        </Box>
       </Grid>
     </Grid>
   );
