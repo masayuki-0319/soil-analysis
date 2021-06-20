@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/soil-analysis/static/js/main.7628ab1a.chunk.js",
+    "main.js.map": "/soil-analysis/static/js/main.7628ab1a.chunk.js.map",
+    "runtime-main.js": "/soil-analysis/static/js/runtime-main.018942b9.js",
+    "runtime-main.js.map": "/soil-analysis/static/js/runtime-main.018942b9.js.map",
+    "static/js/2.fbc69bae.chunk.js": "/soil-analysis/static/js/2.fbc69bae.chunk.js",
+    "static/js/2.fbc69bae.chunk.js.map": "/soil-analysis/static/js/2.fbc69bae.chunk.js.map",
+    "static/js/3.7ad12392.chunk.js": "/soil-analysis/static/js/3.7ad12392.chunk.js",
+    "static/js/3.7ad12392.chunk.js.map": "/soil-analysis/static/js/3.7ad12392.chunk.js.map",
+    "index.html": "/soil-analysis/index.html",
+    "static/js/2.fbc69bae.chunk.js.LICENSE.txt": "/soil-analysis/static/js/2.fbc69bae.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.018942b9.js",
+    "static/js/2.fbc69bae.chunk.js",
+    "static/js/main.7628ab1a.chunk.js"
+  ]
+}
