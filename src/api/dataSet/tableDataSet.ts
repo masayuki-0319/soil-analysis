@@ -1,11 +1,11 @@
 import { fieldMasterData } from '../masterData/fieldMasterData';
+import { calcAbstSaturation, findMasterData } from './utilDataCalculator';
 import { DataSetKeyName, DataSetKeyNames } from '../../types/AnalysisDataSchema';
 import { FieldMasterData } from '../../types/FieldMasterData';
 import { ReportAnalysisData } from '../../types/ReportAnalysisData';
-import { calcAbstSaturation, findMasterData } from './utilDataCalculator';
-import { TableDataSet } from '../../types/TableDataSet';
+import { DataSet, DataSetDetail } from '../../types/DataSet';
 
-export const getTableDataSet = (reportAnalysisResult: ReportAnalysisData): TableDataSet[] => {
+export const getTableDataSet = (reportAnalysisResult: ReportAnalysisData): DataSet => {
   const tableDataSet = getTableData(reportAnalysisResult);
 
   return tableDataSet;
@@ -17,14 +17,15 @@ const getTableData = (current: ReportAnalysisData) => {
 
   const standardData = findMasterData(fieldTypeId, fieldMasterData);
 
-  const tableDataSet = DataSetKeyNames.map((keyName) => {
-    return calc(keyName, current, standardData);
-  });
+  const tableDataSet: DataSet = DataSetKeyNames.reduce((acc: DataSet, keyName: DataSetKeyName) => {
+    acc[keyName] = calc(keyName, current, standardData);
+    return acc;
+  }, {} as DataSet);
 
   return tableDataSet;
 };
 
-const calc = (keyName: DataSetKeyName, currentData: ReportAnalysisData, masterData: FieldMasterData): TableDataSet => {
+const calc = (keyName: DataSetKeyName, currentData: ReportAnalysisData, masterData: FieldMasterData): DataSetDetail => {
   let min: number, max: number, current: number;
 
   if (keyName === 'cao' || keyName === 'mgo' || keyName === 'k2o') {

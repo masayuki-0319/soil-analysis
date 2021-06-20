@@ -1,6 +1,11 @@
-import { DataSet } from './DataSet';
+import { DataSetDetail } from './DataSet';
+import { DataSetKeyName } from './AnalysisDataSchema';
 
-export type BulletChartDataSet = DataSet & {
+export type BulletChartDataSetDetail = DataSetDetail & {
   chartMin: number;
   chartMax: number;
+};
+
+export type BulletChartDataSet = {
+  [K in DataSetKeyName]: BulletChartDataSetDetail;
 };

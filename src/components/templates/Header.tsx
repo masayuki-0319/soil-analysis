@@ -1,6 +1,7 @@
 import { VFC } from 'react';
 import { AppBar, Box, Toolbar, Typography, IconButton } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 export const Header: VFC = () => {
   return (
@@ -11,7 +12,7 @@ export const Header: VFC = () => {
             Soil Analysis System
           </Typography>
           <IconButton edge="end" color="inherit" aria-label="menu">
-            <MenuIcon />
+            <FontAwesomeIcon icon={faBars} />
           </IconButton>
         </Toolbar>
       </AppBar>

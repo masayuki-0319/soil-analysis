@@ -7,8 +7,8 @@ import { ReportAnalysisData } from '../types/ReportAnalysisData';
 import { TableDataSet } from '../types/TableDataSet';
 
 export const useDataSet = (reportAnalysisData: ReportAnalysisData) => {
-  const [tableDataSet, setTableDataSet] = useState<TableDataSet[]>([]);
-  const [bulletChartData, setBulletChartData] = useState<BulletChartDataSet[]>([]);
+  const [tableDataSet, setTableDataSet] = useState<TableDataSet>();
+  const [bulletChartData, setBulletChartData] = useState<BulletChartDataSet>();
 
   useEffect(() => {
     const { tableData, chartData } = get(reportAnalysisData);

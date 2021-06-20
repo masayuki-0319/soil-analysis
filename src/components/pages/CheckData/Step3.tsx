@@ -6,6 +6,7 @@ import { PaperInformation } from '../../molecules/PaperInformation';
 
 import { useDataSet } from '../../../hooks/useDataSet';
 import { ReportAnalysisData } from '../../../types/ReportAnalysisData';
+import { BaseData } from '../../organisms/ReportAnalysisData/BaseData';
 
 type Props = {
   reportAnalysisData: ReportAnalysisData;
@@ -24,6 +25,9 @@ export const Step3: VFC<Props> = memo((props) => {
   return (
     <Paper elevation={8} style={{ padding: 20, marginBottom: 21 }}>
       <PaperInformation title="土壌分析結果" description="※ 前ページの入力結果を出力する。" />
+      <Box>
+        <BaseData reportAnalysisData={reportAnalysisData} />
+      </Box>
       <Box sx={{ borderBottom: 4, borderColor: 'divider' }}>
         <Tabs value={tabValue} onChange={handleChange} centered>
           <Tab label="テーブル" />
@@ -32,10 +36,16 @@ export const Step3: VFC<Props> = memo((props) => {
       </Box>
       <Box display="flex" justifyContent="center" m={1} p={1}>
         <Box hidden={tabValue !== 0}>
-          <ReportTable tableDataSet={tableDataSet} />
+          {tableDataSet !== undefined
+            ? <ReportTable tableDataSet={tableDataSet} />
+            : "Null Data"
+          }
         </Box>
         <Box hidden={tabValue !== 1}>
-          <ReportChart bulletChartData={bulletChartData} />
+        {bulletChartData !== undefined
+            ? <ReportChart bulletChartData={bulletChartData} />
+            : "Null Data"
+          }
         </Box>
       </Box>
     </Paper>
